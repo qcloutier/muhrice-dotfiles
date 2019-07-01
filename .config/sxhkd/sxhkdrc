@@ -1,0 +1,52 @@
+#
+# Application shortcuts
+#
+
+# TODO
+# file
+# editor
+# music
+# password
+# terminal
+# video
+# web
+
+#
+# Fn mappings
+#
+
+# volume up
+XF86AudioRaiseVolume
+    pactl set-sink-volume 0 +2%
+
+# volume down
+XF86AudioLowerVolume
+    pactl set-sink-volume 0 -2%
+
+# volume mute/unmute
+XF86AudioMute
+    pactl set-sink-mute 0 toggle
+
+# screen brigntness up
+XF86MonBrightnessUp
+    xbacklight -inc 5
+
+# screen brightness down
+XF86MonBrightnessDown
+    xbacklight -dec 5
+
+# music play/pause
+XF86AudioPlay
+    mpc toggle
+
+# music stop
+XF86AudioStop
+    mpc stop
+
+# music previous
+XF86AudioPrev
+    mpc prev
+
+# music next
+XF86AudioNext
+    mpc next
