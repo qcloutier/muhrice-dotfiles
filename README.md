@@ -1,2 +1,2 @@
 # muhrice-dotfiles
-Dotfiles for the muhrice meta-distribution
+Future home of my dotfiles, which will also belong to the muhrice meta-distribution.
