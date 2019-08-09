@@ -1,39 +1,28 @@
-*foreground:#f0f0f0
-*foreground_bold:#ffffff
-*cursor:#ffffff
 *background:#000000
+*foreground:#ffffff
 
-!!black
 *color0:#1b1918
-*color8:#766e6b
-!!red
-*color1:#f22c40
-*color9:#f22c40
-!!green
-*color2:#5ab738
-*color10:#5ab738
-!!yellow
-*color3:#d5911a
-*color11:#d5911a
-!!blue
-*color4:#407ee7
-*color12:#407ee7
-!!magenta
-*color5:#ff66ff
-*color13:#ff66ff
-!!cyan
-*color6:#33ccff
-*color14:#33ccff
-!!white
-*color7:#a8a19f
-*color15:#f1efee
+*color1:#f1273b
+*color2:#56b036 
+*color3:#cc8b19 
+*color4:#4984e9  
+*color5:#ff66ff 
+*color6:#33ccff 
+*color7:#aaa3a1
 
-URxvt.intensityStyles:false
+*color8:#363230
+*color9:#f45767
+*color10:#70c94f
+*color11:#e6a433
+*color12:#77a3ee
+*color13:#ff99ff
+*color14:#66d9ff
+*color15:#c2bdbc
+
 URxvt.background:[80]#000000
-URxvt.depth:32
-URxvt.font:xft:monospace:size=9
-URxvt.scrollBar:false
 URxvt.cursorColor:white
+URxvt.font:xft:monospace:size=9,xft:Symbola:size=7
+URxvt.scrollBar:false
 
 Xcursor.theme: Numix-Cursor
 Xcursor.size: 16
