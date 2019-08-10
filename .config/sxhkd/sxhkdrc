@@ -2,14 +2,29 @@
 # Application shortcuts
 #
 
-# TODO
-# file
-# editor
-# music
-# password
-# terminal
-# video
-# web
+# file manager
+super + alt + f
+    ranger
+
+# text editor
+super + alt + e
+    nvim
+
+# music player
+super + alt + m
+    ncmpcpp
+
+# password manager
+super + alt + p
+    keepassxc
+
+# terminal emulator
+super + alt + t
+    urxvt
+
+# web browser
+super + alt + w
+    firefox
 
 #
 # Fn mappings

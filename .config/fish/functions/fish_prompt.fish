@@ -1,12 +1,12 @@
 function fish_prompt --description 'Write out the prompt'
-    
+
     set -g w (set_color -o white)
     set -g r (set_color -o red)
     set -g b (set_color -o blue)
     set -g g (set_color -o green)
     set -g y (set_color -o yellow)
 
-    set t (date "+%H:%M:%S")  
+    set t (date "+%H:%M:%S")
     set u $USER
     set h (prompt_hostname)
     set d $PWD

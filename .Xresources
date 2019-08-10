@@ -3,11 +3,11 @@
 
 *color0:#1b1918
 *color1:#f1273b
-*color2:#56b036 
-*color3:#cc8b19 
-*color4:#4984e9  
-*color5:#ff66ff 
-*color6:#33ccff 
+*color2:#56b036
+*color3:#cc8b19
+*color4:#4984e9
+*color5:#ff66ff
+*color6:#33ccff
 *color7:#aaa3a1
 
 *color8:#363230
@@ -19,7 +19,9 @@
 *color14:#66d9ff
 *color15:#c2bdbc
 
+URxvt.intensityStyles:false
 URxvt.background:[80]#000000
+URxvt.depth:32
 URxvt.cursorColor:white
 URxvt.font:xft:monospace:size=9,xft:Symbola:size=7
 URxvt.scrollBar:false

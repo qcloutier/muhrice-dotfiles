@@ -9,6 +9,7 @@ function run {
     fi
 }
 
+# Syncthing
 run syncthing -no-browser >> /dev/null
 
 # Run the contents of bashrc
