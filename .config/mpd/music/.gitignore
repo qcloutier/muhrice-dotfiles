@@ -1,2 +1,4 @@
+# Put symlinks to your music in this directory.
+# Remove this file if you want them to be tracked by git.
 *
 !.gitignore
