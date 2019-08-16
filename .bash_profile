@@ -2,15 +2,14 @@
 # ~/.bash_profile
 #
 
-# Start programs that are not already running
+# Start programs if not already running
 function run {
     if ! pgrep -f $1; then
         $@&
-    fi
+    fi >> /dev/null
 }
-
-# Syncthing
-run syncthing -no-browser >> /dev/null
+run mpd
+run syncthing -no-browser
 
 # Run the contents of bashrc
 [[ -f ~/.bashrc ]] && . ~/.bashrc

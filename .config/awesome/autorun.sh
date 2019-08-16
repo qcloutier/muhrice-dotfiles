@@ -3,19 +3,15 @@
 function run {
     if ! pgrep -f $1; then
         $@&
-    fi
+    fi >> /dev/null
 }
 
 # asthetics
 run xcompmgr
-run xwallpaper --maximize /home/quinton/Pictures/laptop.jpeg
+run xrdb ~/.Xresources
 
 # keymaps
 run sxhkd
-
-# system tray
-run cbatticon
-run nm-applet
 
 # password manager
 run keepassxc
