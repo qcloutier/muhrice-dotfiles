@@ -1,30 +1,44 @@
-*background:#000000
-*foreground:#ffffff
+!
+! ~/.Xresources
+!
 
-*color0:#1b1918
-*color1:#f1273b
-*color2:#56b036
-*color3:#cc8b19
-*color4:#4984e9
-*color5:#ff66ff
-*color6:#33ccff
-*color7:#aaa3a1
+! Colour scheme
 
-*color8:#363230
-*color9:#f45767
-*color10:#70c94f
-*color11:#e6a433
-*color12:#77a3ee
-*color13:#ff99ff
-*color14:#66d9ff
-*color15:#c2bdbc
+*background: #000000
+*foreground: #ffffff
 
-URxvt.intensityStyles:false
-URxvt.background:[80]#000000
-URxvt.depth:32
-URxvt.cursorColor:white
-URxvt.font:xft:monospace:size=9,xft:Symbola:size=7
-URxvt.scrollBar:false
+*color0: #1b1918
+*color1: #f1273b
+*color2: #56b036
+*color3: #cc8b19
+*color4: #4984e9
+*color5: #ff66ff
+*color6: #33ccff
+*color7: #aaa3a1
+
+*color8: #363230
+*color9: #f45767
+*color10: #70c94f
+*color11: #e6a433
+*color12: #77a3ee
+*color13: #ff99ff
+*color14: #66d9ff
+*color15: #c2bdbc
+
+! X settings
 
 Xcursor.theme: Numix-Cursor
 Xcursor.size: 16
+
+! URxvt settings
+
+URxvt.background: #000000
+URxvt.cursorColor: white
+URxvt.font: xft:DejaVu Sans Mono:size=10, xft:Symbola:pixelsize=8
+URxvt.scrollBar: false
+
+URxvt.perl-ext-common: clipboard
+URxvt.clipboard.autocopy: true
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+
