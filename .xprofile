@@ -12,3 +12,6 @@ function run {
 }
 run compton --config .config/compton/compton.conf
 run xrdb ~/.Xresources
+
+# Set some variables
+export QT_QPA_PLATFORMTHEME=qt5ct
