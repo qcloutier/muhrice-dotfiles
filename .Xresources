@@ -32,8 +32,10 @@ Xcursor.size: 16
 
 ! URxvt settings
 
-URxvt.background: #000000
+URxvt.background: [80]#000000
 URxvt.cursorColor: white
+URxvt.depth: 32
+URxvt.intensityStyles: false
 URxvt.font: xft:DejaVu Sans Mono:size=10, xft:Symbola:pixelsize=8
 URxvt.scrollBar: false
 
