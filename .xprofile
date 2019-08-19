@@ -1,0 +1,14 @@
+#!/bin/sh
+
+#
+# ~/.xprofile
+#
+
+# Start some programs if they are not already running
+function run {
+    if ! pgrep -f $1; then
+        $@&
+    fi >> /dev/null
+}
+run compton --config .config/compton/compton.conf
+run xrdb ~/.Xresources
