@@ -1,9 +1,5 @@
 #!/bin/sh
 
-#
-# ~/.xinitrc
-#
-
 # Run the local xprofile
 [ -f ~/.xprofile ] && . ~/.xprofile
 

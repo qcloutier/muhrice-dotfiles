@@ -1,9 +1,5 @@
 #!/bin/bash
 
-#
-# ~/.profile
-#
-
 # Start some programs if they are not already running
 function run {
     if ! pgrep -f $1; then
