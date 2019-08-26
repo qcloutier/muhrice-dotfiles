@@ -21,7 +21,7 @@ The following programs have configuration files here:
 
 Files for GTK and QT theming are here as well.
 
-## Like my rice?
+## Using These Files
 
 The easiest way to make use of these files is through
 [Git](https://git-scm.com/) and
