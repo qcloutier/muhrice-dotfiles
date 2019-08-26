@@ -1,0 +1,13 @@
+#
+# ~/.config/feh/keys
+#
+
+scroll_left h
+scroll_right l
+scroll_up k
+scroll_down j
+
+prev_img H
+next_img L
+zoom_in K
+zoom_out J

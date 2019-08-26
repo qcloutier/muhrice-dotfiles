@@ -1,0 +1,4 @@
+# Created playlists will be stored here.
+# Remove this file if you want them to be tracked by git.
+*
+!.gitignore

@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Start some programs if they are not already running
+function run {
+    if ! pgrep -f $1; then
+        $@&
+    fi >> /dev/null
+}
+run compton --config ~/.config/compton/compton.conf
+run xrdb ~/.Xresources
+run urxvtd
+
+# Set some variables
+export GTK2_RC_FILES=~/.config/gtk-2.0/gtkrc-2.0
+export QT_QPA_PLATFORMTHEME=qt5ct
