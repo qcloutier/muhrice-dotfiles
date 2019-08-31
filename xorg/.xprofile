@@ -7,8 +7,9 @@ function run {
     fi >> /dev/null
 }
 run compton --config ~/.config/compton/compton.conf
-run xrdb ~/.Xresources
 run urxvtd
+run xmodmap ~/.Xmodmap
+run xrdb ~/.Xresources
 
 # Set some variables
 export GTK2_RC_FILES=~/.config/gtk-2.0/gtkrc-2.0
