@@ -8,6 +8,7 @@ function run {
 }
 run compton --config ~/.config/compton/compton.conf
 run urxvtd
+run xfsettingsd
 run xmodmap ~/.Xmodmap
 run xrdb ~/.Xresources
 
