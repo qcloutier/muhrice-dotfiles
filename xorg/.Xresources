@@ -7,23 +7,23 @@
 *background: #000000
 *foreground: #ffffff
 
-*color0: #1b1918
+*color0: #000000
 *color1: #f1273b
 *color2: #56b036
-*color3: #cc8b19
+*color3: #e6b800
 *color4: #4984e9
 *color5: #ff66ff
 *color6: #33ccff
-*color7: #aaa3a1
+*color7: #e6e6e6
 
-*color8: #363230
+*color8: #1a1a1a
 *color9: #f45767
 *color10: #70c94f
-*color11: #e6a433
+*color11: #ffd11a
 *color12: #77a3ee
 *color13: #ff99ff
 *color14: #66d9ff
-*color15: #c2bdbc
+*color15: #ffffff
 
 ! X settings
 
@@ -36,7 +36,7 @@ URxvt.background: [80]#000000
 URxvt.cursorColor: white
 URxvt.depth: 32
 URxvt.intensityStyles: false
-URxvt.font: xft:DejaVu Sans Mono:size=10, xft:Symbola:pixelsize=8
+URxvt.font: xft:DejaVu Sans Mono:size=9, xft:Symbola:pixelsize=8
 URxvt.scrollBar: false
 
 URxvt.perl-ext-common: clipboard
