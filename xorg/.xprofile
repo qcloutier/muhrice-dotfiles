@@ -6,7 +6,7 @@ function run {
         $@&
     fi >> /dev/null
 }
-run compton --config ~/.config/compton/compton.conf
+run compton
 run urxvtd
 run xfsettingsd
 run xfce4-power-manager
