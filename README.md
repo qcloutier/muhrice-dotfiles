@@ -7,7 +7,6 @@ The following programs have configuration files here:
 - Bash (Default shell)
 - Compton (Desktop compositor)
 - Feh (Image viewer)
-- Firefox (Web browser)
 - Fish (Interactive shell)
 - Htop (System monitor)
 - MPD + Ncmpcpp (Music player)
