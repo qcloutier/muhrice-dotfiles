@@ -8,8 +8,9 @@ function run {
 }
 run compton
 run urxvtd
-run xfsettingsd
-run xfce4-power-manager
+run xfsettingsd             # displays and theming
+run xfce4-session           # polkit authentication
+run xfce4-power-manager     # power management
 run xmodmap ~/.Xmodmap
 run xrdb ~/.Xresources
 
