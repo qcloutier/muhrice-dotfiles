@@ -1,19 +1,8 @@
 #!/bin/sh
 
-# Start some programs if they are not already running
-function run {
-    if ! pgrep -f $1; then
-        $@&
-    fi >> /dev/null
-}
-run compton
-run urxvtd
-run xfsettingsd             # displays and theming
-run xfce4-session           # polkit authentication
-run xfce4-power-manager     # power management
-run xmodmap ~/.Xmodmap
-run xrdb ~/.Xresources
-
 # Set some variables
 export GTK2_RC_FILES=~/.config/gtk-2.0/gtkrc-2.0
 export QT_QPA_PLATFORMTHEME=qt5ct
+
+# Run some programs
+run xfce4-session &
