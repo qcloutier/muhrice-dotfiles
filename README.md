@@ -4,7 +4,6 @@ My personal dotfiles, which I currently use on my Arch Linux machines, forming w
 The following programs have configuration files here:
 
 - Awesome (Window manager)
-- Bash (Default shell)
 - Compton (Desktop compositor)
 - Feh (Image viewer)
 - Fish (Interactive shell)
