@@ -1,0 +1,39 @@
+#
+# ~/.config/alacritty/alacritty.yml
+#
+
+background_opacity: 0.8
+
+colors:
+    primary:
+        background: '0x000000'
+        foreground: '0xffffff'
+    normal:
+        black:   '0x000000'
+        red:     '0xf1273b'
+        green:   '0x56b036'
+        yellow:  '0xe6b800'
+        blue:    '0x4984e9'
+        magenta: '0xff66ff'
+        cyan:    '0x33ccff'
+        white:   '0xe6e6e6'
+    bright:
+        black:   '0x1a1a1a'
+        red:     '0xf45767'
+        green:   '0x70c94f'
+        yellow:  '0xffd11a'
+        blue:    '0x77a3ee'
+        magenta: '0xff99ff'
+        cyan:    '0x66d9ff'
+        white:   '0xffffff'
+
+font:
+    normal:
+        family: DejaVu Sans Mono
+    size: 9.5
+
+window:
+    dimensions:
+        columns: 80
+        lines:   24
+    dynamic_padding: true
