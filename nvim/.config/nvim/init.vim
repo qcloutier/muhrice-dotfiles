@@ -10,6 +10,10 @@ syntax on
 set number
 set relativenumber
 
+" Select with mouse support.
+set mouse=a
+vnoremap <LeftRelease> "*ygv
+
 " Bindings for copy and paste.
 vnoremap <C-c> "+y
 map <C-v> "+P
