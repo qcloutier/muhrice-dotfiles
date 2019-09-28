@@ -29,3 +29,18 @@
 
 Xcursor.theme: Numix-Cursor
 Xcursor.size: 16
+
+! URxvt settings
+
+URxvt.background: [80]#000000
+URxvt.cursorColor: white
+URxvt.depth: 32
+URxvt.intensityStyles: false
+URxvt.font: xft:DejaVu Sans Mono:size=9, xft:Symbola:pixelsize=8
+URxvt.scrollBar: false
+
+URxvt.perl-ext-common: clipboard
+URxvt.clipboard.autocopy: true
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+
