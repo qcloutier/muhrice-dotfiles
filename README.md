@@ -3,7 +3,6 @@ My personal dotfiles, which I currently use on my Arch Linux machines, forming w
 
 The following programs have configuration files here:
 
-- Alacritty (Terminal emulator)
 - Awesome (Window manager)
 - Compton (Desktop compositor)
 - Feh (Image viewer)
@@ -12,8 +11,9 @@ The following programs have configuration files here:
 - MPD + Ncmpcpp (Music player)
 - MPV (Video player)
 - Neofetch (System information)
-- Neovim (Text editor)
+- Nvim (Text editor)
 - Ranger (File browser)
+- URxvt (Terminal emulator)
 - Zathura (Document viewer)
 
 Files for GTK and QT theming are here as well.
