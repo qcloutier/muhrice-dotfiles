@@ -30,7 +30,7 @@ theme.fg_normal   = "#ffffff"
 theme.fg_urgent   = theme.fg_focus
 theme.fg_minimize = theme.fg_normal
 
-theme.bg_focus    = "#1a1a1a"
+theme.bg_focus    = "#000000"
 theme.bg_normal   = "#1a1a1a"
 theme.bg_urgent   = theme.bg_focus
 theme.bg_minimize = theme.bg_normal
@@ -47,7 +47,7 @@ theme.useless_gap = dpi(5)
 -- Layout icons
 
 theme.layout_tileleft   = theme.icon_dir .. "tileleft.png"
-theme.layout_tileright  = theme.icon_dir .. "tileright.png"
+theme.layout_tile       = theme.icon_dir .. "tileright.png"
 theme.layout_tilebottom = theme.icon_dir .. "tilebottom.png"
 theme.layout_tiletop    = theme.icon_dir .. "tiletop.png"
 theme.layout_fairh      = theme.icon_dir .. "fairh.png"
