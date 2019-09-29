@@ -30,8 +30,8 @@ theme.fg_normal   = "#ffffff"
 theme.fg_urgent   = theme.fg_focus
 theme.fg_minimize = theme.fg_normal
 
-theme.bg_focus    = "#000000"
-theme.bg_normal   = "#1a1a1a"
+theme.bg_focus    = "#000000CC"
+theme.bg_normal   = "#1a1a1aCC"
 theme.bg_urgent   = theme.bg_focus
 theme.bg_minimize = theme.bg_normal
 
