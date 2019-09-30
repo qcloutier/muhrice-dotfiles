@@ -488,7 +488,7 @@ menusettings = {
 
 -- User sub-menu
 menuuser = {
-    { "Lock Screen", "dm-tool lock && sudo chvt 8" },
+    { "Lock Screen", "sh -c 'dm-tool lock && sudo chvt 8'" },
     { "Log Out", function() awesome.quit() end }
 }
 
