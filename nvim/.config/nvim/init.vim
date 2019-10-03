@@ -6,6 +6,9 @@
 filetype plugin on
 syntax on
 
+" Colour scheme.
+colo ron
+
 " Display relative line numbers.
 set number
 set relativenumber
@@ -26,3 +29,8 @@ autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
 
 " Delete trailing whitespace before saving.
 autocmd BufWritePre * %s/\s\+$//e
+
+" DelimitMate settings.
+let delimitMate_expand_cr = 1
+let delimitMate_matchpairs = "(:),[:],{:},<:>"
+filetype indent plugin on
