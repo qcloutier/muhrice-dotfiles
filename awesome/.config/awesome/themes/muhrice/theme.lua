@@ -7,33 +7,30 @@
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
-
 local gfs = require("gears.filesystem")
-local themes_path = gfs.get_themes_dir()
-
-local theme = {}
 
 local themes_path = os.getenv("HOME") .. "/.config/awesome/themes/"
+local theme = {}
 
 -- Colours and styles
 
-theme.font = "DejaVu Sans 9"
+theme.font = "DejaVu Sans Bold 9"
 
 theme.wallpaper = themes_path .. "muhrice/wallpaper.jpeg"
 
 theme.icon_dir  = themes_path .. "muhrice/icons/"
 
-theme.icon_theme = "/usr/share/icons/Numix-Circle"
+theme.icon_theme = "/usr/share/icons/Numix-Circle-Arc"
 
-theme.fg_focus    = "#e6e6e6"
-theme.fg_normal   = "#ffffff"
+theme.fg_focus    = "#d9d9d9"
+theme.fg_normal   = "#f2f2f2"
 theme.fg_urgent   = theme.fg_focus
 theme.fg_minimize = theme.fg_normal
 
-theme.bg_focus    = "#000000CC"
-theme.bg_normal   = "#1a1a1aCC"
-theme.bg_urgent   = theme.bg_focus
-theme.bg_minimize = theme.bg_normal
+theme.bg_focus    = "#0d0d0dDD"
+theme.bg_normal   = "#262626DD"
+theme.bg_urgent   = "#1a1a1aDD"
+theme.bg_minimize = "#333333DD"
 
 theme.border_normal = theme.bg_normal
 theme.border_focus  = theme.bg_focus
@@ -46,23 +43,24 @@ theme.useless_gap = dpi(5)
 
 -- Layout icons
 
+theme.layout_floating   = theme.icon_dir .. "floating.png"
 theme.layout_tileleft   = theme.icon_dir .. "tileleft.png"
 theme.layout_tile       = theme.icon_dir .. "tileright.png"
 theme.layout_tilebottom = theme.icon_dir .. "tilebottom.png"
 theme.layout_tiletop    = theme.icon_dir .. "tiletop.png"
 theme.layout_fairh      = theme.icon_dir .. "fairh.png"
 theme.layout_fairv      = theme.icon_dir .. "fairv.png"
-theme.layout_floating   = theme.icon_dir .. "floating.png"
 theme.layout_max        = theme.icon_dir .. "max.png"
 theme.layout_fullscreen = theme.icon_dir .. "fullscreen.png"
 
 -- Menu theming
 theme.menu_height = dpi(24)
 theme.menu_width  = dpi(150)
+theme.menu_submenu_icon = nil
+theme.menu_submenu = "▸ "
 theme.awesome_icon = theme_assets.awesome_icon(
-	theme.menu_height, theme.bg_focus, theme.fg_focus
+	theme.menu_height, theme.bg_normal, theme.fg_normal
 )
-theme.menu_submenu_icon = theme.icon_dir .. "submenu.png"
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)

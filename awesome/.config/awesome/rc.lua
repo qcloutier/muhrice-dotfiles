@@ -12,12 +12,12 @@ local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
 local wibox = require("wibox")
-local beautiful = require("beautiful")
 local naughty = require("naughty")
-local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
-
+local beautiful = require("beautiful")
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
 
 --
 -- ERRORS
@@ -57,12 +57,21 @@ end
 --
 
 -- Load the theme
-beautiful.init("~/.config/awesome/themes/muhrice/theme.lua")
+beautiful.init(os.getenv("HOME").."/.config/awesome/themes/muhrice/theme.lua")
 
 -- Set default programs
 terminal = "urxvtc"
 editor = "nvim"
 editor_cmd = terminal .. " -e " .. editor
+
+-- Power commands
+local syscmd_suspend = "sleep 3s && xflock4 & sudo systemctl suspend"
+local syscmd_hibernate = "sleep 3s && xflock4 & sudo systemctl hibernate"
+local syscmd_reboot = "sleep 3s && sudo systemctl reboot"
+local syscmd_poweroff = "sleep 3s && sudo systemctl poweroff"
+
+-- Lockscreen command
+local syscmd_lockscreen = os.getenv("HOME").."/.config/awesome/lock.sh"
 
 
 --
@@ -153,6 +162,13 @@ globalkeys = gears.table.join(
         { description="quit awesome", group="awesome" }
     ),
     awful.key(
+        { modkey, "Control" }, "l",
+        function()
+            awful.spawn.with_shell("sh -c '" .. syscmd_lockscreen .. "'")
+        end,
+        { description="lock screen", group="awesome" }
+    ),
+    awful.key(
         { modkey }, "j",
         function()
             awful.client.focus.byidx(1)
@@ -188,12 +204,9 @@ globalkeys = gears.table.join(
     awful.key(
         { modkey }, "Tab",
         function()
-            awful.client.focus.history.previous()
-            if client.focus then
-                client.focus:raise()
-            end
+            awful.spawn.with_shell("rofi -modi windowcd -theme glue_pro_blue -font 'DejaVu Sans 10' -show windowcd")
         end,
-        {description="go back", group="client" }
+        {description="list clients", group="client" }
     ),
     awful.key(
         { modkey, "Shift" }, "n",
@@ -215,16 +228,23 @@ globalkeys = gears.table.join(
     awful.key(
         { modkey }, "r",
         function()
-            awful.screen.focused().mypromptbox:run()
+            awful.spawn.with_shell("rofi -modi run -theme glue_pro_blue -font 'DejaVu Sans 10' -show run")
         end,
         { description="run prompt", group="launcher" }
     ),
     awful.key(
-        { modkey }, "p",
+        { modkey }, "a",
         function()
-            menubar.show()
+            awful.spawn.with_shell("rofi -modi drun -theme glue_pro_blue -font 'DejaVu Sans 10' -show drun")
         end,
-        { description="show the menubar", group="launcher" }
+        { description="program menu", group="launcher" }
+    ),
+    awful.key(
+        { modkey }, "c",
+        function()
+            awful.spawn.with_shell("maim -s | xclip -selection clipboard -t image/png")
+        end,
+        { description="take screenshot", group="launcher"}
     ),
     awful.key(
         { modkey }, "l",
@@ -281,6 +301,34 @@ globalkeys = gears.table.join(
             awful.layout.inc(-1)
         end,
         { description="select previous", group="layout" }
+    ),
+    awful.key(
+        { modkey, "Control", "Shift" }, "s",
+        function()
+            awful.spawn.with_shell(syscmd_suspend)
+        end,
+        { description="suspend", group="power" }
+    ),
+    awful.key(
+        { modkey, "Control", "Shift" }, "h",
+        function()
+            awful.spawn.with_shell(syscmd_hibernate)
+        end,
+        { description="hibernate", group="power" }
+    ),
+    awful.key(
+        { modkey, "Control", "Shift" }, "r",
+        function()
+            awful.spawn.with_shell(syscmd_reboot)
+        end,
+        { description="reboot", group="power" }
+    ),
+    awful.key(
+        { modkey, "Control", "Shift" }, "p",
+        function()
+            awful.spawn.with_shell(syscmd_poweroff)
+        end,
+        { description="poweroff", group="power" }
     ),
     awful.key(
         { modkey, "Control" }, "j",
@@ -455,8 +503,7 @@ menuapps = {
     { "Minecraft", "flatpak run com.mojang.Minecraft" },
     { "OpenShot", "flatpak run org.openshot.OpenShot" },
     { "RetroArch", "flatpak run org.libretro.RetroArch" },
-    { "Steam", "flatpak run com.valvesoftware.Steam" },
-    { "VS Code", "flatpak run com.visualstudio.code.oss" }
+    { "Steam", "flatpak run com.valvesoftware.Steam" }
 }
 
 -- Programs sub-menu
@@ -488,16 +535,16 @@ menusettings = {
 
 -- User sub-menu
 menuuser = {
-    { "Lock Screen", "sh -c 'dm-tool lock && sudo chvt 8'" },
+    { "Lock Screen", "sh -c '" .. syscmd_lockscreen .. "'" },
     { "Log Out", function() awesome.quit() end }
 }
 
 -- Power sub-menu
 menupower = {
-    { "Suspend", "sh -c 'sleep 3s && sudo systemctl suspend'" },
-    { "Hibernate", "sh -c 'sleep 3s && sudo systemctl hibernate'" },
-    { "Restart", "sh -c 'sleep 3s && sudo systemctl restart'" },
-    { "Poweroff", "sh -c 'sleep 3s && sudo systemctl poweroff'" }
+    { "Suspend", "sh -c '" .. syscmd_suspend .. "'" },
+    { "Hibernate", "sh -c '" .. syscmd_hibernate .. "'" },
+    { "Reboot", "sh -c '" .. syscmd_reboot .. "'" },
+    { "Poweroff", "sh -c '" .. syscmd_poweroff .. "'" }
 }
 
 -- Main menu containing the sub menus
@@ -521,9 +568,6 @@ mylauncher = awful.widget.launcher({
 --
 -- WIBAR
 --
-
--- Keyboard widget
-mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- Clock widget
 mytextclock = wibox.widget.textclock()
@@ -613,13 +657,13 @@ local tasklist_buttons = gears.table.join(
 
 -- Define available layouts
 awful.layout.layouts = {
+    awful.layout.suit.floating,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
-    awful.layout.suit.floating,
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen
 }
@@ -631,7 +675,7 @@ local function set_wallpaper(s)
         if type(wallpaper) == "function" then
             wallpaper = wallpaper(s)
         end
-        gears.wallpaper.maximized(wallpaper, s, true)
+        gears.wallpaper.maximized(wallpaper, s, false)
     end
 end
 
@@ -664,13 +708,61 @@ awful.screen.connect_for_each_screen(
             buttons = taglist_buttons
         }
         -- Tasklist
+        --s.mytasklist = awful.widget.tasklist {
+        --    screen = s,
+         --   filter = awful.widget.tasklist.filter.currenttags,
+         --   buttons = tasklist_buttons
+        --}
         s.mytasklist = awful.widget.tasklist {
-            screen = s,
-            filter = awful.widget.tasklist.filter.currenttags,
-            buttons = tasklist_buttons
+            screen   = s,
+            filter   = awful.widget.tasklist.filter.currenttags,
+            buttons  = tasklist_buttons,
+            layout = {
+                spacing_widget = {
+                    {
+                        forced_width  = dpi(1),
+                        color         = beautiful.border_width,
+                        widget        = wibox.widget.separator
+                    },
+                    valign = 'center',
+                    halign = 'center',
+                    widget = wibox.container.place,
+                },
+                spacing = 1,
+                layout  = wibox.layout.flex.horizontal
+            },
+            widget_template = {
+                {
+                    {
+                        {
+                            {
+                                id     = 'icon_role',
+                                widget = wibox.widget.imagebox,
+                            },
+                            margins = 2,
+                            widget  = wibox.container.margin,
+                        },
+                        {
+                            id     = 'text_role',
+                            widget = wibox.widget.textbox,
+                        },
+                        layout = wibox.layout.fixed.horizontal,
+                    },
+                    left  = 10,
+                    right = 10,
+                    widget = wibox.container.margin
+                },
+                id     = 'background_role',
+                widget = wibox.container.background,
+            },
         }
         -- Wibox
-        s.mywibox = awful.wibar({ position = "top", screen = s })
+        s.mywibox = awful.wibar({
+            position = "top",
+            screen = s,
+            border_width = beautiful.border_width,
+            border_color = beautiful.border_focus
+        })
         s.mywibox:setup {
             layout = wibox.layout.align.horizontal,
             { -- Left
@@ -682,7 +774,6 @@ awful.screen.connect_for_each_screen(
             s.mytasklist,
             { -- Right
                 layout = wibox.layout.fixed.horizontal,
-                mykeyboardlayout,
                 wibox.widget.systray(),
                 mytextclock,
                 s.mylayoutbox
@@ -742,23 +833,6 @@ awful.rules.rules = {
         properties = {
             floating = true
         }
-    },
-    -- Start some clients on a specific tag
-    {
-        rule = { class = "Firefox" },
-        properties = { tag = "Web" }
-    },
-    {
-        rule = { class = "Google Chrome" },
-        properties = { tag = "Web" }
-    },
-    {
-        rule = { class = "Steam" },
-        properties = { tag = "Games" }
-    },
-    {
-        rule = { class = "RetroArch" },
-        properties = { tag = "Games" }
     }
 }
 
