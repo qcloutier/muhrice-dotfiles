@@ -7,9 +7,9 @@ function syspower
 
         switch $argv[1]
             case '-s'
-                sudo systemctl suspend
+                xflock4 & sudo systemctl suspend
             case '-h'
-                sudo systemctl hibernate
+                xflock4 & sudo systemctl hibernate
             case '-r'
                 sudo systemctl reboot
             case '-p'
