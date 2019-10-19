@@ -11,7 +11,7 @@ The following programs have configuration files here:
 - MPD + Ncmpcpp (Music player)
 - MPV (Video player)
 - Neofetch (System information)
-- Nvim (Text editor)
+- Neovim (Text editor)
 - Ranger (File browser)
 - URxvt (Terminal emulator)
 - Zathura (Document viewer)
