@@ -3,16 +3,13 @@ My personal dotfiles, which I currently use on my Arch Linux machines, forming w
 
 The following programs have configuration files here:
 
-- Feh (Image viewer)
 - Fish (Interactive shell)
 - Htop (System monitor)
 - Kitty (Terminal emulator)
 - MPD + Ncmpcpp (Music player)
-- MPV (Video player)
 - Neofetch (System information)
 - Neovim (Text editor)
 - Ranger (File browser)
-- Zathura (Document viewer)
 
 Files for GTK and QT theming are here as well.
 

@@ -1,9 +1,0 @@
-#
-# ~/.config/feh/themes
-#
-
-feh \
---image-bg black \
---geometry 1280x720 \
---auto-zoom \
---scale-down

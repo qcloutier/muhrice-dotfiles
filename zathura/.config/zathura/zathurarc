@@ -1,8 +1,0 @@
-#
-# ~/.config/zathura/zathurarc
-#
-
-map H scroll full-up
-map L scroll full-down
-map J zoom out
-map K zoom in
