@@ -1,4 +1,4 @@
-"
+
 " ~/.config/nvim/init.vim
 "
 
@@ -18,46 +18,24 @@ set relativenumber
 set splitbelow
 set splitright
 
-" Select with mouse support
+" Hide buffers without saving
+set hidden
+
+" Mouse support
 set mouse=a
-vnoremap <LeftRelease> "*ygv
 
 " Bindings for copy and paste
 vnoremap <C-c> "+y
 map <C-v> "+P
 
-" Default tabs and indents to four spaces
-set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+" Default tabs and indents to two spaces
+set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
 " Use regular tabs for makefiles
 autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
 
 " Delete trailing whitespace before saving
 autocmd BufWritePre * %s/\s\+$//e
-
-" Toggle a terminal
-let g:term_buf = 0
-let g:term_win = 0
-function! TermToggle(width)
-    if win_gotoid(g:term_win)
-        hide
-    else
-        botright vnew
-        try
-            exec "buffer " . g:term_buf
-        catch
-            call termopen($SHELL, {"detach": 0})
-            let g:term_buf = bufnr("")
-        endtry
-        startinsert!
-        let g:term_win = win_getid()
-    endif
-endfunction
-augroup Terminal
-    au!
-    autocmd TermOpen * setlocal nonumber norelativenumber
-augroup END
-nnoremap <C-x> :call TermToggle(20)<CR>
 
 "
 " PLUGINS
@@ -80,7 +58,7 @@ Plug 'zefei/vim-wintabs'
 " Airline as a statusbar
 Plug 'vim-airline/vim-airline'
 
-" Better colourscheme using terminal colours
+" Wal to use terminal colours as colourscheme
 Plug 'dylanaraps/wal.vim'
 
 call plug#end()
@@ -96,5 +74,14 @@ let delimitMate_matchpairs = "(:),[:],{:},<:>"
 autocmd vimenter * NERDTree
 map <C-f> :NERDTreeToggle<CR>
 
+" Wintabs settings
+map <C-t>h <Plug>(wintabs_previous)
+map <C-t>l <Plug>(wintabs_next)
+map <C-t>c <Plug>(wintabs_close)
+map <C-t>u <Plug>(wintabs_undo)
+
 " Wal settings
 colorscheme wal
+hi VertSplit ctermbg=0 ctermfg=0
+hi TabLine ctermbg=NONE ctermfg=0
+hi TabLineFill ctermbg=NONE ctermfg=0
