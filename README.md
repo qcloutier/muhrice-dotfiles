@@ -3,13 +3,13 @@ My personal dotfiles, which I currently use on my Arch Linux machines, forming w
 
 The following programs have configuration files here:
 
-- Fish (Interactive shell)
 - Htop (System monitor)
 - Kitty (Terminal emulator)
 - MPD + Ncmpcpp (Music player)
 - Neofetch (System information)
 - Neovim (Text editor)
 - Ranger (File browser)
+- Zsh (Interactive Shell)
 
 Files for GTK and QT theming are here as well.
 
