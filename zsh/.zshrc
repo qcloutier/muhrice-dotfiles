@@ -34,6 +34,14 @@ setopt autocd
 setopt notify
 unsetopt beep nomatch
 
+# Some aliases
+alias g=git
+alias h=htop
+alias n=ncmpcpp
+alias r=ranger
+alias v=nvim
+alias vim=nvim
+
 # History settings
 HISTFILE=~/.histfile
 HISTSIZE=10000
