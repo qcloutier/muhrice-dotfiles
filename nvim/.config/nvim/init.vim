@@ -1,4 +1,4 @@
-
+"
 " ~/.config/nvim/init.vim
 "
 
@@ -43,8 +43,15 @@ autocmd BufWritePre * %s/\s\+$//e
 
 call plug#begin(stdpath('data').'/plugged')
 
+" Syntastic for syntax checking
+Plug 'vim-syntastic/syntastic'
+
 " Deoplete for completions
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" Neosnippet for snippets
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 
 " DelimitMate for pairing brackets and quotes
 Plug 'Raimondi/delimitMate'
@@ -61,7 +68,19 @@ Plug 'vim-airline/vim-airline'
 " Wal to use terminal colours as colourscheme
 Plug 'dylanaraps/wal.vim'
 
+" Vimtex for LaTeX support
+Plug 'lervag/vimtex'
+
 call plug#end()
+
+" Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Deoplete settings
 let g:deoplete#enable_at_startup = 1
@@ -85,3 +104,8 @@ colorscheme wal
 hi VertSplit ctermbg=0 ctermfg=0
 hi TabLine ctermbg=NONE ctermfg=0
 hi TabLineFill ctermbg=NONE ctermfg=0
+
+" Vimtex settings
+let g:tex_flavor = "latex"
+let g:vimtex_view_general_viewer = 'evince'
+map <C-b> :VimtexCompileSS<CR>
