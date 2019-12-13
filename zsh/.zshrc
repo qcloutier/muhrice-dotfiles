@@ -36,9 +36,9 @@ unsetopt beep nomatch
 
 # Some aliases
 alias g=git
-alias h=htop
 alias n=ncmpcpp
 alias r=ranger
+alias t=htop
 alias v=nvim
 alias vim=nvim
 
