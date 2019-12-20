@@ -2,8 +2,9 @@
 # ~/.zshrc
 #
 
-# Swap capslock with esc
+# Ensure these are still set
 setxkbmap -option caps:swapescape
+export PATH="$PATH:$HOME/.local/bin/"
 
 # Informative prompt
 autoload -U colors && colors
@@ -36,6 +37,7 @@ unsetopt beep nomatch
 
 # Some aliases
 alias g=git
+alias m=make
 alias n=ncmpcpp
 alias r=ranger
 alias t=htop

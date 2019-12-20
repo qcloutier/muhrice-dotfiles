@@ -107,5 +107,5 @@ hi TabLineFill ctermbg=NONE ctermfg=0
 
 " Vimtex settings
 let g:tex_flavor = "latex"
-let g:vimtex_view_general_viewer = 'zathura'
+let g:vimtex_view_general_viewer = 'okluar'
 map <C-b> :VimtexCompileSS<CR>
