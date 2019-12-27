@@ -8,7 +8,7 @@ export PATH="$PATH:$HOME/.local/bin/"
 
 # Informative prompt
 autoload -U colors && colors
-PS1="%B[%{$fg[red]%}$(date "+%I:%M%P")$reset_color%B|%{$fg[blue]%}%n@%m$reset_color%B|%{$fg[green]%}%d$reset_color%B]"$'\n'"%B>>>%{$reset_color%} "
+PS1="%B[%{$fg[red]%}%t$reset_color%B|%{$fg[blue]%}%n@%m$reset_color%B|%{$fg[green]%}%d$reset_color%B]"$'\n'"%B>>>%{$reset_color%} "
 
 # Line as cursor by default
 echo -ne '\e[5 q'
