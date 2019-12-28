@@ -2,9 +2,9 @@
 # ~/.zshrc
 #
 
-# Ensure these are still set
-setxkbmap -option caps:swapescape
-export PATH="$PATH:$HOME/.local/bin/"
+#
+# GENERAL
+#
 
 # Informative prompt
 autoload -U colors && colors
@@ -30,19 +30,10 @@ function zle-keymap-select {
 }
 zle -N zle-keymap-select
 
-# General stuff
+# Ease of use
 setopt autocd
 setopt notify
 unsetopt beep nomatch
-
-# Some aliases
-alias g=git
-alias m=make
-alias n=ncmpcpp
-alias r=ranger
-alias t=htop
-alias v=nvim
-alias vim=nvim
 
 # History settings
 HISTFILE=~/.histfile
@@ -57,12 +48,42 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)
 
+# Some aliases
+alias g=git
+alias m=make
+alias n=ncmpcpp
+alias r=ranger
+alias t=htop
+alias v=nvim
+alias vim=nvim
+
+# Some defaults
+export PATH="$PATH:$HOME/.local/bin/"
+export EDITOR="nvim"
+export TERMINAL="kitty"
+export BROWSER="firefox"
+
 # Fixes for mistakes
-eval $(thefuck --alias)
+command -v thefuck >> /dev/null && eval $(thefuck --alias)
+
+# Swap caps and escape in Xorg
+command -v setxkbmap >> /dev/null && setxkbmap -option caps:swapescape
+
+#
+# PLUGINS
+#
+
+# Install antigen if not present
+antigenscript="$HOME/.antigen/antigen.zsh"
+test -f $antigenscript || curl -fLo $antigenscript git.io/antigen --create-dirs 2>/dev/null
+source $antigenscript
 
 # Suggestions while typing
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+antigen bundle zsh-users/zsh-autosuggestions
 
 # Syntax highlighting
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Load the plugins
+antigen apply

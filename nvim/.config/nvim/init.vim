@@ -41,6 +41,13 @@ autocmd BufWritePre * %s/\s\+$//e
 " PLUGINS
 "
 
+" Install vim-plug if not present
+if empty(glob(system('printf $HOME').'/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin(stdpath('data').'/plugged')
 
 " Syntastic for syntax checking
