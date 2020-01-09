@@ -55,6 +55,7 @@ Plug 'vim-syntastic/syntastic'
 
 " Deoplete for completions
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/neco-syntax'
 
 " Neosnippet for snippets
 Plug 'Shougo/neosnippet.vim'
