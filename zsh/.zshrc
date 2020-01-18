@@ -69,11 +69,6 @@ if command -v thefuck >> /dev/null; then
   eval $(thefuck --alias)
 fi
 
-# Swap caps and escape in Xorg
-if command -v setxkbmap >> /dev/null && test "$TERM" != "linux"; then
-  setxkbmap -option caps:swapescape
-fi
-
 #
 # PLUGINS
 #
