@@ -115,5 +115,5 @@ hi TabLineFill ctermbg=NONE ctermfg=0
 
 " Vimtex settings
 let g:tex_flavor = "latex"
-let g:vimtex_view_general_viewer = 'okluar'
+let g:vimtex_view_general_viewer = 'qpdfview'
 map <C-b> :VimtexCompileSS<CR>
