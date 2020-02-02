@@ -57,6 +57,7 @@ alias r=ranger
 alias t=htop
 alias v=nvim
 alias vim=nvim
+alias ls='ls --color=auto'
 
 # Some defaults
 export PATH="$PATH:$HOME/.local/bin/"
