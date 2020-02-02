@@ -109,6 +109,7 @@ map <C-t>u <Plug>(wintabs_undo)
 
 " Wal settings
 colorscheme wal
+hi Normal ctermbg=NONE ctermfg=7
 hi VertSplit ctermbg=0 ctermfg=0
 hi TabLine ctermbg=NONE ctermfg=0
 hi TabLineFill ctermbg=NONE ctermfg=0
