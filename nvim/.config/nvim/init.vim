@@ -7,9 +7,12 @@ filetype indent plugin on
 syntax on
 set number relativenumber
 set splitbelow splitright
-set mouse=a
+map <C-j> :wincmd w<CR>
+map <C-k> :wincmd p<CR>
+map <C-q> :wincmd c<CR>
 map <C-c> "+y
 map <C-v> "+P
+set mouse=a
 autocmd BufWritePre * %s/\s\+$//e
 
 " Install vim-plug if not present
@@ -61,10 +64,10 @@ map <C-f> :NERDTreeToggle<CR>
 
 " Wintabs for buffer management
 Plug 'zefei/vim-wintabs'
-map <C-t>h <Plug>(wintabs_previous)
-map <C-t>l <Plug>(wintabs_next)
-map <C-t>c <Plug>(wintabs_close)
-map <C-t>u <Plug>(wintabs_undo)
+map <C-h> <Plug>(wintabs_previous)
+map <C-l> <Plug>(wintabs_next)
+map <C-d> <Plug>(wintabs_close)
+map <C-u> <Plug>(wintabs_undo)
 set hidden
 
 " Airline as a statusbar
