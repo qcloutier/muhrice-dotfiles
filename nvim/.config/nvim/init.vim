@@ -4,6 +4,7 @@
 
 " Basic stuff
 filetype indent plugin on
+set omnifunc=syntaxcomplete#Complete
 syntax on
 set number relativenumber
 set splitbelow splitright
@@ -22,71 +23,46 @@ if empty(glob(system('printf $HOME').'/.local/share/nvim/site/autoload/plug.vim'
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" Activate plugins
 call plug#begin(stdpath('data').'/plugged')
-
-" Syntastic for syntax checking
-Plug 'vim-syntastic/syntastic'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" Deoplete for completions
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'Shougo/neco-syntax'
-"let g:deoplete#enable_at_startup = 1
-
-" Neosnippet for snippets
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
-
-" DelimitMate for pairing brackets and quotes
+Plug 'dylanaraps/wal.vim'
+Plug 'ervandew/supertab'
+Plug 'lervag/vimtex'
+Plug 'neomake/neomake'
 Plug 'Raimondi/delimitMate'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sleuth'
+Plug 'vim-airline/vim-airline'
+call plug#end()
+
+" Colourscheme tweaks
+colorscheme wal
+hi Split cterm=NONE ctermbg=NONE ctermfg=8
+hi VertSplit cterm=NONE ctermbg=NONE ctermfg=8
+
+" LaTeX settings
+let g:tex_flavor = "latex"
+let g:vimtex_view_general_viewer = 'zathura'
+map <C-b> :VimtexCompileSS<CR>
+
+" Check syntax on reads and writes
+call neomake#configure#automake('rw')
+
+" Automatically expand blocks
 let delimitMate_expand_cr = 1
 
-" IndentLine to display indentation
-Plug 'Yggdroot/indentLine'
-let g:indentLine_char = '▏'
-let g:indentLine_color_term = 0
+" Popout file browser
+map <C-f> :NERDTreeToggle<CR>
+autocmd vimenter * NERDTree
 
-" Sleuth to keep indentation consistent
-Plug 'tpope/vim-sleuth'
+" Use tabs at the margin
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 set listchars=tab:▏\  list
 
-" NERDTree as a file browser
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-autocmd vimenter * NERDTree
-map <C-f> :NERDTreeToggle<CR>
-
-" Wintabs for buffer management
-Plug 'zefei/vim-wintabs'
-map <C-h> <Plug>(wintabs_previous)
-map <C-l> <Plug>(wintabs_next)
-map <C-d> <Plug>(wintabs_close)
-map <C-u> <Plug>(wintabs_undo)
+" Enable a fancy tabline
+let g:airline#extensions#tabline#enabled = 1
+map <C-h> :bp<CR>
+map <C-l> :bn<CR>
+map <C-d> :bd<CR>
 set hidden
-
-" Airline as a statusbar
-Plug 'vim-airline/vim-airline'
-
-" Wal to use terminal colours as colourscheme
-Plug 'dylanaraps/wal.vim'
-
-" Vimtex for LaTeX support
-Plug 'lervag/vimtex'
-let g:tex_flavor = "latex"
-let g:vimtex_view_general_viewer = 'qpdfview'
-map <C-b> :VimtexCompileSS<CR>
-
-call plug#end()
-
-" Apply a nice colourscheme
-colorscheme wal
-hi Normal ctermbg=NONE ctermfg=7
-hi VertSplit ctermbg=0 ctermfg=0
-hi TabLine ctermbg=NONE ctermfg=0
-hi TabLineFill ctermbg=NONE ctermfg=0
