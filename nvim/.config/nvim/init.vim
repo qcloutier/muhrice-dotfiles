@@ -4,17 +4,52 @@
 
 " Basic stuff
 filetype indent plugin on
-set omnifunc=syntaxcomplete#Complete
 syntax on
+set mouse=a
 set number relativenumber
 set splitbelow splitright
-map <C-j> :wincmd w<CR>
-map <C-k> :wincmd p<CR>
-map <C-q> :wincmd c<CR>
+
+" Some useful mappings
+map <silent> <C-j> :wincmd w<CR>
+map <silent> <C-k> :wincmd p<CR>
+map <silent> <C-q> :wincmd c<CR>
+map <silent> <C-h> :bp<CR>
+map <silent> <C-l> :bn<CR>
+map <silent> <C-d> :bd<CR>
 map <C-c> "+y
 map <C-v> "+P
-set mouse=a
+
+" Use tabs at the margin
+set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+set listchars=tab:▏\  list
+
+" Delete trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
+
+" Make netrw into a fancy sidebar
+let g:netrw_altv = 1
+let g:netrw_banner = 0
+let g:netrw_browse_split = 4
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 20
+let g:NetrwIsOpen=0
+function! ToggleNetrw()
+	if g:NetrwIsOpen
+		let i = bufnr("$")
+		while (i >= 1)
+			if (getbufvar(i, "&filetype") == "netrw")
+				silent exe "bwipeout " . i
+			endif
+			let i-=1
+		endwhile
+		let g:NetrwIsOpen=0
+	else
+		let g:NetrwIsOpen=1
+		silent Lexplore
+	endif
+endfunction
+map <silent> <C-f> :call ToggleNetrw()<CR>
+autocmd BufEnter * silent! lcd %:p:h
 
 " Install vim-plug if not present
 if empty(glob(system('printf $HOME').'/.local/share/nvim/site/autoload/plug.vim'))
@@ -26,11 +61,11 @@ endif
 " Activate plugins
 call plug#begin(stdpath('data').'/plugged')
 Plug 'dylanaraps/wal.vim'
-Plug 'ervandew/supertab'
+Plug 'jiangmiao/auto-pairs'
 Plug 'lervag/vimtex'
 Plug 'neomake/neomake'
-Plug 'Raimondi/delimitMate'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'skywind3000/vim-auto-popmenu'
+Plug 'skywind3000/vim-dict'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'vim-airline/vim-airline'
@@ -38,31 +73,24 @@ call plug#end()
 
 " Colourscheme tweaks
 colorscheme wal
-hi Split cterm=NONE ctermbg=NONE ctermfg=8
-hi VertSplit cterm=NONE ctermbg=NONE ctermfg=8
+hi Split cterm=NONE ctermbg=NONE ctermfg=0
+hi VertSplit cterm=NONE ctermbg=NONE ctermfg=0
 
 " LaTeX settings
 let g:tex_flavor = "latex"
 let g:vimtex_view_general_viewer = 'zathura'
 map <C-b> :VimtexCompileSS<CR>
 
-" Check syntax on reads and writes
-call neomake#configure#automake('rw')
+" Check syntax
+call neomake#configure#automake('nrw', 500)
 
-" Automatically expand blocks
-let delimitMate_expand_cr = 1
-
-" Popout file browser
-map <C-f> :NERDTreeToggle<CR>
-autocmd vimenter * NERDTree
-
-" Use tabs at the margin
-set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-set listchars=tab:▏\  list
+" Suggest completions
+let g:apc_enable_ft = {'*':1}
+let g:apc_min_length = 3
+set completeopt=menu,menuone,noselect
+set cpt=.,k,w,b
+set shortmess+=c
 
 " Enable a fancy tabline
 let g:airline#extensions#tabline#enabled = 1
-map <C-h> :bp<CR>
-map <C-l> :bn<CR>
-map <C-d> :bd<CR>
 set hidden
