@@ -31,7 +31,7 @@ if [[ "$TERM" != "linux" ]]; then
 fi
 
 # Ease of use
-bindkey -v
+bindkey -v '^?' backward-delete-char
 setopt autocd
 setopt notify
 unsetopt beep nomatch
