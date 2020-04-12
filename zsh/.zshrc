@@ -2,10 +2,6 @@
 # ~/.zshrc
 #
 
-#
-# GENERAL
-#
-
 # Informative prompt
 autoload -U colors && colors
 PS1="%B[%{$fg[red]%}%t$reset_color%B|%{$fg[blue]%}%n@%m$reset_color%B|%{$fg[green]%}%d$reset_color%B]"$'\n'"%B>>>%{$reset_color%} "
@@ -41,6 +37,7 @@ HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
+setopt -o sharehistory
 
 # Enable completions
 autoload -U compinit
@@ -49,30 +46,26 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)
 
-# Some aliases
-alias g=git
-alias m=make
-alias n=ncmpcpp
-alias r=ranger
-alias t=htop
-alias v=nvim
-alias vim=nvim
-alias ls='ls --color=auto'
-
-# Some defaults
+# Local programs and scripts
 export PATH="$PATH:$HOME/.local/bin/"
+
+# Aliases
+alias ls='ls --color=auto'
+alias vim=nvim
+
+# Default programs
 export EDITOR="nvim"
 export TERMINAL="kitty"
 export BROWSER="firefox"
 
-# Fixes for mistakes
-if command -v thefuck >> /dev/null; then
-  eval $(thefuck --alias)
-fi
-
-#
-# PLUGINS
-#
+# Colour the output from less
+export LESS_TERMCAP_mb=$'\e[1;36m'
+export LESS_TERMCAP_md=$'\e[1;36m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;35m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;37m'
 
 # Install antigen if not present
 antigenscript="$HOME/.antigen/antigen.zsh"
@@ -80,17 +73,11 @@ if ! test -f $antigenscript; then
   curl -fLo $antigenscript git.io/antigen --create-dirs 2>/dev/null
 fi
 
-# Load the plugin manager
-source $antigenscript
-
-# zsh-autosuggestions for completions while typing
-antigen bundle zsh-users/zsh-autosuggestions
-
-# zsh-syntax-highlighting for syntax highlighting
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-# Load the plugins
+# Activate plugins
 if test "$TERM" != "linux"; then
+  source $antigenscript
+  antigen bundle zsh-users/zsh-autosuggestions
+  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
+  antigen bundle zsh-users/zsh-syntax-highlighting
   antigen apply
 fi

@@ -10,14 +10,11 @@ set number relativenumber
 set splitbelow splitright
 
 " Some useful mappings
-map <silent> <C-j> :wincmd w<CR>
-map <silent> <C-k> :wincmd p<CR>
-map <silent> <C-q> :wincmd c<CR>
 map <silent> <C-h> :bp<CR>
 map <silent> <C-l> :bn<CR>
-map <silent> <C-d> :bd<CR>
-map <C-c> "+y
-map <C-v> "+P
+map <silent> <C-c> :bd<CR>
+map <C-y> "+y
+map <C-p> "+P
 
 " Use tabs at the margin
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
@@ -48,7 +45,7 @@ function! ToggleNetrw()
 		silent Lexplore
 	endif
 endfunction
-map <silent> <C-f> :call ToggleNetrw()<CR>
+map <silent> <C-x> :call ToggleNetrw()<CR>
 autocmd BufEnter * silent! lcd %:p:h
 
 " Install vim-plug if not present
@@ -64,8 +61,6 @@ Plug 'dylanaraps/wal.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'lervag/vimtex'
 Plug 'neomake/neomake'
-Plug 'skywind3000/vim-auto-popmenu'
-Plug 'skywind3000/vim-dict'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'vim-airline/vim-airline'
@@ -79,7 +74,6 @@ hi VertSplit cterm=NONE ctermbg=NONE ctermfg=0
 " LaTeX settings
 let g:tex_flavor = "latex"
 let g:vimtex_view_general_viewer = 'zathura'
-map <C-b> :VimtexCompileSS<CR>
 
 " Check syntax
 call neomake#configure#automake('nrw', 500)
@@ -91,6 +85,5 @@ set completeopt=menu,menuone,noselect
 set cpt=.,k,w,b
 set shortmess+=c
 
-" Enable a fancy tabline
 let g:airline#extensions#tabline#enabled = 1
 set hidden
