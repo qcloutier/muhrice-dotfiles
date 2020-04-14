@@ -24,15 +24,15 @@ set listchars=tab:▏\  list
 autocmd BufWritePre * %s/\s\+$//e
 
 " Make netrw into a fancy sidebar
-let g:netrw_altv = 1
-let g:netrw_banner = 0
-let g:netrw_browse_split = 4
-let g:netrw_liststyle = 3
-let g:netrw_winsize = 20
+let g:netrw_altv=1
+let g:netrw_banner=0
+let g:netrw_browse_split=4
+let g:netrw_liststyle=3
+let g:netrw_winsize=20
 let g:NetrwIsOpen=0
 function! ToggleNetrw()
 	if g:NetrwIsOpen
-		let i = bufnr("$")
+		let i=bufnr("$")
 		while (i >= 1)
 			if (getbufvar(i, "&filetype") == "netrw")
 				silent exe "bwipeout " . i
@@ -72,18 +72,19 @@ hi Split cterm=NONE ctermbg=NONE ctermfg=0
 hi VertSplit cterm=NONE ctermbg=NONE ctermfg=0
 
 " LaTeX settings
-let g:tex_flavor = "latex"
-let g:vimtex_view_general_viewer = 'zathura'
+let g:tex_flavor='latex'
+let g:vimtex_view_general_viewer='zathura'
 
 " Check syntax
 call neomake#configure#automake('nrw', 500)
 
 " Suggest completions
-let g:apc_enable_ft = {'*':1}
-let g:apc_min_length = 3
+let g:apc_enable_ft={'*':1}
+let g:apc_min_length=3
 set completeopt=menu,menuone,noselect
 set cpt=.,k,w,b
 set shortmess+=c
 
-let g:airline#extensions#tabline#enabled = 1
+" Fancy tabline
+let g:airline#extensions#tabline#enabled=1
 set hidden
