@@ -12,9 +12,9 @@ set splitbelow splitright
 " Some useful mappings
 map <silent> <C-h> :bp<CR>
 map <silent> <C-l> :bn<CR>
-map <silent> <C-c> :bd<CR>
-map <C-y> "+y
-map <C-p> "+P
+map <silent> <C-q> :bd<CR>
+map <C-c> "+y
+map <C-v> "+p
 
 " Use tabs at the margin
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
@@ -60,10 +60,13 @@ call plug#begin(stdpath('data').'/plugged')
 Plug 'dylanaraps/wal.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'lervag/vimtex'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'neomake/neomake'
+Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'vim-airline/vim-airline'
+Plug 'yami-beta/asyncomplete-omni.vim'
 call plug#end()
 
 " Colourscheme tweaks
@@ -79,11 +82,18 @@ let g:vimtex_view_general_viewer='zathura'
 call neomake#configure#automake('nrw', 500)
 
 " Suggest completions
-let g:apc_enable_ft={'*':1}
-let g:apc_min_length=3
-set completeopt=menu,menuone,noselect
-set cpt=.,k,w,b
-set shortmess+=c
+set omnifunc=syntaxcomplete#Complete
+call asyncomplete#register_source(
+	\ asyncomplete#sources#omni#get_source_options({
+		\ 'name': 'omni',
+		\ 'whitelist': ['*'],
+		\ 'blacklist': [],
+		\ 'completor': function('asyncomplete#sources#omni#completor')
+	\ })
+\ )
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
 " Fancy tabline
 let g:airline#extensions#tabline#enabled=1
