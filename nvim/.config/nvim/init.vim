@@ -20,6 +20,9 @@ map <C-v> "+p
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 set listchars=tab:▏\  list
 
+" Make splits clear
+set stl=- fcs=stl:-,stlnc:-,vert:\|
+
 " Delete trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
 
@@ -71,8 +74,9 @@ call plug#end()
 
 " Colourscheme tweaks
 colorscheme wal
-hi Split cterm=NONE ctermbg=NONE ctermfg=0
-hi VertSplit cterm=NONE ctermbg=NONE ctermfg=0
+hi NonText cterm=NONE ctermbg=NONE ctermfg=8
+hi Split cterm=NONE ctermbg=NONE ctermfg=8
+hi VertSplit cterm=NONE ctermbg=NONE ctermfg=8
 
 " LaTeX settings
 let g:tex_flavor='latex'

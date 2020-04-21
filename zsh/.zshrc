@@ -81,3 +81,7 @@ if [[ "$TERM" != 'linux' ]]; then
 	antigen bundle zsh-users/zsh-syntax-highlighting
 	antigen apply
 fi
+
+# Run tmux
+[[ $- != *i* ]] && return
+[[ -z "$TMUX" ]] && exec tmux
