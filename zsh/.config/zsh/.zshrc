@@ -1,12 +1,13 @@
 #
-# ~/.zshrc
+# ~/.config/zsh/.zshrc
 #
 
 # Informative prompt
 autoload -U colors && colors
 PS1="%B[%{$fg[red]%}%t$reset_color%B|%{$fg[blue]%}%n@%m$reset_color%B|%{$fg[green]%}%d$reset_color%B]"$'\n'"%B>>>%{$reset_color%} "
 
-# Dynamic cursor
+# Vi keys with dynamic cursor
+bindkey -v '^?' backward-delete-char
 if [[ "$TERM" != 'linux' ]]; then
 	echo -ne '\e[5 q'
 	preexec() {
@@ -26,37 +27,23 @@ if [[ "$TERM" != 'linux' ]]; then
 	zle -N zle-keymap-select
 fi
 
-# Ease of use
-bindkey -v '^?' backward-delete-char
-setopt autocd
-setopt notify
-unsetopt beep nomatch
-
-# History settings
-HISTFILE=~/.histfile
+# History
+HISTFILE="$ZDOTDIR/histfile"
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
 setopt -o sharehistory
 
-# Enable completions
+# Completions
 autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots)
 
-# Local programs and scripts
-export PATH="$PATH:$HOME/.local/bin/"
-
 # Aliases
-alias ls='ls --color=auto'
+[[ "$OSTYPE" == 'linux-gnu' ]] && alias ls='ls --color=auto' || alias ls='ls -G'
 alias vim=nvim
-
-# Default programs
-export EDITOR='nvim'
-export TERMINAL='kitty'
-export BROWSER='firefox'
 
 # Colour the output from less
 export LESS_TERMCAP_mb=$'\e[1;36m'
@@ -67,21 +54,18 @@ export LESS_TERMCAP_so=$'\e[01;35m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;37m'
 
+# Miscellaneous
+setopt autocd
+setopt notify
+unsetopt beep nomatch
+
 # Install antigen if not present
-antigenscript="$HOME/.antigen/antigen.zsh"
-if [[ -f $antigenscript ]]; then
-	curl -fLo $antigenscript git.io/antigen --create-dirs 2>/dev/null
-fi
+[[ ! -d "$ADOTDIR" ]] && curl -fLo "$ADOTDIR/antigen.zsh" git.io/antigen --create-dirs 2>/dev/null
 
 # Activate plugins
 if [[ "$TERM" != 'linux' ]]; then
-	source $antigenscript
+	source "$ADOTDIR/antigen.zsh"
 	antigen bundle zsh-users/zsh-autosuggestions
-	ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
 	antigen bundle zsh-users/zsh-syntax-highlighting
 	antigen apply
 fi
-
-# Run tmux
-[[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && exec tmux
