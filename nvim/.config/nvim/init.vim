@@ -2,17 +2,14 @@
 " ~/.config/nvim/init.vim
 "
 
-" Basic stuff
+" Some sensible defaults
 filetype indent plugin on
 syntax on
 set mouse=a
 set number relativenumber
 set splitbelow splitright
 
-" Some useful mappings
-map <silent> <C-h> :bp<CR>
-map <silent> <C-l> :bn<CR>
-map <silent> <C-q> :bd<CR>
+" Typical system clipboard keybinds
 map <C-c> "+y
 map <C-v> "+p
 
@@ -20,13 +17,13 @@ map <C-v> "+p
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 set listchars=tab:▏\  list
 
-" Make splits clear
-set stl=- fcs=stl:-,stlnc:-,vert:\|
+" Hide the borders on splits
+set stl=\  fcs=stl:\ ,stlnc:\ ,vert:\ "
 
 " Delete trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
 
-" Make netrw into a fancy sidebar
+" Make netrw into a project drawer
 let g:netrw_altv=1
 let g:netrw_banner=0
 let g:netrw_browse_split=4
@@ -72,20 +69,25 @@ Plug 'vim-airline/vim-airline'
 Plug 'yami-beta/asyncomplete-omni.vim'
 call plug#end()
 
-" Colourscheme tweaks
+" Set a nice colourscheme
 colorscheme wal
 hi NonText cterm=NONE ctermbg=NONE ctermfg=8
 hi Split cterm=NONE ctermbg=NONE ctermfg=8
 hi VertSplit cterm=NONE ctermbg=NONE ctermfg=8
 
-" LaTeX settings
-let g:tex_flavor='latex'
-let g:vimtex_view_general_viewer='zathura'
+" List buffers on the tabline
+let g:airline#extensions#tabline#enabled=1
+set hidden
 
-" Check syntax
+" Easily switch buffers
+map <silent> <C-h> :bp<CR>
+map <silent> <C-l> :bn<CR>
+map <silent> <C-q> :bd<CR>
+
+" Automatically do syntax checks
 call neomake#configure#automake('nrw', 500)
 
-" Suggest completions
+" Enable a completion engine
 set omnifunc=syntaxcomplete#Complete
 call asyncomplete#register_source(
 	\ asyncomplete#sources#omni#get_source_options({
@@ -95,10 +97,12 @@ call asyncomplete#register_source(
 		\ 'completor': function('asyncomplete#sources#omni#completor')
 	\ })
 \ )
+
+" Typical completion keybinds
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
-" Fancy tabline
-let g:airline#extensions#tabline#enabled=1
-set hidden
+" Comfy LaTeX editing
+let g:tex_flavor='latex'
+let g:vimtex_view_general_viewer='zathura'
