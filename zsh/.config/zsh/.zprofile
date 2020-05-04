@@ -3,4 +3,4 @@
 #
 
 # Start MPD
-type mpd && ! pgrep -f mpd > /dev/null && mpd &> /dev/null
+type mpd > /dev/null && ! pgrep -f mpd > /dev/null && mpd &> /dev/null
