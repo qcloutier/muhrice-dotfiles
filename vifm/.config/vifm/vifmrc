@@ -1,0 +1,52 @@
+"
+" ~/.config/vifm/vifmrc
+"
+
+" Basic settings
+set history=100
+set ignorecase
+set incsearch
+set millerview
+set nofollowlinks
+set nohlsearch
+set norunexec
+set scrolloff=4
+set smartcase
+set sortnumbers
+set statusline="  %A %10u:%-7g %15s %20d  "
+set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
+set syscalls
+set timefmt=%m/%d\ %H:%M
+set trash
+set undolevels=100
+set vicmd=nvim
+set vifminfo=bmarks,bookmarks,chistory,dhistory,dirstack,fhistory,phistory,registers,shistory,tui
+set vimhelp
+set wildmenu
+set wildstyle=popup
+
+" File previews
+fileviewer *.pdf pdftotext -nopgbrk %c
+fileviewer *.tar tar -tf %c
+fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
+fileviewer *.tar.txz,*.txz xz --list %c
+fileviewer *.tgz,*.tar.gz tar -tzf %c
+
+" File openers
+filextype *.aac,*.flac,*.m4a,*.mp3,*.ogg,*.opus,*.wav,*.wma mpv %f &
+filextype *.avi,*.mp4,*.wmv,*.mkv,*.mpg,*.mpeg,*.mov,*.webm,*.m4v mpv %f &
+filextype *.bmp,*.gif,*.jpg,*.jpeg,*.png feh %f &
+filextype *.djvu,*.epub,*.pdf,*.ps,*.ps.gz zathura %f &
+filextype *.doc,*.docx,*.odp,*.ods,*.odt,*.ppt,*.pptx,*.xls,*.xlsx, libreoffice %f &
+filextype *.html,*.htm firefox %f &
+
+" Colourscheme tweaks
+highlight Border cterm=none ctermfg=none ctermbg=none
+highlight CmdLine cterm=none ctermfg=white ctermbg=none
+highlight JobLine cterm=bold ctermfg=white ctermbg=none
+highlight StatusLine cterm=bold ctermfg=white ctermbg=none
+highlight TabLine cterm=none ctermfg=white ctermbg=none
+highlight TabLineSel cterm=bold ctermfg=white ctermbg=none
+highlight TopLine cterm=none ctermfg=white ctermbg=none
+highlight TopLineSel cterm=bold ctermfg=white ctermbg=none
+highlight Win cterm=none ctermfg=white ctermbg=none
