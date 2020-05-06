@@ -2,9 +2,13 @@
 # ~/.config/zsh/.zshrc
 #
 
-# Informative prompt
+# Simple prompt
 autoload -U colors && colors
-PS1="%B[%{$fg[red]%}%t$reset_color%B|%{$fg[blue]%}%n@%m$reset_color%B|%{$fg[green]%}%d$reset_color%B]"$'\n'"%B>>>%{$reset_color%} "
+if [[ "$TERM" != 'linux' ]]; then
+	PS1="%B%{$bg[cyan]$fg[black]%} zsh %{$bg[magenta]$fg[black]%} %% %{$bg[black]$fg[white]%}%b "
+else
+	PS1="%{$bg[white]$fg[black]%} zsh %% %{$bg[black]$fg[white]%} "
+fi
 
 # Vi keys with dynamic cursor
 bindkey -v '^?' backward-delete-char
@@ -69,3 +73,6 @@ if [[ "$TERM" != 'linux' ]]; then
 	antigen bundle zsh-users/zsh-syntax-highlighting
 	antigen apply
 fi
+
+# Start tmux
+[[ "$TERM" != 'linux' ]] && [[ -z "$TMUX" ]] && exec tmux
