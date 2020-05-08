@@ -23,31 +23,6 @@ set stl=\  fcs=stl:\ ,stlnc:\ ,vert:\ "
 " Delete trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
 
-" Make netrw into a project drawer
-let g:netrw_altv=1
-let g:netrw_banner=0
-let g:netrw_browse_split=4
-let g:netrw_liststyle=3
-let g:netrw_winsize=20
-let g:NetrwIsOpen=0
-function! ToggleNetrw()
-	if g:NetrwIsOpen
-		let i=bufnr("$")
-		while (i >= 1)
-			if (getbufvar(i, "&filetype") == "netrw")
-				silent exe "bwipeout " . i
-			endif
-			let i-=1
-		endwhile
-		let g:NetrwIsOpen=0
-	else
-		let g:NetrwIsOpen=1
-		silent Lexplore
-	endif
-endfunction
-map <silent> <C-x> :call ToggleNetrw()<CR>
-autocmd BufEnter * silent! lcd %:p:h
-
 " Install vim-plug if not present
 if empty(glob(system('printf $HOME').'/.local/share/nvim/site/autoload/plug.vim'))
 	silent !curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs
@@ -57,12 +32,14 @@ endif
 
 " Activate plugins
 call plug#begin(stdpath('data').'/plugged')
+Plug 'cohama/lexima.vim'
 Plug 'dylanaraps/wal.vim'
-Plug 'jiangmiao/auto-pairs'
 Plug 'lervag/vimtex'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'moll/vim-bbye'
 Plug 'neomake/neomake'
 Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'vim-airline/vim-airline'
@@ -80,9 +57,12 @@ let g:airline#extensions#tabline#enabled=1
 set hidden
 
 " Easily switch buffers
-map <silent> <C-h> :bp<CR>
-map <silent> <C-l> :bn<CR>
-map <silent> <C-q> :bd<CR>
+map <silent> <C-h> :bprevious<CR>
+map <silent> <C-l> :bnext<CR>
+map <silent> <C-q> :Bdelete<CR>
+
+" Toggle the nerdtree
+map <silent> <C-x> :NERDTreeToggle<CR>
 
 " Automatically do syntax checks
 call neomake#configure#automake('nrw', 500)
@@ -99,9 +79,9 @@ call asyncomplete#register_source(
 \ )
 
 " Typical completion keybinds
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+inoremap <expr> <CR> pumvisible() ? asyncomplete#close_popup() . "\<CR>" : "\<CR>"
 
 " Comfy LaTeX editing
 let g:tex_flavor='latex'
