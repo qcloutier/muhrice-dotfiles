@@ -4,11 +4,7 @@
 
 # Simple prompt
 autoload -U colors && colors
-if [[ "$TERM" != 'linux' ]]; then
-	PS1="%B%{$bg[cyan]$fg[black]%} zsh %{$bg[magenta]$fg[black]%} %% %{$bg[black]$fg[white]%}%b "
-else
-	PS1="%{$bg[white]$fg[black]%} zsh %% %{$bg[black]$fg[white]%} "
-fi
+PS1="%B%{$bg[white]$fg[black]%} zsh %% %{$bg[black]$fg[white]%}%b "
 
 # Vi keys with dynamic cursor
 bindkey -v '^?' backward-delete-char
