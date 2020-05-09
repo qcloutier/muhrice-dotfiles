@@ -81,7 +81,15 @@ call asyncomplete#register_source(
 " Typical completion keybinds
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <CR> pumvisible() ? asyncomplete#close_popup() . "\<CR>" : "\<CR>"
+
+" Workaround conflict between asyncomplete and lexima
+let g:lexima_no_default_rules = 1
+call lexima#set_default_rules()
+call lexima#insmode#map_hook('before', '<CR>', '')
+function! s:cr_glue() abort
+	return pumvisible() ? asyncomplete#close_popup()."\<CR>" : lexima#expand('<CR>', 'i')
+endfunction
+inoremap <silent> <CR> <C-r>=<SID>cr_glue()<CR>
 
 " Comfy LaTeX editing
 let g:tex_flavor='latex'
