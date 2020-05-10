@@ -17,9 +17,6 @@ map <C-v> "+p
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 set listchars=tab:▏\  list
 
-" Hide the borders on splits
-set stl=\  fcs=stl:\ ,stlnc:\ ,vert:\ "
-
 " Delete trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
 
