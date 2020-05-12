@@ -1,0 +1,14 @@
+//
+// ~/.config/rofi/config.rasi
+//
+
+configuration {
+	modi: "drun,windowcd";
+	font: "monospace 9";
+	width: 30;
+	lines: 20;
+	theme: "theme";
+	show-icons: true;
+	icon-theme: "Tela-black-dark";
+	disable-history: true;
+}
