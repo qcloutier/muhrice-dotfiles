@@ -1,0 +1,173 @@
+;
+; ~/.config/polybar/config
+;
+
+[colours]
+black   = #dd0d0d0d
+dark    = #404040
+light   = #bfbfbf
+white   = #f2f2f2
+red     = #f1273b
+green   = #56b036
+yellow  = #e6b800
+blue    = #4984e9
+magenta = #ff66ff
+cyan    = #33ccff
+
+[settings]
+screenchange-reload = true
+
+[bar/top]
+width           = 100%
+height          = 16
+background      = ${colours.black}
+foreground      = ${colours.white}
+font-0          = monospace:size=9:weight=bold;2
+border-size     = 4
+border-color    = ${colours.black}
+modules-left    = bspwm xwindow
+modules-right   = mpd pulseaudio backlight battery cpu memory wlan eth date
+tray-background = ${colours.blue}
+tray-position   = right
+tray-padding    = 1
+wm-restack      = bspwm
+monitor         = HDMI-0
+
+[module/bspwm]
+type                      = internal/bspwm
+label-focused             = %index%
+label-focused-background  = ${colours.red}
+label-focused-foreground  = ${colours.black}
+label-focused-padding     = 1
+label-occupied            = %index%*
+label-occupied-background = ${colours.black}
+label-occupied-foreground = ${colours.red}
+label-occupied-padding    = 1
+label-urgent              = %index%!
+label-urgent-background   = ${colours.black}
+label-urgent-foreground   = ${colours.red}
+label-urgent-padding      = 1
+label-empty               = %index%
+label-empty-background    = ${colours.black}
+label-empty-foreground    = ${colours.red}
+label-empty-padding       = 1
+pin-workspaces            = false
+
+[module/xwindow]
+type              = internal/xwindow
+format-background = ${colours.red}
+format-foreground = ${colours.black}
+format-padding    = 1
+label             = %title:0:100:...%
+label-empty       = desktop
+label-maxlen      = 50
+
+[module/mpd]
+type                      = internal/mpd
+format-playing-background = ${colours.green}
+format-playing-foreground = ${colours.black}
+format-playing-padding    = 1
+format-paused-background  = ${colours.black}
+format-paused-foreground  = ${colours.green}
+format-paused-padding     = 1
+format-stopped-background = ${colours.black}
+format-stopped-foreground = ${colours.green}
+format-stopped-padding    = 1
+format-online             = <label-song> <icon-prev> <icon-stop> <toggle> <icon-next>
+format-stopped            = ${self.format-online}
+icon-prev                 = ◄◄
+icon-stop                 = ■
+icon-play                 = ►
+icon-pause                = ●
+icon-next                 = ►►
+label-song                = %title% - %artist%
+label-song-maxlen         = 30
+label-song-ellipsis       = true
+
+[module/pulseaudio]
+type                     = internal/pulseaudio
+format-muted-background  = ${colours.black}
+format-muted-foreground  = ${colours.green}
+format-muted-padding     = 1
+format-volume-background = ${colours.green}
+format-volume-foreground = ${colours.black}
+format-volume-padding    = 1
+label-muted              = vol mut
+label-volume             = vol %percentage%%
+
+[module/backlight]
+type              = internal/backlight
+format-background = ${colours.yellow}
+format-foreground = ${colours.black}
+card              = intel_backlight
+enable-scroll     = true
+label             = bri %percentage%%
+
+[module/battery]
+type                          = internal/battery
+format-charging-background    = ${colours.black}
+format-charging-foreground    = ${colours.yellow}
+format-discharging-background = ${colours.yellow}
+format-discharging-foreground = ${colours.black}
+format-full-prefix-background = ${colours.yellow}
+format-full-prefix-foreground = ${colours.black}
+adapter                       = ADP1
+battery                       = BAT0
+full-at                       = 95
+label-charging                = bat %percentage%%+
+label-discharging             = bat %percentage%%-
+label-full                    = bat %percentage%%~
+
+[module/cpu]
+type              = internal/cpu
+format-background = ${colours.yellow}
+format-foreground = ${colours.black}
+format-padding    = 1
+interval          = 1
+label             = cpu %percentage%%
+
+[module/memory]
+type              = internal/memory
+format-background = ${colours.yellow}
+format-foreground = ${colours.black}
+format-padding    = 1
+interval          = 1
+label             = mem %percentage_used%%
+
+[module/wlan]
+type                           = internal/network
+format-connected-background    = ${colours.yellow}
+format-connected-foreground    = ${colours.black}
+format-connected-padding       = 1
+format-disconnected-background = ${colours.black}
+format-disconnected-foreground = ${colours.yellow}
+format-disconnected-padding    = 1
+interval                       = 3
+interface                      = wlp0s18f2u2
+label-connected                = wir ✓
+label-disconnected             = wir ✗
+
+[module/eth]
+type                           = internal/network
+format-connected-background    = ${colours.yellow}
+format-connected-foreground    = ${colours.black}
+format-connected-padding       = 1
+format-disconnected-background = ${colours.black}
+format-disconnected-foreground = ${colours.yellow}
+format-disconnected-padding    = 1
+interval                       = 3
+interface                      = enp3s0
+label-connected                = eth ✓
+label-disconnected             = eth ✗
+
+[module/date]
+type              = internal/date
+format-background = ${colours.blue}
+format-foreground = ${colours.black}
+format-padding    = 1
+interval          = 5
+label             = %date% %time%
+date              = %m/%d/%y
+time              = %I:%M%p
+
+; vim:ft=dosini
