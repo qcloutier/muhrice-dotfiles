@@ -1,8 +1,16 @@
 #!/bin/sh
 
-# Application theming
+# Theme GTK and QT apps
 export GTK2_RC_FILES=~/.config/gtk-2.0/gtkrc-2.0
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-# Swap esc and caps
+# Configure our monitors
+xrandr --output DP-1 --left-of HDMI-0
+xrandr --output DP-1 --rotate right
+
+# Set a desktop background
+feh --bg-fill ~/Pictures/mountain.jpeg
+
+# Tweak keyboard and mouse
 setxkbmap -option caps:swapescape
+xsetroot -cursor_name left_ptr

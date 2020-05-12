@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# Run local xprofile
+# Source the local xprofile
 [ -f ~/.xprofile ] && . ~/.xprofile
 
-# Start openbox
-exec openbox-session
+# Start the window manager
+exec bspwm
