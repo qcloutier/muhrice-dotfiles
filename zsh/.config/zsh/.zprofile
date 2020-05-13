@@ -2,6 +2,7 @@
 # ~/.config/zsh/.zprofile
 #
 
-# Start some programs
-type mpd > /dev/null && ! pgrep -f mpd > /dev/null && mpd &> /dev/null
-type ssh-agent > /dev/null && ! pgrep -f ssh-agent > /dev/null && eval $(ssh-agent) &> /dev/null
+# Silently start some programs in the background
+(! pgrep -f mpd && mpd) &> /dev/null
+(! pgrep -f ssh-agent && eval $(ssh-agent)) &> /dev/null
+(! pgrep -f syncthing && syncthing --no-browser &) &> /dev/null
