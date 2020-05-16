@@ -1,0 +1,15 @@
+#
+# ~/.config/cava/config
+#
+
+[general]
+bar_width = 1
+bar_spacing = 1
+
+[color]
+gradient = 1
+gradient_count = 2
+gradient_color_1 = '#33ccff'
+gradient_color_2 = '#ff66ff'
+
+# vim:ft=dosini
