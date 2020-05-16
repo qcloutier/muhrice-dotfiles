@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Monitor settings
-[ -f monitors ] && . monitors
+[ -f $HOME/.config/bspwm/monitors ] && . $HOME/.config/bspwm/monitors
 
 # Make using the mouse less annoying
 bspc config focus_follows_pointer true
