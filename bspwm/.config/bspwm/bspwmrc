@@ -1,33 +1,21 @@
 #!/bin/sh
 
-function run() {
-	killall $1
-	$* &
-}
+# Monitor settings
+[ -f monitors ] && . monitors
 
-run dunst
-run picom
-run polybar top
-run sxhkd
-
-bspc config top_padding 24
-
-bspc config normal_border_color  '#0d0d0d'
-bspc config active_border_color  '#0d0d0d'
-bspc config focused_border_color '#404040'
-
-bspc config presel_feedback false
-
-bspc monitor DP-1 -d 1 2 3 4 5
-bspc monitor HDMI-0 -d 6 7 8 9 0
-
+# Make using the mouse less annoying
 bspc config focus_follows_pointer true
 
+# Borders are always black
+bspc config normal_border_color '#0d0d0d'
+bspc config active_border_color '#0d0d0d'
+bspc config focused_border_color '#0d0d0d'
+
+# Leave some breathing room
 bspc config border_width 2
-bspc config window_gap   24
+bspc config top_padding 24
+bspc config window_gap 24
 
-bspc config split_ratio        0.5
-bspc config borderless_monocle true
-bspc config gapless_monocle    true
-
-bspc rule -a Gimp state=floating follow=on
+# Simple splitting
+bspc config split_ratio 0.5
+bspc config presel_feedback false
