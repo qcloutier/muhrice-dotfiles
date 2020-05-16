@@ -1,0 +1,10 @@
+#!/bin/sh
+
+i3lock \
+	--color 404040 \
+	--ignore-empty-password \
+	--image $HOME/.config/background/lock.png \
+	--no-unlock-indicator \
+	--tiling
+
+xset dpms force off
