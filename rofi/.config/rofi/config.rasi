@@ -9,6 +9,6 @@ configuration {
 	lines: 20;
 	theme: "theme";
 	show-icons: true;
-	icon-theme: "Tela-black-dark";
+	icon-theme: "breeze-dark";
 	disable-history: true;
 }
