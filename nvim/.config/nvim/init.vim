@@ -29,6 +29,7 @@ endif
 
 " Activate plugins
 call plug#begin(stdpath('data').'/plugged')
+Plug 'chrisbra/csv.vim'
 Plug 'cohama/lexima.vim'
 Plug 'dylanaraps/wal.vim'
 Plug 'lervag/vimtex'
