@@ -24,5 +24,9 @@ xautolock -time 15 -locker 'sudo systemctl suspend' \
 # Inhibit autolock when fullscreen
 caffeine &
 
+# Pair with other devices
+/usr/lib/kdeconnectd &
+kdeconnect-indicator &
+
 # Window manager
 exec bspwm
