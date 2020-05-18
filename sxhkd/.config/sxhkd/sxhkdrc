@@ -15,11 +15,11 @@ super + w
 	rofi -show windowcd
 
 # Lock screen
-super + BackSpace
+super + ctrl + BackSpace
 	lock
 
 # Suspend to RAM
-super + shift + BackSpace
+super + ctrl + shift + BackSpace
 	sudo systemctl suspend
 
 # Quit or restart bspwm and sxhkd

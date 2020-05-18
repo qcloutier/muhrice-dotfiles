@@ -13,7 +13,6 @@ bspc config focused_border_color '#0d0d0d'
 
 # Leave some breathing room
 bspc config border_width 2
-bspc config top_padding 24
 bspc config window_gap 24
 
 # Simple splitting
