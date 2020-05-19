@@ -1,6 +1,4 @@
-"
-" ~/.config/vifm/vifmrc
-"
+" vim:ft=vim
 
 " Basic settings
 set history=100

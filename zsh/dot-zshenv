@@ -1,6 +1,4 @@
-#
-# ~/.zshenv
-#
+#!/usr/bin/env zsh
 
 # Default programs
 export EDITOR=nvim

@@ -1,6 +1,4 @@
-#
-# ~/.config/dunst/dunstrc
-#
+# vim:ft=dosini
 
 [global]
 alignment            = center
@@ -45,5 +43,3 @@ background  = "#0d0d0d"
 foreground  = "#f2f2f2"
 frame_color = "#404040"
 timeout     = 15
-
-# vim:ft=cfg

@@ -1,6 +1,4 @@
-#
-# ~/.config/zsh/.zprofile
-#
+#!/usr/bin/env zsh
 
 # Silently start some programs in the background
 (! pgrep -f mpd && mpd) &> /dev/null

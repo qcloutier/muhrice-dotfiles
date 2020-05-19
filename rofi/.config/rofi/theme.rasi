@@ -1,7 +1,3 @@
-//
-// ~/.config/rofi/theme.rasi
-//
-
 * {
 	background-color: #00000000;
 	padding: 4;

@@ -1,6 +1,4 @@
-#
-# ~/.config/zsh/.zshrc
-#
+#!/usr/bin/env zsh
 
 # Simple prompt
 autoload -U colors && colors

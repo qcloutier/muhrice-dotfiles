@@ -1,7 +1,3 @@
-"
-" ~/.config/nvim/init.vim
-"
-
 " Some sensible defaults
 filetype indent plugin on
 syntax on

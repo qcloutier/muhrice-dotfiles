@@ -1,14 +1,10 @@
-//
-// ~/.config/rofi/config.rasi
-//
-
 configuration {
-	modi: "drun,windowcd";
-	font: "monospace 9";
-	width: 30;
-	lines: 20;
-	theme: "theme";
-	show-icons: true;
-	icon-theme: "breeze-dark";
 	disable-history: true;
+	font: "monospace 9";
+	icon-theme: "breeze-dark";
+	lines: 20;
+	modi: "drun,windowcd";
+	show-icons: true;
+	theme: "theme";
+	width: 30;
 }
