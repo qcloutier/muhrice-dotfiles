@@ -18,6 +18,22 @@ super + w
 super + ctrl + BackSpace
 	lock
 
+# Brightness down
+XF86MonBrightnessDown
+	BL=/sys/class/backlight/intel_backlight/brightness; echo "$(cat $BL) - 9" | bc > $BL
+
+# Brightness up
+XF86MonBrightnessUp
+	BL=/sys/class/backlight/intel_backlight/brightness; echo "$(cat $BL) + 9" | bc > $BL
+
+# Volume down
+XF86AudioLowerVolume
+	pactl set-sink-mute 0 false; pactl set-sink-volume 0 -5%
+
+# Volume up
+XF86AudioRaiseVolume
+	pactl set-sink-mute 0 false; pactl set-sink-volume 0 +5%
+
 # Suspend to RAM
 super + ctrl + shift + BackSpace
 	sudo systemctl suspend
