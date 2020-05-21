@@ -12,7 +12,7 @@ setxkbmap -option caps:swapescape
 xsetroot -cursor_name left_ptr
 
 # Desktop background
-feh --bg-fill $HOME/.config/background/normal.png
+feh --no-fehbg --bg-fill $HOME/.config/background/normal.png
 
 # Notifications, compositing, statusline, hotkeys
 dunst & picom & polybar top & sxhkd &
