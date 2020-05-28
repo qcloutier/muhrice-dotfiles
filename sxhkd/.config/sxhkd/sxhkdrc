@@ -16,7 +16,11 @@ super + w
 
 # Lock screen
 super + ctrl + BackSpace
-	lock
+	qlock
+
+# Suspend to RAM
+super + ctrl + shift + BackSpace
+	qlock && qsuspend
 
 # Brightness down
 XF86MonBrightnessDown
@@ -34,12 +38,12 @@ XF86AudioLowerVolume
 XF86AudioRaiseVolume
 	pactl set-sink-mute 0 false; pactl set-sink-volume 0 +5%
 
-# Suspend to RAM
-super + ctrl + shift + BackSpace
-	sudo systemctl suspend
+# Ensure caps lock stays mapped to escape
+Caps_Lock
+	setxkbmap -option caps:swapescape
 
 # Quit or restart bspwm and sxhkd
-super + ctrl + {q,r}
+super + ctrl + {e,r}
 	bspc {quit,wm -r && pkill -USR1 -x sxhkd}
 
 # Close or kill a node
