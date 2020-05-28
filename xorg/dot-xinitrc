@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Local programs and scripts
+export PATH="$PATH:$HOME/.local/bin/"
+
 # Various local settings
 [ -f $HOME/.xprofile ] && . $HOME/.xprofile
 
@@ -18,8 +21,8 @@ feh --no-fehbg --bg-fill $HOME/.config/background/normal.png
 dunst & picom & polybar top & sxhkd &
 
 # Lock and sleep when inactive
-xautolock -time 15 -locker 'sudo systemctl suspend' \
-	-notify 300 -notifier 'lock' &
+xautolock -notify 60 -notifier 'notify-send "System will suspend soon due to inactivty"' \
+	-time 10 -locker 'qlock && qsuspend' &
 
 # Inhibit autolock when fullscreen
 caffeine &
