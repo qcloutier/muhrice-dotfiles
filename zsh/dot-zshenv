@@ -1,13 +1,26 @@
 #!/usr/bin/env zsh
 
-# Default programs
-export EDITOR=nvim
-export TERMINAL=kitty
-export BROWSER=firefox
-
 # Local programs and scripts
 export PATH="$PATH:$HOME/.local/bin/"
 
 # Dotfiles directories
 export ADOTDIR="$HOME/.local/share/zsh"
 export ZDOTDIR="$HOME/.config/zsh"
+
+# Default programs
+export EDITOR=nvim
+export TERMINAL=kitty
+export BROWSER=firefox
+
+# Coloured less output
+export LESS_TERMCAP_mb=$'\e[1;36m'
+export LESS_TERMCAP_md=$'\e[1;36m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;35m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;37m'
+
+# Various aliases
+[[ "$OSTYPE" == 'linux-gnu' ]] && alias ls='ls --color=auto' || alias ls='ls -G'
+alias vim=nvim
