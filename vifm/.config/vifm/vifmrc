@@ -16,6 +16,7 @@ set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
 set syscalls
 set timefmt=%m/%d\ %H:%M
 set trash
+set trashdir=$HOME/Trash
 set undolevels=100
 set vicmd=nvim
 set vifminfo=bmarks,bookmarks,chistory,dhistory,dirstack,fhistory,phistory,registers,shistory,tui
