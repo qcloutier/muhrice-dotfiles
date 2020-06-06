@@ -4,6 +4,9 @@
 bar_spacing = 1
 bar_width   = 1
 
+[output]
+method = ncurses
+
 [color]
 gradient         = 1
 gradient_color_1 = '#33ccff'
