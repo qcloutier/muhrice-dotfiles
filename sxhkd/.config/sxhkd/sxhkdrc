@@ -16,11 +16,7 @@ super + w
 
 # Lock screen
 super + ctrl + BackSpace
-	qlock
-
-# Suspend to RAM
-super + ctrl + shift + BackSpace
-	qlock && qsuspend
+	loginctl lock-session
 
 # Brightness down
 XF86MonBrightnessDown

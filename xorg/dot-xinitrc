@@ -26,9 +26,9 @@ feh --no-fehbg --bg-fill $HOME/.config/background/normal.png
 # Notifications, compositing, statusline, hotkeys
 dunst & picom & polybar top & sxhkd &
 
-# Lock and sleep when inactive
-xautolock -notify 60 -notifier 'notify-send "System will suspend soon due to inactivty"' \
-	-time 10 -locker 'qlock && qsuspend' &
+# Lock screen when inactive
+xset s 540s 60s
+(xss-lock --notifier 'notify-send "Session will autolock soon"' qlock) &
 
 # Inhibit autolock when fullscreen
 caffeine &
