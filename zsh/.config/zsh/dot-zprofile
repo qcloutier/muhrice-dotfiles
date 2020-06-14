@@ -4,3 +4,15 @@
 (! pgrep -f mpd && mpd) &> /dev/null
 (! pgrep -f ssh-agent && eval $(ssh-agent)) &> /dev/null
 (! pgrep -f syncthing && syncthing --no-browser &) &> /dev/null
+
+# Present a session picker
+PS3='(number) '
+printf '\nChoose a session type:\n'
+select opt in 'X11' 'tmux'; do
+	case "$REPLY" in
+		1) startx &> /dev/null; exit;;
+		2) tmux; exit;;
+		*) break;;
+	esac
+done
+printf '\n'
