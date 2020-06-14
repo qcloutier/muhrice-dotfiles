@@ -4,6 +4,9 @@
 bar_spacing = 1
 bar_width   = 1
 
+[input]
+method = pulse
+
 [output]
 method = ncurses
 
