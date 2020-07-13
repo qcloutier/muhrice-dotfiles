@@ -9,7 +9,7 @@ CAP=$(cat /sys/class/power_supply/BAT*/capacity)
 if [ "$CAP" -le 20 ]; then
 	ICON='❗'
 else
-	case /sys/class/power_supply/BAT*/status in
+	case $(cat /sys/class/power_supply/BAT*/status) in
 		'Charging')    ICON='🔌' ;;
 		'Discharging') ICON='🔋' ;;
 		'Full')        ICON='⚡' ;;
