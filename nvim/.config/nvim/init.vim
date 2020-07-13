@@ -54,10 +54,10 @@ set hidden
 " Easily switch buffers
 map <silent> <C-h> :bprevious<CR>
 map <silent> <C-l> :bnext<CR>
-map <silent> <C-q> :Bdelete<CR>
+map <silent> <C-x> :Bdelete<CR>
 
 " Toggle the nerdtree
-map <silent> <C-x> :NERDTreeToggle<CR>
+map <silent> <C-q> :NERDTreeToggle<CR>
 
 " Automatically do syntax checks
 call neomake#configure#automake('nrw', 500)
