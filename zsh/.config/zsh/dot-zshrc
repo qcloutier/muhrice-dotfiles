@@ -1,8 +1,5 @@
 #!/usr/bin/env zsh
 
-# Source since zdotdir was changed
-source $HOME/.zshenv
-
 # Simple prompt
 autoload -U colors && colors
 PS1="%B%{$bg[white]$fg[black]%} zsh %% %{$bg[black]$fg[white]%}%b "

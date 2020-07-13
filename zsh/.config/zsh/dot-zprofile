@@ -1,25 +1,27 @@
 #!/usr/bin/env zsh
 
-# Source since zdotdir was changed
-source $HOME/.zshenv
-
 # Silently start some programs in the background
 (! pgrep -f mpd && mpd) &> /dev/null
 (! pgrep -f ssh-agent && eval $(ssh-agent)) &> /dev/null
 (! pgrep -f syncthing && syncthing --no-browser &) &> /dev/null
 
-# Present a session picker
+# Present a session picker and power menu
 while true; do
-	PS3='(number) '
-	printf '\nChoose an option:\n'
-	select opt in 'Start X11' 'Start tmux' 'Logout' 'Suspend' 'Reboot' 'Shutdown'; do
-		case "$REPLY" in
-			1) startx &> /dev/null; break;;
-			2) tmux; break;;
-			3) exit;;
-			4) qsuspend; break;;
-			5) qreboot; break;;
-			6) qpoweroff; break;;
-		esac
-	done
+	print '\nChoose an option:\n\n' \
+		'1) Start X11\n' \
+		'2) Start tmux\n\n' \
+		'3) Logout\n' \
+		'4) Suspend\n' \
+		'5) Reboot\n' \
+		'6) Shutdown\n'
+
+	read NUM\?'(number) '
+	case $NUM in
+		1) startx &> /dev/null ;;
+		2) tmux ;;
+		3) exit ;;
+		4) qsuspend ;;
+		5) qreboot ;;
+		6) qpoweroff ;;
+	esac
 done
