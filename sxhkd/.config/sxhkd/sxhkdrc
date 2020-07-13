@@ -20,19 +20,19 @@ super + ctrl + BackSpace
 
 # Brightness down
 XF86MonBrightnessDown
-	BL=/sys/class/backlight/intel_backlight/brightness; echo "$(cat $BL) - 9" | bc > $BL
+	xbacklight -dec 10
 
 # Brightness up
 XF86MonBrightnessUp
-	BL=/sys/class/backlight/intel_backlight/brightness; echo "$(cat $BL) + 9" | bc > $BL
+	xbacklight -inc 10
 
 # Volume down
 XF86AudioLowerVolume
-	pactl set-sink-mute 0 false; pactl set-sink-volume 0 -5%
+	pulsemixer --unmute --change-volume -5
 
 # Volume up
 XF86AudioRaiseVolume
-	pactl set-sink-mute 0 false; pactl set-sink-volume 0 +5%
+	pulsemixer --unmute --change-volume +5
 
 # Ensure caps lock stays mapped to escape
 Caps_Lock

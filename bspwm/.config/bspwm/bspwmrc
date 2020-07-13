@@ -18,3 +18,6 @@ bspc config window_gap   24
 # Simple splitting
 bspc config split_ratio     0.5
 bspc config presel_feedback false
+
+# Pseudo-tile everything
+bspc rule -a \* state=pseudo_tiled
