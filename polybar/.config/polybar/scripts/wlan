@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if ! test -d /sys/class/net/w*; then
+	exit 0
+fi
+
+if grep -q 'up' /sys/class/net/w*/operstate; then
+	printf "📶 Wln $(awk '/^\s*w/ {print int($3)}' /proc/net/wireless)%%"
+else
+	printf '❎ Wln OFF'
+fi

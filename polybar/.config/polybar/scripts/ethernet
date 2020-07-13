@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if ! test -d /sys/class/net/e*; then
+	exit 0
+fi
+
+if grep -q 'up' /sys/class/net/e*/operstate; then
+	printf '🌐 Eth ON'
+else
+	printf '❎ Eth OFF'
+fi

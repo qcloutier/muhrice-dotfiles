@@ -1,171 +1,101 @@
 # vim:ft=dosini
 
 [colours]
-black   = #dd0d0d0d
-dark    = #404040
-light   = #bfbfbf
-white   = #f2f2f2
-red     = #f1273b
-green   = #56b036
-yellow  = #e6b800
-blue    = #4984e9
-magenta = #ff66ff
-cyan    = #33ccff
+black = #dd0d0d0d
+grey  = #404040
+white = #f2f2f2
+
+[style/text]
+content-background = ${colours.grey}
+content-foreground = ${colours.white}
+content-padding    = 1
+
+[style/script]
+format-background = ${colours.grey}
+format-foreground = ${colours.white}
+format-padding    = 1
 
 [settings]
 screenchange-reload = true
 
 [bar/top]
-width           = 100%
-height          = 16
-background      = ${colours.black}
-foreground      = ${colours.white}
-font-0          = Hack:size=9:weight=bold;2
-font-1          = Noto Sans Mono CJK JP:size=9:weight=bold;2
-font-2          = Noto Color Emoji:size=9:weight=bold;2
-font-3          = DejaVu Sans Mono:size=9:weight=bold;2
-border-size     = 4
-border-color    = ${colours.black}
-modules-left    = bsp win
-modules-right   = bat scr vol cpu mem wln eth mpd dat
-tray-background = ${colours.black}
-tray-position   = right
-tray-padding    = 2
-wm-restack      = bspwm
+width         = 100%
+height        = 20
+background    = ${colours.black}
+foreground    = ${colours.white}
+font-0        = Hack:size=9:weight=bold;2
+font-1        = Noto Sans Mono CJK JP:size=9:weight=bold;2
+font-2        = Noto Color Emoji:scale=11:weight=bold;2
+font-3        = DejaVu Sans Mono:size=9:weight=bold;2
+border-size   = 3
+border-color  = ${colours.black}
+modules-left  = lch mus win
+modules-right = bat bri vol wln eth dat tim
+wm-restack    = bspwm
 
-[module/bsp]
-type                      = internal/bspwm
-label-focused             = %index%
-label-focused-background  = ${colours.red}
-label-focused-foreground  = ${colours.black}
-label-focused-padding     = 1
-label-occupied            = %index%*
-label-occupied-background = ${colours.black}
-label-occupied-foreground = ${colours.red}
-label-occupied-padding    = 1
-label-urgent              = %index%!
-label-urgent-background   = ${colours.black}
-label-urgent-foreground   = ${colours.red}
-label-urgent-padding      = 1
-label-empty               = %index%
-label-empty-background    = ${colours.black}
-label-empty-foreground    = ${colours.red}
-label-empty-padding       = 1
-pin-workspaces            = false
+[module/lch]
+type       = custom/text
+content    = 🔵 Launcher
+click-left = rofi -show drun
+inherit    = style/text
 
 [module/win]
-type              = internal/xwindow
-format-background = ${colours.red}
-format-foreground = ${colours.black}
-format-padding    = 1
-label             = %title:0:100:...%
-label-empty       = desktop
-label-maxlen      = 50
+type        = custom/script
+exec        = $HOME/.config/polybar/scripts/windows
+click-left  = rofi -show windowcd
+scroll-down = bspc node --focus prev
+scroll-up   = bspc node --focus next
+inherit     = style/script
+interval    = 1
+
+[module/mus]
+type        = custom/script
+exec        = $HOME/.config/polybar/scripts/music
+click-left  = mpc toggle
+scroll-down = mpc prev
+scroll-up   = mpc next
+inherit     = style/script
+interval    = 1
 
 [module/bat]
-type                          = internal/battery
-format-charging-background    = ${colours.green}
-format-charging-foreground    = ${colours.black}
-format-charging-padding       = 1
-format-discharging-background = ${colours.green}
-format-discharging-foreground = ${colours.black}
-format-discharging-padding    = 1
-format-full-background        = ${colours.green}
-format-full-foreground        = ${colours.black}
-format-full-padding           = 1
-adapter                       = ${env:POLYBAR_ADP}
-battery                       = ${env:POLYBAR_BAT}
-full-at                       = 100
-label-charging                = bat %percentage%%
-label-discharging             = bat %percentage%%
-label-full                    = bat %percentage%%
+type    = custom/script
+exec    = $HOME/.config/polybar/scripts/battery
+inherit = style/script
 
-[module/scr]
-type              = internal/backlight
-format-background = ${colours.green}
-format-foreground = ${colours.black}
-format-padding    = 1
-card              = intel_backlight
-enable-scroll     = true
-label             = scr %percentage%%
+[module/bri]
+type        = custom/script
+exec        = $HOME/.config/polybar/scripts/brightness
+scroll-down = xbacklight -dec 10
+scroll-up   = xbacklight -inc 10
+inherit     = style/script
+interval    = 1
 
 [module/vol]
-type                     = internal/pulseaudio
-format-muted-background  = ${colours.black}
-format-muted-foreground  = ${colours.green}
-format-muted-padding     = 1
-format-volume-background = ${colours.green}
-format-volume-foreground = ${colours.black}
-format-volume-padding    = 1
-label-muted              = vol 0%
-label-volume             = vol %percentage%%
-
-[module/cpu]
-type              = internal/cpu
-format-background = ${colours.yellow}
-format-foreground = ${colours.black}
-format-padding    = 1
-interval          = 1
-label             = cpu %percentage%%
-
-[module/mem]
-type              = internal/memory
-format-background = ${colours.yellow}
-format-foreground = ${colours.black}
-format-padding    = 1
-interval          = 1
-label             = mem %percentage_used%%
+type        = custom/script
+exec        = $HOME/.config/polybar/scripts/volume
+click-left  = pulsemixer --toggle-mute
+scroll-down = pulsemixer --unmute --change-volume -5
+scroll-up   = pulsemixer --unmute --change-volume +5
+inherit     = style/script
+interval    = 1
 
 [module/wln]
-type                           = internal/network
-format-connected-background    = ${colours.yellow}
-format-connected-foreground    = ${colours.black}
-format-connected-padding       = 1
-format-disconnected-background = ${colours.black}
-format-disconnected-foreground = ${colours.yellow}
-format-disconnected-padding    = 1
-interval                       = 3
-interface                      = ${env:POLYBAR_WLN}
-label-connected                = wln %signal%%
-label-disconnected             = wln %signal%%
+type    = custom/script
+exec    = $HOME/.config/polybar/scripts/wlan
+inherit = style/script
 
 [module/eth]
-type                           = internal/network
-format-connected-background    = ${colours.yellow}
-format-connected-foreground    = ${colours.black}
-format-connected-padding       = 1
-format-disconnected-background = ${colours.black}
-format-disconnected-foreground = ${colours.yellow}
-format-disconnected-padding    = 1
-interval                       = 3
-interface                      = ${env:POLYBAR_ETH}
-label-connected                = eth 100%
-label-disconnected             = eth 0%
-
-[module/mpd]
-type                      = internal/mpd
-format-playing-background = ${colours.blue}
-format-playing-foreground = ${colours.black}
-format-playing-padding    = 1
-format-paused-background  = ${colours.black}
-format-paused-foreground  = ${colours.blue}
-format-paused-padding     = 1
-format-stopped-background = ${colours.black}
-format-stopped-foreground = ${colours.blue}
-format-stopped-padding    = 1
-format-online             = <icon-prev> <toggle> <icon-stop> <icon-next>
-icon-next                 = ▶▶
-icon-pause                = ▮▮
-icon-play                 = ▶
-icon-prev                 = ◀◀
-icon-stop                 = ■
+type    = custom/script
+exec    = $HOME/.config/polybar/scripts/ethernet
+inherit = style/script
 
 [module/dat]
-type              = internal/date
-format-background = ${colours.blue}
-format-foreground = ${colours.black}
-format-padding    = 1
-interval          = 5
-label             = %date% %time%
-date              = %m/%d/%y
-time              = %I:%M%p
+type       = custom/script
+exec       = $HOME/.config/polybar/scripts/date
+click-left = notify-send -i /dev/null "$(cal)"
+inherit    = style/script
+
+[module/tim]
+type    = custom/script
+exec    = $HOME/.config/polybar/scripts/time
+inherit = style/script

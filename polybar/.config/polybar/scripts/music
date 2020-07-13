@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if ! command -v mpc >/dev/null; then
+	exit 0
+fi
+
+if mpc status | grep -Eq '^\[(playing|paused)\]'; then
+	MSG="$(mpc status | awk -F ' - ' 'NR==1 {printf "%s (%s)", $2, $1}')"
+else
+	MSG='[stopped]'
+fi
+
+echo "🎧 $MSG"
