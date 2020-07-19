@@ -12,6 +12,10 @@ export EDITOR=nvim
 export TERMINAL=kitty
 export BROWSER=firefox
 
+# SSH agent
+export SSH_AGENT_PID=$(pgrep -f ssh-agent)
+export SSH_AUTH_SOCK="$HOME/.cache/ssh-agent.socket"
+
 # Coloured less output
 export LESS_TERMCAP_mb=$'\e[1;36m'
 export LESS_TERMCAP_md=$'\e[1;36m'
