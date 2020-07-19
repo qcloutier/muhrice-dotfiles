@@ -6,10 +6,10 @@
 # Make using the mouse less annoying
 bspc config focus_follows_pointer true
 
-# Borders are always black
+# Subtle border colours
 bspc config normal_border_color  '#0d0d0d'
 bspc config active_border_color  '#0d0d0d'
-bspc config focused_border_color '#0d0d0d'
+bspc config focused_border_color '#404040'
 
 # Leave some breathing room
 bspc config border_width 2
@@ -18,6 +18,3 @@ bspc config window_gap   24
 # Simple splitting
 bspc config split_ratio     0.5
 bspc config presel_feedback false
-
-# Pseudo-tile everything
-bspc rule -a \* state=pseudo_tiled
