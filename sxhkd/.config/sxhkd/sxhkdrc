@@ -12,7 +12,7 @@ super + d
 
 # Window switcher
 super + w
-	rofi -show windowcd
+	rofi -show window
 
 # Lock screen
 super + ctrl + BackSpace

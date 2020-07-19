@@ -4,18 +4,21 @@ if ! command -v bspc xprop >/dev/null; then
 	exit 0
 fi
 
-for NODE in $(bspc query -N); do
-	TITLE=$(xprop -id $NODE 2>/dev/null | grep 'WM_CLASS' | awk -F \" '{print $4}')
+for DESKTOP in $(bspc query -D --names); do
+	for NODE in $(bspc query -d "$DESKTOP" -N); do
+		TITLE=$(xprop -id $NODE 2>/dev/null | grep 'WM_CLASS' | awk -F \" '{print $4}')
 
-	case $TITLE in
-		'Firefox') ICON="🦊" ;;
-		'kitty')   ICON="🐈" ;;
-		'Steam')   ICON="🦾" ;;
-		*)         ICON="🔲" ;;
-	esac
+		case "$TITLE" in
+			'Firefox') ICON="🦊" ;;
+			'kitty')   ICON="🐈" ;;
+			'Steam')   ICON="🦾" ;;
+			*)         ICON="🔲" ;;
+		esac
 
-	if test "$TITLE"; then
-		printf " $ICON $TITLE"
-	fi
+		if test "$TITLE"; then
+			printf "$ICON $TITLE [$DESKTOP] "
+		fi
+	done
 done
 
+printf "\n"
