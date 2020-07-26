@@ -13,7 +13,7 @@ window_border_color       = black
 
 # Directories
 lyrics_directory  = ~/.local/share/lyrics
-mpd_music_dir     = ~/.config/mpd/music"
+mpd_music_dir     = ~/.config/mpd/music
 ncmpcpp_directory = ~/.config/ncmpcpp
 
 # Interface
