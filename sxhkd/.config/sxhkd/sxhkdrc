@@ -96,7 +96,7 @@ super + alt + t
 
 # Insert into an existing tabbed
 super + alt + {h,j,k,l}
-	. "$HOME/.config/sxhkd/tabs.sh" insert $(bspc query -N -n {west,south,north,east})
+	. "$HOME/.config/sxhkd/tabs.sh" insert {west,south,north,east}
 
 # Remove from tabbed
 super + alt + r
