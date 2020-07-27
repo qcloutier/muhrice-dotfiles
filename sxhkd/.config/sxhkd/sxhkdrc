@@ -89,3 +89,15 @@ super + {less,underscore,plus,greater}
 # Move a floating node
 super + ctrl + {h,j,k,l}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Create a new tabbed
+super + alt + t
+	. "$HOME/.config/sxhkd/tabs.sh" create
+
+# Insert into an existing tabbed
+super + alt + {h,j,k,l}
+	. "$HOME/.config/sxhkd/tabs.sh" insert $(bspc query -N -n {west,south,north,east})
+
+# Remove from tabbed
+super + alt + r
+	. "$HOME/.config/sxhkd/tabs.sh" remove
