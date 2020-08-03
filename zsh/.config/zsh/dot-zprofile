@@ -3,7 +3,7 @@
 # Silently start some programs in the background
 (! pgrep -f mpd && mpd) &> /dev/null
 (! pgrep -f syncthing && syncthing --no-browser &) &> /dev/null
-(! pgrep -f ssh-agent && rm "$SSH_AUTH_SOCK" && eval $(ssh-agent -a "$SSH_AUTH_SOCK")) &> /dev/null
+(! pgrep -f ssh-agent && rm -f "$SSH_AUTH_SOCK" && eval $(ssh-agent -a "$SSH_AUTH_SOCK")) &> /dev/null
 
 # Present a session picker and power menu
 while true; do
