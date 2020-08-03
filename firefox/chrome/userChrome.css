@@ -1,0 +1,38 @@
+/* Hide everything except the website icon from each tab */
+.tab-close-button    { display: none !important; }
+.tab-icon-sound      { display: none !important; }
+.tab-label-container { display: none !important; }
+
+/* Make the tabs small */
+.tab-content {
+  min-width: 2.5em !important;
+  max-width: 2.5em !important;
+}
+.tabbrowser-tab[fadein] {
+  min-width: 2.5em !important;
+  max-width: 2.5em !important;
+}
+
+/* Force some space at the end of the tabbar */
+#TabsToolbar {
+  margin-right:  40vw   !important;
+  margin-bottom: -0.1em !important;
+}
+
+/* Move the navbar into the freed tab bar space */
+#nav-bar {
+  margin-top:       -2.2em      !important;
+  margin-left:      60vw        !important;
+  margin-bottom:    -0.1em      !important;
+  background-color: transparent !important;
+}
+
+/* Hide the tracking protection icon */
+#tracking-protection-icon-container { display: none !important; }
+
+/* Blend the urlbar in better with the tab bar */
+#urlbar[breakout]  { top:       0.2em !important; }
+#urlbar-container  { min-width: unset !important; }
+
+/* Dark loading pages */
+browser { background-color: #0c0c0d !important; }
