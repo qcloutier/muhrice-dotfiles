@@ -15,7 +15,7 @@ super + w
 	rofi -show window
 
 # Lock screen
-super + ctrl + BackSpace
+super + BackSpace
 	loginctl lock-session
 
 # Brightness down
@@ -43,7 +43,7 @@ super + ctrl + {e,r}
 	bspc {quit,wm -r && pkill -USR1 -x sxhkd}
 
 # Close or kill a node
-super + shift + {_,ctrl +}q
+super + {_,shift +}q
 	bspc node -{c,k}
 
 # Toggle monocle mode
