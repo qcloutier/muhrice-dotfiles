@@ -1,11 +1,16 @@
 #!/bin/sh
 
-if ! test -d /sys/class/net/e*; then
+ETHS="$(echo /sys/class/net/e*)"
+
+if [ "$ETHS" = '/sys/class/net/e*' ]; then
 	exit 0
 fi
 
-if grep -q 'up' /sys/class/net/e*/operstate; then
-	printf '🌐 Eth ON'
-else
-	printf '❎ Eth OFF'
-fi
+for ETH in $ETHS; do
+	if grep -q 'up' "$(printf $ETH/operstate)"; then
+		printf '🌐 Eth ON'
+		exit 0
+	fi
+done
+
+printf '❎ Eth OFF'

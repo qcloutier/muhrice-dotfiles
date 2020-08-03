@@ -1,11 +1,16 @@
 #!/bin/sh
 
-if ! test -d /sys/class/net/w*; then
+WLNS="$(echo /sys/class/net/w*)"
+
+if [ "$WLNS" = '/sys/class/net/w*' ]; then
 	exit 0
 fi
 
-if grep -q 'up' /sys/class/net/w*/operstate; then
-	printf "📶 Wln $(awk '/^\s*w/ {print int($3)}' /proc/net/wireless)%%"
-else
-	printf '❎ Wln OFF'
-fi
+for WLN in $WLNS; do
+	if grep -q 'up' "$(printf $WLN/operstate)"; then
+		printf "📶 Wln $(awk '/^\s*w/ {print int($3)}' /proc/net/wireless)%%"
+		exit 0
+	fi
+done
+
+printf '❎ Wln OFF'
