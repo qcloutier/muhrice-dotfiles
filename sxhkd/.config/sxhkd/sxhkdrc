@@ -42,6 +42,10 @@ XF86AudioRaiseVolume
 Caps_Lock
 	setxkbmap -option caps:swapescape
 
+# Quit or restart bspwm and sxhkd
+super + ctrl + {e,r}
+	bspc {quit,wm -r && pkill -USR1 -x sxhkd}
+
 # Close or kill a node
 super + {_,shift +}q
 	bspc node -{c,k}
