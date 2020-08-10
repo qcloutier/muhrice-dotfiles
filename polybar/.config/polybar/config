@@ -28,14 +28,20 @@ font-2        = Noto Color Emoji:scale=11:weight=bold;2
 font-3        = DejaVu Sans:size=9:weight=bold;2
 border-size   = 4
 border-color  = ${colours.black}
-modules-left  = lch mus win
+modules-left  = pro ses mus win
 modules-right = bat bri vol wln eth dat tim
 wm-restack    = bspwm
 
-[module/lch]
+[module/pro]
 type       = custom/text
-content    = 🔵 Launcher
+content    = 💽 Programs
 click-left = rofi -show drun
+inherit    = style/text
+
+[module/ses]
+type       = custom/text
+content    = 🖥️ Session
+click-left = qpowermenu
 inherit    = style/text
 
 [module/mus]
@@ -91,7 +97,6 @@ inherit = style/script
 [module/dat]
 type       = custom/script
 exec       = $HOME/.config/polybar/scripts/date
-click-left = notify-send -i /dev/null "$(cal)"
 inherit    = style/script
 
 [module/tim]
