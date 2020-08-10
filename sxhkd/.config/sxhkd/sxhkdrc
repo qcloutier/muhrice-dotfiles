@@ -6,12 +6,16 @@ super + Return
 super + shift + Return
 	firefox
 
-# Application launcher
-super + d
+# Program list
+super + a
 	rofi -show drun
 
+# Session menu
+super + s
+	qpowermenu
+
 # Window switcher
-super + w
+super + d
 	rofi -show window
 
 # Lock screen
@@ -38,10 +42,6 @@ XF86AudioRaiseVolume
 Caps_Lock
 	setxkbmap -option caps:swapescape
 
-# Quit or restart bspwm and sxhkd
-super + ctrl + {e,r}
-	bspc {quit,wm -r && pkill -USR1 -x sxhkd}
-
 # Close or kill a node
 super + {_,shift +}q
 	bspc node -{c,k}
@@ -55,7 +55,7 @@ super + {t,shift + t,f,shift + f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # Set a node's flags
-super + ctrl + {m,x,y,z}
+super + {u,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
 # Focus or shift a node
