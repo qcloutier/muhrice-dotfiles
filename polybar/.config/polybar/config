@@ -6,12 +6,10 @@ grey  = #404040
 white = #f2f2f2
 
 [style/text]
-content-background = ${colours.grey}
 content-foreground = ${colours.white}
 content-padding    = 1
 
 [style/script]
-format-background = ${colours.grey}
 format-foreground = ${colours.white}
 format-padding    = 1
 
@@ -23,10 +21,11 @@ width         = 100%
 height        = 24
 background    = ${colours.black}
 foreground    = ${colours.white}
-font-0        = Noto Sans Mono:size=9:weight=bold;2
-font-1        = Noto Sans Mono CJK JP:size=9:weight=bold;2
+separator     = " | "
+font-0        = Noto Sans:size=9;2
+font-1        = Noto Sans CJK JP:size=9:weight=bold;2
 font-2        = Noto Color Emoji:scale=11:weight=bold;2
-font-3        = DejaVu Sans Mono:size=9:weight=bold;2
+font-3        = DejaVu Sans:size=9:weight=bold;2
 border-size   = 4
 border-color  = ${colours.black}
 modules-left  = lch mus win

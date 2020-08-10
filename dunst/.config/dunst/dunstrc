@@ -2,7 +2,7 @@
 
 [global]
 alignment            = center
-font                 = monospace 9
+font                 = sans 9
 format               = "<b>%s</b>\n%b"
 frame_color          = "#404040"
 frame_width          = 2

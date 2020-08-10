@@ -1,6 +1,6 @@
 configuration {
 	disable-history: true;
-	font: "monospace 9";
+	font: "sans 9";
 	icon-theme: "breeze-dark";
 	lines: 20;
 	modi: "drun,windowcd";
