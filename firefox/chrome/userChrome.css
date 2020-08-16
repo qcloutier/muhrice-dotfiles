@@ -25,7 +25,8 @@
   background-color: transparent !important;
 }
 
-/* Hide the tracking protection icon */
+/* Hide useless stuff from the url bar */
+#identity-icon-label                { display: none !important; }
 #tracking-protection-icon-container { display: none !important; }
 
 /* Blend the url bar in better with the tab bar */
