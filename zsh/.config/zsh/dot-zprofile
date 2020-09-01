@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+# Ensure this gets sourced
+source $HOME/.zshenv
+
 # Silently start some programs in the background
 (! pgrep -f mpd && mpd) &> /dev/null
 (! pgrep -f syncthing && syncthing --no-browser &) &> /dev/null
