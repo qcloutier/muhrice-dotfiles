@@ -11,6 +11,9 @@ export GTK2_RC_FILES=$HOME/.config/gtk-2.0/gtkrc-2.0
 export QT_QPA_PLATFORMTHEME=qt5ct
 xsettingsd &
 
+# Session bus
+export $(dbus-launch)
+
 # Swap caps lock and escape keys
 setxkbmap -option caps:swapescape
 
