@@ -9,10 +9,10 @@ for DESKTOP in $(bspc query -D --names); do
 		TITLE=$(xprop -id $NODE 2>/dev/null | grep 'WM_CLASS' | awk -F \" '{print $4}')
 
 		case "$TITLE" in
-			'Firefox') ICON="🦊" ;;
-			'kitty')   ICON="🐈" ;;
-			'Steam')   ICON="🦾" ;;
-			*)         ICON="🔲" ;;
+			'Firefox'|"firefox") ICON="🦊" ;;
+			'kitty') ICON="🐈" ;;
+			'Steam') ICON="🦾" ;;
+			*) ICON="🔲" ;;
 		esac
 
 		if test "$TITLE"; then
