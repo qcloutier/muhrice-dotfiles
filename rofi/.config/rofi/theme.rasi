@@ -13,3 +13,7 @@ mainbox {
 element selected {
 	background-color: #404040;
 }
+
+element-icon {
+	size: 4ch;
+}
