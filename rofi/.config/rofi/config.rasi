@@ -1,11 +1,11 @@
 configuration {
 	disable-history: true;
-	font: "monospace 9";
+	font: "sans 9";
 	icon-theme: "breeze-dark";
-	lines: 15;
+	lines: 16;
 	modi: "drun,windowcd";
 	show-icons: true;
 	theme: "theme";
-	width: 50;
+	width: 32;
 	columns: 3;
 }
