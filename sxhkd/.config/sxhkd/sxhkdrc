@@ -10,17 +10,20 @@ super + shift + Return
 super + a
 	rofi -show drun
 
-# Session menu
-super + s
-	qpowermenu
-
 # Window switcher
-super + d
+super + s
 	rofi -show window
 
 # Lock screen
 super + BackSpace
 	loginctl lock-session
+
+super + shift + BackSpace
+	sudo systemctl suspend
+
+# Screenshot
+super + p
+	maim --select --hidecursor | xclip -selection clipboard -target image/png
 
 # Brightness down
 XF86MonBrightnessDown

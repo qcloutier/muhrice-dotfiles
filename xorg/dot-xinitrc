@@ -32,7 +32,7 @@ dunst & picom & polybar top & sxhkd &
 
 # Lock screen when inactive
 xset s 540s 60s
-(xss-lock --notifier 'notify-send "Session will autolock soon"' qlock) &
+(xss-lock --notifier 'notify-send "Session will autolock soon"' slock) &
 
 # Inhibit autolock when fullscreen
 caffeine &
