@@ -1,7 +1,7 @@
 * {
 	background-color: #00000000;
 	padding: 2;
-	text-color: #f2f2f2;
+	text-color: #bfbfbf;
 }
 
 mainbox {
@@ -10,10 +10,18 @@ mainbox {
 	border-color: #0d0d0d;
 }
 
+element {
+	orientation: vertical;
+}
+
 element selected {
 	background-color: #595959;
 }
 
 element-icon {
-	size: 3ch;
+	size: 8ch;
+}
+
+window {
+    width: 768px;
 }

@@ -2,10 +2,9 @@ configuration {
 	disable-history: true;
 	font: "sans 9";
 	icon-theme: "breeze-dark";
-	lines: 16;
+	lines: 6;
 	modi: "drun,windowcd";
 	show-icons: true;
 	theme: "theme";
-	width: 32;
-	columns: 3;
+	columns: 6;
 }
