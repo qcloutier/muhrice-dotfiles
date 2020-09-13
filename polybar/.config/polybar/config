@@ -1,16 +1,17 @@
 # vim:ft=dosini
 
 [colours]
-black = #dd0d0d0d
-grey  = #404040
-white = #f2f2f2
+black      = #dd0d0d0d
+dark_grey  = #595959
+light_grey = #bfbfbf
+white      = #f2f2f2
 
 [style/text]
-content-foreground = ${colours.white}
+content-foreground = ${colours.light_grey}
 content-padding    = 1
 
 [style/script]
-format-foreground = ${colours.white}
+format-foreground = ${colours.light_grey}
 format-padding    = 1
 
 [settings]
@@ -20,86 +21,74 @@ screenchange-reload = true
 width         = 100%
 height        = 24
 background    = ${colours.black}
-foreground    = ${colours.white}
+foreground    = ${colours.dark_grey}
 separator     = " | "
-font-0        = Noto Sans Mono:size=9;2
-font-1        = Noto Sans Mono CJK JP:size=9:weight=bold;2
+font-0        = Noto Sans:size=9:weight=bold;2
+font-1        = Noto Sans CJK JP:size=9:weight=bold;2
 font-2        = Noto Color Emoji:scale=11:weight=bold;2
-font-3        = DejaVu Sans Mono:size=9:weight=bold;2
+font-3        = DejaVu Sans:size=9:weight=bold;2
 border-size   = 4
 border-color  = ${colours.black}
-modules-left  = pro ses mus win
-modules-right = bat bri vol wln eth dat tim
+modules-left  = allprograms windowlist music
+modules-right = battery brightness volume wireless ethernet date time
 wm-restack    = bspwm
 
-[module/pro]
+[module/allprograms]
 type       = custom/text
-content    = 💽 Programs
+content    = 💽 All Programs
 click-left = rofi -show drun
 inherit    = style/text
 
-[module/ses]
+[module/windowlist]
 type       = custom/text
-content    = 🖥️ Session
-click-left = qpowermenu
+content    = 🔲 Window List
+click-left = rofi -show window
 inherit    = style/text
 
-[module/mus]
+[module/music]
 type        = custom/script
 exec        = $HOME/.config/polybar/scripts/music
 click-left  = mpc toggle
 scroll-down = mpc prev
 scroll-up   = mpc next
 inherit     = style/script
-interval    = 1
 
-[module/win]
-type        = custom/script
-exec        = $HOME/.config/polybar/scripts/windows
-click-left  = rofi -show window
-scroll-down = bspc node --focus prev
-scroll-up   = bspc node --focus next
-inherit     = style/script
-interval    = 1
-
-[module/bat]
+[module/battery]
 type    = custom/script
 exec    = $HOME/.config/polybar/scripts/battery
 inherit = style/script
 
-[module/bri]
+[module/brightness]
 type        = custom/script
 exec        = $HOME/.config/polybar/scripts/brightness
 scroll-down = xbacklight -dec 10
 scroll-up   = xbacklight -inc 10
 inherit     = style/script
-interval    = 1
 
-[module/vol]
+[module/volume]
 type        = custom/script
 exec        = $HOME/.config/polybar/scripts/volume
 click-left  = pulsemixer --toggle-mute
 scroll-down = pulsemixer --unmute --change-volume -5
 scroll-up   = pulsemixer --unmute --change-volume +5
 inherit     = style/script
-interval    = 1
 
-[module/wln]
+[module/wireless]
 type    = custom/script
 exec    = $HOME/.config/polybar/scripts/wlan
 inherit = style/script
 
-[module/eth]
+[module/ethernet]
 type    = custom/script
 exec    = $HOME/.config/polybar/scripts/ethernet
 inherit = style/script
 
-[module/dat]
-type       = custom/script
-exec       = $HOME/.config/polybar/scripts/date
-inherit    = style/script
+[module/date]
+type    = custom/script
+exec    = $HOME/.config/polybar/scripts/date
+inherit = style/script
 
-[module/tim]
+[module/time]
 type    = custom/script
 exec    = $HOME/.config/polybar/scripts/time
 inherit = style/script
