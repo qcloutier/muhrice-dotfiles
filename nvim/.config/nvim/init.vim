@@ -16,7 +16,6 @@ set listchars=tab:▏\  list
 " Delete trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
 
-
 " Install vim-plug if not present
 if empty(glob(system('printf $HOME').'/.local/share/nvim/site/autoload/plug.vim'))
 	silent !curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs
@@ -43,9 +42,11 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'tpope/vim-fugitive'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-rmarkdown'
 
 call plug#end()
-
 
 " Set a nice colourscheme
 colorscheme wal
@@ -63,7 +64,6 @@ hi link LspHintHighlight        Underlined
 hi link LspInformationHighlight Underlined
 hi link LspWarningHighlight     Underlined
 
-
 " List buffers on the tabline
 let g:airline#extensions#tabline#enabled=1
 set hidden
@@ -73,15 +73,17 @@ map <silent> <C-j> :bprevious<CR>
 map <silent> <C-k> :bnext<CR>
 map <silent> <C-x> :Bdelete<CR>
 
-
 " Comfy LaTeX editing
 let g:tex_flavor='latex'
 let g:vimtex_view_general_viewer='zathura'
 
+" Auto generate PDFs from R Markdown
+autocmd BufNewFile,BufFilePre,BufRead *.Rmd,*.rmd set filetype=rmarkdown
+autocmd BufWritePost *.Rmd,*.rmd :RMarkdown pdf
+
 " Quickly open a file browser
 let g:nnn#layout = { 'window': { 'width': 0.4, 'height': 0.6, 'highlight': 'Comment' } }
 map <silent> <C-q> :NnnPicker<CR>
-
 
 " Typical completion keybinds
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
