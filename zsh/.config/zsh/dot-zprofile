@@ -10,6 +10,7 @@ source $HOME/.zshenv
 (! pgrep -f ssh-agent && rm -f "$SSH_AUTH_SOCK" && eval $(ssh-agent -a "$SSH_AUTH_SOCK")) &> /dev/null
 
 # Present a session picker and power menu
+CTL="$(test -f /usr/bin/systemctl && echo systemctl || echo loginctl)"
 while true; do
 	print '\nChoose an option:\n\n' \
 		'1) Start X11\n' \
@@ -24,8 +25,8 @@ while true; do
 		1) startx &> /dev/null ;;
 		2) tmux ;;
 		3) exit ;;
-		4) qsuspend && sleep 5s ;;
-		5) qreboot && exit ;;
-		6) qpoweroff && exit ;;
+		4) sudo $CTL suspend ;;
+		5) sudo $CTL reboot ;;
+		6) sudo $CTL poweroff ;;
 	esac
 done

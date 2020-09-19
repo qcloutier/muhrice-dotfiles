@@ -19,7 +19,7 @@ super + BackSpace
 	loginctl lock-session
 
 super + shift + BackSpace
-	sudo systemctl suspend
+	test -f /usr/bin/systemctl && sudo systemctl suspend || sudo loginctl suspend
 
 # Screenshot
 super + p
@@ -98,13 +98,13 @@ super + ctrl + {h,j,k,l}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # Create a new tabbed
-super + alt + t
+super + shift + alt + t
 	. "$HOME/.config/sxhkd/tabs.sh" create
 
 # Insert into an existing tabbed
-super + alt + {h,j,k,l}
+super + shift + alt + {h,j,k,l}
 	. "$HOME/.config/sxhkd/tabs.sh" insert {west,south,north,east}
 
 # Remove from tabbed
-super + alt + r
+super + shift + alt + r
 	. "$HOME/.config/sxhkd/tabs.sh" remove
