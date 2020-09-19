@@ -30,4 +30,5 @@ export LESS_TERMCAP_us=$'\e[1;4;37m'
 
 # Various aliases
 [[ "$OSTYPE" == 'linux-gnu' ]] && alias ls='ls --color=auto' || alias ls='ls -G'
+alias calcurse="calcurse-caldav && calcurse && calcurse-caldav"
 alias vim=nvim
