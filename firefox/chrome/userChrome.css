@@ -1,3 +1,6 @@
+/* Blend the tabs in better with the tab bar */
+.tab-background-inner { background-color: #0c0c0d !important; }
+
 /* Make the tabs small */
 .tab-content {
   min-width: 4em !important;
@@ -25,6 +28,14 @@
 /* Hide useless stuff from the url bar */
 #identity-icon-label                { display: none !important; }
 #tracking-protection-icon-container { display: none !important; }
+
+/* Blend the url bar in better with the tab bar */
+#urlbar[breakout]  { top:              0.2em   !important; }
+#urlbar-background { background-color: #0c0c0d !important; }
+#urlbar-container  { min-width: unset          !important; }
+
+/* Dark loading pages */
+browser { background-color: #0d0d0d !important; }
 
 /* Blend the url bar in better with the tab bar */
 #urlbar[breakout]  { top:       0.2em !important; }

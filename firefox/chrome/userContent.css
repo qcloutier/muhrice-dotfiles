@@ -1,5 +1,12 @@
+/* Dark blank pages */
+@-moz-document url(about:blank), url-prefix(about:blank) {
+  html > body:empty { background-color: #0d0d0d !important; }
+}
+
 /* Background image on the new tab page */
-@-moz-document url(about:blank), url-prefix(about:blank), url(about:home), url(about:newtab) {
+@-moz-document url(about:blank), url(about:home), url(about:newtab) {
+  .activity-stream { background-color: #0d0d0d !important; }
+
   body::before {
     content: "";
     background: no-repeat url(../../../.config/background/blur.png) center ;
