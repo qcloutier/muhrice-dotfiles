@@ -6,6 +6,10 @@ super + Return
 super + shift + Return
 	firefox
 
+# File manager
+super + Tab
+	kitty vifm
+
 # Program menu
 super + a
 	. "$HOME/.config/rofi/program_menu.sh"
@@ -79,7 +83,7 @@ super + {_,shift + }{h,j,k,l}
 
 # Focus or shift a desktop
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+	bspc {desktop -f,node -d} 'focused:^{1-9,10}'
 
 # Preselect the direction to split
 super + {shift + v,s,shift + s,v}

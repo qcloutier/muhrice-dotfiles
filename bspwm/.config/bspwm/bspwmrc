@@ -1,7 +1,18 @@
 #!/bin/sh
 
 # Monitor settings
-[ -f $HOME/.config/bspwm/monitors ] && . $HOME/.config/bspwm/monitors
+#[ -f $HOME/.config/bspwm/monitors ] && . $HOME/.config/bspwm/monitors
+
+# Configure each monitor
+for MON in $(xrandr --query | grep ' connected' | awk '{print $1}' | tr -s '\n' ' '); do
+	bspc monitor "$MON" -d 1 2 3 4 5 6 7 8 9 0
+
+	if xrandr --query | grep "$MON connected primary"; then
+		bspc config -m "$MON" top_padding 30
+	else
+		bspc config -m "$MON" top_padding 0
+	fi
+done
 
 # Make using the mouse less annoying
 bspc config focus_follows_pointer true
