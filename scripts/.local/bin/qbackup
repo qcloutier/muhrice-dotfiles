@@ -1,7 +1,7 @@
 #!/bin/sh
 
-if test "$USER" != "root"; then
-	echo 'Must run as root'
+if test "$USER" = "root"; then
+	echo 'Must NOT run as root'
 	exit 1
 fi
 
