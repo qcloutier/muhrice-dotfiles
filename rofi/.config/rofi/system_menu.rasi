@@ -1,0 +1,26 @@
+configuration {
+	modi:            "dmenu";
+	font:            "sans Bold 9";
+	show-icons:      false;
+	lines:           7;
+	columns:         1;
+	disable-history: true;
+}
+
+* {
+	background-color: #00000000;
+	padding:          2;
+	text-color:       #bfbfbf;
+}
+
+window { width: 240px; }
+
+mainbox {
+	background-color: #0d0d0dee;
+	border:           1px;
+	border-color:     #595959;
+}
+
+element selected { background-color: #595959; }
+
+/* vim:ft=css
