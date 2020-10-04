@@ -1,24 +1,20 @@
 #!/bin/sh
 
-if ! command -v pulsemixer >/dev/null; then
-	exit 0
-fi
+command -v pulsemixer > /dev/null || exit
 
 if test "$(pulsemixer --get-mute)" -eq 1; then
-	printf '🔇 Vol MUT'
-	exit 0
+	printf '🔇'
+	exit
 fi
 
 VOL="$(pulsemixer --get-volume | awk '{print int(($1+$2)/2)}')"
 
 if   [ "$VOL" -le "30"  ]; then
-	ICON='🔈'
+	printf '🔈'
 elif [ "$VOL" -le "70"  ]; then
-	ICON='🔉'
+	printf '🔉'
 elif [ "$VOL" -le "100" ]; then
-	ICON='🔊'
+	printf '🔊'
 else
-	ICON='❗'
+	printf '📢'
 fi
-
-printf "$ICON Vol $VOL%%"
