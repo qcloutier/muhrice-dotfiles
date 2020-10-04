@@ -1,0 +1,28 @@
+#!/bin/sh
+
+if test "$USER" != "root"; then
+	echo 'Must run as root'
+	exit 1
+fi
+
+if command -v pacman; then
+	pacman -Rns $(pacman -Qtdq)
+	paccache -rk1
+	paccache -ruk0
+fi
+
+if command -v emerge; then
+	emerge -aqc
+	eclean-pkg
+	eclean-kernel -n 1
+fi
+
+if command -v xbps-remove; then
+	xbps-remove -o
+	xbps-remove -O
+	vkpurge rm all
+fi
+
+if command -v flatpak; then
+	flatpak uninstall --unused
+fi

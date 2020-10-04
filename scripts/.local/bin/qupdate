@@ -1,0 +1,32 @@
+#!/bin/sh
+
+if test "$USER" != "root"; then
+	echo 'Must run as root'
+	exit 1
+fi
+
+if command -v pacman; then
+	pacman -Syu
+fi
+
+if command -v emerge; then
+	emaint -a sync
+	layman -S
+
+	read -p 'Update portage? (y/N) ' yn
+	test "$yn" = 'y' && emerge -aq1 sys-apps/portage
+
+	emerge -aquDNU @world
+	emerge -aq @module-rebuild
+
+	version=$(readlink -f /usr/src/linux | cut -d '-' -f 2)-gentoo
+	dracut --force --hostonly /boot/initramfs-$version.img $version
+fi
+
+if command -v xbps-install; then
+	xbps-install -Su
+fi
+
+if command -v flatpak; then
+	flatpak update
+fi
