@@ -17,8 +17,8 @@ CTL="$(command -v systemctl > /dev/null && echo systemctl || echo loginctl)"
 case $SEL in
 	$LCK)   loginctl lock-session ;;
 	$EXT)   bspc quit ;;
-	$UPDT)  $TERMINAL qupdate ;;
-	$BCKP)  $TERMINAL qbackup ;;
+	$UPDT)  $TERMINAL sudo qupdate ;;
+	$BCKP)  $TERMINAL sudo qbackup ;;
 	$SSPND) sudo $CTL suspend ;;
 	$RBT)   sudo $CTL reboot ;;
 	$PWRFF) sudo $CTL poweroff ;;
