@@ -1,5 +1,5 @@
 configuration {
-	modi:            "windowcd";
+	modi:            "window";
 	font:            "sans Bold 9";
 	show-icons:      true;
 	icon-theme:      "breeze-dark";
