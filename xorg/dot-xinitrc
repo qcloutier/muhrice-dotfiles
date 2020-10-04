@@ -28,18 +28,15 @@ xsetroot -cursor_name left_ptr
 feh --no-fehbg --bg-fill $HOME/.config/background/normal.png
 
 # Notifications, compositing, statusline, hotkeys
-dunst & picom & polybar top & sxhkd &
+dunst & picom & yabar & sxhkd &
+
+# Statusline that crashes a lot
+(yabar; while [ "$?" != "0" ]; do yabar; done) &
 
 # Lock screen when inactive
 xset s 540s 60s
 (xss-lock --notifier 'notify-send "Session will autolock soon"' slock) &
-
-# Inhibit autolock when fullscreen
 caffeine &
-
-# Pair with other devices
-/usr/lib/kdeconnectd &
-kdeconnect-indicator &
 
 # Window manager
 exec bspwm

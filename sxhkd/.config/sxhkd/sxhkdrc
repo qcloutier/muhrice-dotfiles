@@ -6,20 +6,24 @@ super + Return
 super + shift + Return
 	firefox
 
-# Program list
+# Program menu
 super + a
-	rofi -show drun
+	. "$HOME/.config/rofi/program_menu.sh"
 
-# Window switcher
+# Window list
 super + s
-	rofi -show window
+	. "$HOME/.config/rofi/window_list.sh"
+
+# System menu
+super + e
+	. "$HOME/.config/rofi/system_menu.sh"
 
 # Lock screen
 super + BackSpace
 	loginctl lock-session
 
 super + shift + BackSpace
-	test -f /usr/bin/systemctl && sudo systemctl suspend || sudo loginctl suspend
+	command -v systemctl && sudo systemctl suspend || sudo loginctl suspend
 
 # Screenshot
 super + p
@@ -45,12 +49,16 @@ XF86AudioRaiseVolume
 Caps_Lock
 	setxkbmap -option caps:swapescape
 
-# Quit or restart bspwm and sxhkd
-super + ctrl + {e,r}
-	bspc {quit,wm -r && pkill -USR1 -x sxhkd}
+# Toggle the statusbar
+super + ctrl + b
+	killall yabar || sh -c '(yabar; while [ "$?" != "0" ]; do yabar; done) &'
+
+# Restart bspwm and sxhkd
+super + ctrl + r
+	bspc wm -r && pkill -USR1 -x sxhkd
 
 # Close or kill a node
-super + {_,shift +}q
+super + shift + {_,ctrl +}q
 	bspc node -{c,k}
 
 # Toggle monocle mode
@@ -98,13 +106,13 @@ super + ctrl + {h,j,k,l}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # Create a new tabbed
-super + shift + alt + t
+super + alt + t
 	. "$HOME/.config/sxhkd/tabs.sh" create
 
 # Insert into an existing tabbed
-super + shift + alt + {h,j,k,l}
+super + alt + {h,j,k,l}
 	. "$HOME/.config/sxhkd/tabs.sh" insert {west,south,north,east}
 
 # Remove from tabbed
-super + shift + alt + r
+super + alt + r
 	. "$HOME/.config/sxhkd/tabs.sh" remove
