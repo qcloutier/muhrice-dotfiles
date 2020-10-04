@@ -10,7 +10,7 @@ PWRFF="⬇️ Power off"
 
 OPTS="$LCK\n$EXT\n$UPDT\n$BCKP\n$SSPND\n$RBT\n$PWRFF"
 
-SEL="$(echo "$OPTS" | rofi -dmenu -p "System" -theme $HOME/.config/rofi/system_menu.rasi)"
+SEL="$(echo "$OPTS" | rofi -dmenu -p "System" -location 3 -yoffset 30 -theme $HOME/.config/rofi/system_menu.rasi)"
 
 CTL="$(command -v systemctl > /dev/null && echo systemctl || echo loginctl)"
 

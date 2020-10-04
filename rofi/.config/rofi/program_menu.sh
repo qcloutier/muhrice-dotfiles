@@ -1,3 +1,3 @@
 #!/bin/sh
 
-rofi -show drun -theme $HOME/.config/rofi/program_menu.rasi
+rofi -show drun -location 1 -m primary -yoffset 30 -theme $HOME/.config/rofi/program_menu.rasi
