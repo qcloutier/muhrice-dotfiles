@@ -31,7 +31,7 @@ feh --no-fehbg --bg-fill $HOME/.config/background/normal.png
 dunst & picom & yabar & sxhkd &
 
 # Statusline that crashes a lot
-(yabar; while [ "$?" != "0" ]; do yabar; done) &
+(false; while [ "$?" != "0" ]; do bspc wm -r & yabar; done; bspc wm -r) &
 
 # Lock screen when inactive
 xset s 540s 60s

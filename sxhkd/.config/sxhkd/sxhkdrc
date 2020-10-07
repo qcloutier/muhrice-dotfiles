@@ -55,7 +55,7 @@ Caps_Lock
 
 # Toggle the statusbar
 super + ctrl + b
-	killall yabar || sh -c '(yabar; while [ "$?" != "0" ]; do yabar; done) &'
+	killall yabar || sh -c '(false; while [ "$?" != "0" ]; do bspc wm -r & yabar; done; bspc wm -r) &'
 
 # Restart bspwm and sxhkd
 super + ctrl + r
