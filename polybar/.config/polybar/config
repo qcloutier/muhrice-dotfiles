@@ -54,13 +54,13 @@ inherit    = style/script
 [module/date]
 type       = custom/script
 exec       = $HOME/.config/polybar/date.sh
-click-left = kitty calcurse
+click-left = kitty calendar
 inherit    = style/script
 
 [module/time]
 type       = custom/script
 exec       = $HOME/.config/polybar/time.sh
-click-left = kitty calcurse
+click-left = kitty calendar
 inherit    = style/script
 
 [module/notifications]

@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Local programs and scripts
-export PATH="$PATH:$HOME/.local/bin/"
+export PATH="$HOME/.local/bin:$PATH"
 
 # Global Tex Live installation
 export PATH="$PATH:/usr/local/texlive/2020/bin/x86_64-linux/"
@@ -30,5 +30,4 @@ export LESS_TERMCAP_us=$'\e[1;4;37m'
 
 # Various aliases
 [[ "$OSTYPE" == 'linux-gnu' ]] && alias ls='ls --color=auto' || alias ls='ls -G'
-alias calcurse="calcurse-caldav && calcurse && calcurse-caldav"
 alias vim=nvim
