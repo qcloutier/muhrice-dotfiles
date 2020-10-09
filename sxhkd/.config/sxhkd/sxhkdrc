@@ -35,19 +35,19 @@ super + p
 
 # Brightness down
 XF86MonBrightnessDown
-	xbacklight -dec 10
+	xbacklight -dec 10 && polybar-msg -p $(pidof polybar) hook brightness 1
 
 # Brightness up
 XF86MonBrightnessUp
-	xbacklight -inc 10
+	xbacklight -inc 10 && polybar-msg -p $(pidof polybar) hook brightness 1
 
 # Volume down
 XF86AudioLowerVolume
-	pulsemixer --unmute --change-volume -5
+	pulsemixer --unmute --change-volume -5 && polybar-msg -p $(pidof polybar) hook volume 1
 
 # Volume up
 XF86AudioRaiseVolume
-	pulsemixer --unmute --change-volume +5
+	pulsemixer --unmute --change-volume +5 && polybar-msg -p $(pidof polybar) hook volume 1
 
 # Ensure caps lock stays mapped to escape
 Caps_Lock
@@ -55,7 +55,7 @@ Caps_Lock
 
 # Toggle the statusbar
 super + ctrl + b
-	killall yabar || sh -c '(false; while [ "$?" != "0" ]; do bspc wm -r & yabar; done; bspc wm -r) &'
+	polybar-msg cmd toggle
 
 # Restart bspwm and sxhkd
 super + ctrl + r

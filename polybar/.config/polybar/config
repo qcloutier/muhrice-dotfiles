@@ -1,0 +1,122 @@
+# vim:ft=dosini
+
+[colours]
+black      = #ee0d0d0d
+dark_grey  = #595959
+light_grey = #bfbfbf
+white      = #f2f2f2
+
+[style/text]
+content-foreground = ${colours.light_grey}
+content-padding    = 2
+
+[style/script]
+format-foreground = ${colours.light_grey}
+format-padding    = 2
+
+[style/ipc]
+format-foreground = ${colours.light_grey}
+format-padding    = 2
+
+[settings]
+screenchange-reload = true
+
+[bar/top]
+width          = 100%
+height         = 28
+background     = ${colours.black}
+foreground     = ${colours.dark_grey}
+font-0         = Noto Sans:size=9:weight=bold;2
+font-1         = Noto Sans CJK JP:size=9:weight=bold;2
+font-2         = Noto Color Emoji:scale=11:weight=bold;2
+font-3         = DejaVu Sans:size=9:weight=bold;2
+border-size    = 0
+border-color   = ${colours.black}
+modules-left   = applications window
+modules-center = date time notifications
+modules-right  = battery brightness wireless ethernet volume music system
+wm-restack     = bspwm
+enable-ipc     = true
+
+[module/applications]
+type       = custom/text
+content    = Applications
+click-left = $HOME/.config/rofi/program_menu.sh
+inherit    = style/text
+
+[module/window]
+type       = custom/script
+exec       = $HOME/.config/polybar/window.sh
+interval   = 1
+click-left = $HOME/.config/rofi/window_list.sh
+inherit    = style/script
+
+[module/date]
+type       = custom/script
+exec       = $HOME/.config/polybar/date.sh
+click-left = kitty calcurse
+inherit    = style/script
+
+[module/time]
+type       = custom/script
+exec       = $HOME/.config/polybar/time.sh
+click-left = kitty calcurse
+inherit    = style/script
+
+[module/notifications]
+type        = custom/ipc
+hook-0      = $HOME/.config/polybar/notifications.sh
+initial     = 1
+click-left  = dunstctl history-pop; polybar-msg -p %pid% hook notifications 1
+click-right = dunstctl set-paused toggle; polybar-msg -p %pid% hook notifications 1
+inherit     = style/ipc
+
+[module/battery]
+type    = custom/script
+exec    = $HOME/.config/polybar/battery.sh
+inherit = style/script
+
+[module/brightness]
+type        = custom/ipc
+hook-0      = $HOME/.config/polybar/brightness.sh
+initial     = 1
+scroll-down = xbacklight -dec 10; polybar-msg -p %pid% hook brightness 1
+scroll-up   = xbacklight -inc 10; polybar-msg -p %pid% hook brightness 1
+inherit     = style/ipc
+
+[module/wireless]
+type       = custom/script
+exec       = $HOME/.config/polybar/wireless.sh
+click-left = kitty -o initial_window_height=20c -o initial_window_width=80c nmtui
+inherit    = style/script
+
+[module/ethernet]
+type       = custom/script
+exec       = $HOME/.config/polybar/ethernet.sh
+click-left = kitty -o initial_window_height=20c -o initial_window_width=80c nmtui
+inherit    = style/script
+
+[module/volume]
+type        = custom/ipc
+hook-0      = $HOME/.config/polybar/volume.sh
+initial     = 1
+click-left  = kitty -o initial_window_height=20c -o initial_window_width=80c pulsemixer
+click-right = pulsemixer --toggle-mute; polybar-msg -p %pid% hook volume 1
+scroll-down = pulsemixer --unmute --change-volume -5; polybar-msg -p %pid% hook volume 1
+scroll-up   = pulsemixer --unmute --change-volume +5; polybar-msg -p %pid% hook volume 1
+inherit     = style/ipc
+
+[module/music]
+type        = custom/text
+content     = 🎧
+click-left  = kitty ncmpcpp
+click-right = mpc toggle
+scroll-down = mpc prev
+scroll-up   = mpc next
+inherit     = style/text
+
+[module/system]
+type       = custom/text
+content    = 💻
+click-left = $HOME/.config/rofi/system_menu.sh
+inherit    = style/text

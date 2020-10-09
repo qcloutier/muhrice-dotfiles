@@ -28,10 +28,7 @@ xsetroot -cursor_name left_ptr
 feh --no-fehbg --bg-fill $HOME/.config/background/normal.png
 
 # Notifications, compositing, statusline, hotkeys
-dunst & picom & yabar & sxhkd &
-
-# Statusline that crashes a lot
-(false; while [ "$?" != "0" ]; do bspc wm -r & yabar; done; bspc wm -r) &
+dunst & picom & polybar top & sxhkd &
 
 # Lock screen when inactive
 xset s 540s 60s
