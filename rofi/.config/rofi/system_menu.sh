@@ -19,7 +19,7 @@ case $SEL in
 	$LCK)   loginctl lock-session ;;
 	$EXT)   bspc quit ;;
 	$UPDT)  $TERMINAL sudo qupdate ;;
-	$CLN)   $TERMINAL qclean ;;
+	$CLN)   $TERMINAL sudo qclean ;;
 	$BCKP)  $TERMINAL sudo qbackup ;;
 	$SSPND) sudo $CTL suspend ;;
 	$RBT)   sudo $CTL reboot ;;
