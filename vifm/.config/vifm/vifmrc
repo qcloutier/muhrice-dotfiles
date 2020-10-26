@@ -1,6 +1,8 @@
 " vim:ft=vim
 
 " Basic settings
+only
+screen!
 set history=100
 set ignorecase
 set incsearch
@@ -24,28 +26,21 @@ set vimhelp
 set wildmenu
 set wildstyle=popup
 
-" File previews
-fileviewer *.pdf pdftotext -nopgbrk %c
-fileviewer *.tar tar -tf %c
-fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
-fileviewer *.tar.txz,*.txz xz --list %c
-fileviewer *.tgz,*.tar.gz tar -tzf %c
-
 " File openers
-filextype *.aac,*.flac,*.m4a,*.mp3,*.ogg,*.opus,*.wav,*.wma mpv %f &
-filextype *.avi,*.mp4,*.wmv,*.mkv,*.mpg,*.mpeg,*.mov,*.webm,*.m4v mpv %f &
-filextype *.bmp,*.gif,*.jpg,*.jpeg,*.png feh %f &
-filextype *.djvu,*.epub,*.pdf,*.ps,*.ps.gz zathura %f &
-filextype *.doc,*.docx,*.odp,*.ods,*.odt,*.ppt,*.pptx,*.xls,*.xlsx, libreoffice %f &
-filextype *.html,*.htm firefox %f &
+filetype *.aac,*.flac,*.m4a,*.mp3,*.ogg,*.opus,*.wav,*.wma        kitty mpv   %f 2>/dev/null &
+filetype *.avi,*.mp4,*.wmv,*.mkv,*.mpg,*.mpeg,*.mov,*.webm,*.m4v  mpv         %f 2>/dev/null &
+filetype *.bmp,*.gif,*.jpg,*.jpeg,*.png                           feh         %f 2>/dev/null &
+filetype *.djvu,*.epub,*.pdf,*.ps,*.ps.gz                         zathura     %f 2>/dev/null &
+filetype *.doc,*.docx,*.odp,*.ods,*.odt,*.ppt,*.pptx,*.xls,*.xlsx libreoffice %f 2>/dev/null &
+filetype *.html,*.htm                                             firefox     %f 2>/dev/null &
 
 " Colourscheme tweaks
-highlight Border cterm=none ctermfg=none ctermbg=none
-highlight CmdLine cterm=none ctermfg=white ctermbg=none
-highlight JobLine cterm=bold ctermfg=white ctermbg=none
+highlight Border     cterm=none ctermfg=none  ctermbg=none
+highlight CmdLine    cterm=none ctermfg=white ctermbg=none
+highlight JobLine    cterm=bold ctermfg=white ctermbg=none
 highlight StatusLine cterm=bold ctermfg=white ctermbg=none
-highlight TabLine cterm=none ctermfg=white ctermbg=none
+highlight TabLine    cterm=none ctermfg=white ctermbg=none
 highlight TabLineSel cterm=bold ctermfg=white ctermbg=none
-highlight TopLine cterm=none ctermfg=white ctermbg=none
+highlight TopLine    cterm=none ctermfg=white ctermbg=none
 highlight TopLineSel cterm=bold ctermfg=white ctermbg=none
-highlight Win cterm=none ctermfg=white ctermbg=none
+highlight Win        cterm=none ctermfg=white ctermbg=none
