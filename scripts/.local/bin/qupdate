@@ -13,14 +13,8 @@ if command -v emerge; then
 	emaint -a sync
 	layman -S
 
-	read -p 'Update portage? (y/N) ' yn
-	test "$yn" = 'y' && emerge -aq1 sys-apps/portage
-
 	emerge -aquDNU @world
 	emerge -aq @module-rebuild
-
-	version=$(readlink -f /usr/src/linux | cut -d '-' -f 2)-gentoo
-	dracut --force --hostonly /boot/initramfs-$version.img $version
 fi
 
 if command -v xbps-install; then
