@@ -29,6 +29,7 @@ user_interface               = alternative
 # Miscellaneous
 external_editor    = nvim
 use_console_editor = yes
+mpd_crossfade_time = "1"
 
 # Visualizer
 visualizer_color         = blue, cyan, green, yellow, magenta, red
