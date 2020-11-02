@@ -27,12 +27,12 @@ set wildmenu
 set wildstyle=popup
 
 " File openers
-filetype *.aac,*.flac,*.m4a,*.mp3,*.ogg,*.opus,*.wav,*.wma        kitty mpv   %f 2>/dev/null &
-filetype *.avi,*.mp4,*.wmv,*.mkv,*.mpg,*.mpeg,*.mov,*.webm,*.m4v  mpv         %f 2>/dev/null &
-filetype *.bmp,*.gif,*.jpg,*.jpeg,*.png                           feh         %f 2>/dev/null &
-filetype *.djvu,*.epub,*.pdf,*.ps,*.ps.gz                         zathura     %f 2>/dev/null &
-filetype *.doc,*.docx,*.odp,*.ods,*.odt,*.ppt,*.pptx,*.xls,*.xlsx libreoffice %f 2>/dev/null &
-filetype *.html,*.htm                                             firefox     %f 2>/dev/null &
+filetype *.aac,*.flac,*.m4a,*.mp3,*.ogg,*.opus,*.wav,*.wma        alacritty mpv %f 2>/dev/null &
+filetype *.avi,*.mp4,*.wmv,*.mkv,*.mpg,*.mpeg,*.mov,*.webm,*.m4v  mpv           %f 2>/dev/null &
+filetype *.bmp,*.gif,*.jpg,*.jpeg,*.png,*.svg                     pqiv          %f 2>/dev/null &
+filetype *.djvu,*.epub,*.pdf,*.ps,*.ps.gz                         zathura       %f 2>/dev/null &
+filetype *.doc,*.docx,*.odp,*.ods,*.odt,*.ppt,*.pptx,*.xls,*.xlsx libreoffice   %f 2>/dev/null &
+filetype *.html,*.htm                                             firefox       %f 2>/dev/null &
 
 " Colourscheme tweaks
 highlight Border     cterm=none ctermfg=none  ctermbg=none
