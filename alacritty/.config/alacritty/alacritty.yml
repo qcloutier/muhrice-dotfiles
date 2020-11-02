@@ -1,0 +1,42 @@
+env:
+  TERM: xterm-256color
+  WINIT_X11_SCALE_FACTOR: '1'
+
+window:
+  dimensions:
+    columns: 120
+    lines: 30
+  gtk_theme_variant: dark
+
+scrolling:
+  history: 0
+
+font:
+  offset:
+    y: -1
+  glyph_offset:
+    y: -1
+  size: 9.0
+
+colors:
+  primary:
+    background: '#1d1f21'
+    foreground: '#c5c8c6'
+  normal:
+    black:   '#1d1f21'
+    red:     '#d54e53'
+    green:   '#b9ca4a'
+    yellow:  '#e7c547'
+    blue:    '#7aa6da'
+    magenta: '#c397d8'
+    cyan:    '#70c0b1'
+    white:   '#c5c8c6'
+  bright:
+    black:   '#666666'
+    red:     '#d54e53'
+    green:   '#b9ca4a'
+    yellow:  '#e7c547'
+    blue:    '#7aa6da'
+    magenta: '#c397d8'
+    cyan:    '#70c0b1'
+    white:   '#eaeaea'
