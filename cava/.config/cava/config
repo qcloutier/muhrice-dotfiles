@@ -12,6 +12,6 @@ method = ncurses
 
 [color]
 gradient         = 1
-gradient_color_1 = '#33ccff'
-gradient_color_2 = '#ff66ff'
+gradient_color_1 = '#70c0b1'
+gradient_color_2 = '#c397d8'
 gradient_count   = 2

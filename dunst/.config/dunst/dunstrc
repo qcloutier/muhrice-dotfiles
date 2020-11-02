@@ -4,10 +4,10 @@
 alignment          = center
 font               = sans 9
 format             = "<b>%s</b>\n%b"
-frame_color        = "#595959"
+frame_color        = "#666666"
 frame_width        = 1
 geometry           = "340x60-24+48"
-history_length     = 20
+history_length     = 30
 horizontal_padding = 4
 icon_path          = /usr/share/icons/breeze-dark/status/16:/usr/share/icons/breeze-dark/devices/16
 icon_position      = left
@@ -27,16 +27,16 @@ context   = mod4+comma
 history   = mod4+grave
 
 [urgency_low]
-background  = "#0d0d0d"
-foreground  = "#f2f2f2"
+background  = "#1d1f21"
+foreground  = "#c5c8c6"
 timeout     = 5
 
 [urgency_normal]
-background  = "#0d0d0d"
-foreground  = "#f2f2f2"
+background  = "#1d1f21"
+foreground  = "#c5c8c6"
 timeout     = 10
 
 [urgency_critical]
-background  = "#0d0d0d"
-foreground  = "#f2f2f2"
+background  = "#1d1f21"
+foreground  = "#c5c8c6"
 timeout     = 15

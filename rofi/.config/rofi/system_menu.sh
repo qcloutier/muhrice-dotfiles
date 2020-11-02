@@ -11,13 +11,15 @@ PWRFF="⬇️ Power off"
 
 OPTS="$LCK\n$EXT\n$UPDT\n$CLN\n$BCKP\n$SSPND\n$RBT\n$PWRFF"
 
-SEL="$(printf "$OPTS" | rofi -dmenu -p "System" -m primary -location 3 -yoffset 28 -theme $HOME/.config/rofi/system_menu.rasi)"
+SEL="$(printf "$OPTS" | rofi -dmenu -p "system" -m primary \
+	-location 3 -xoffset 2 -yoffset 22 \
+	-theme $HOME/.config/rofi/system_menu.rasi)"
 
 CTL="$(command -v systemctl > /dev/null && echo systemctl || echo loginctl)"
 
 case $SEL in
 	$LCK)   loginctl lock-session ;;
-	$EXT)   bspc quit ;;
+	$EXT)   i3-msg exit ;;
 	$UPDT)  $TERMINAL sudo qupdate ;;
 	$CLN)   $TERMINAL sudo qclean ;;
 	$BCKP)  $TERMINAL sudo qbackup ;;

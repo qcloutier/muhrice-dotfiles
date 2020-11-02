@@ -11,19 +11,22 @@ configuration {
 * {
 	background-color: #00000000;
 	padding:          2;
-	text-color:       #bfbfbf;
+	text-color:       #c5c8c6;
 }
 
 window { width: 720px;}
 
 mainbox {
-	background-color: #0d0d0dee;
+	background-color: #1d1f21;
 	border:           1px;
-	border-color:     #595959;
+	border-color:     #666666;
 }
 
-element selected { background-color: #595959; }
 element-icon     { size:             4ch;     }
 element-text     { vertical-align:   0.5;     }
+element selected {
+	background-color: #666666;
+	text-color:       #eaeaea;
+}
 
 /* vim:ft=css
