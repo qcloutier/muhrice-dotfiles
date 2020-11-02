@@ -20,9 +20,9 @@ CTL="$(command -v systemctl > /dev/null && echo systemctl || echo loginctl)"
 case $SEL in
 	$LCK)   loginctl lock-session ;;
 	$EXT)   i3-msg exit ;;
-	$UPDT)  $TERMINAL sudo qupdate ;;
-	$CLN)   $TERMINAL sudo qclean ;;
-	$BCKP)  $TERMINAL sudo qbackup ;;
+	$UPDT)  $TERMINAL -e sudo qupdate ;;
+	$CLN)   $TERMINAL -e sudo qclean ;;
+	$BCKP)  $TERMINAL -e sudo qbackup ;;
 	$SSPND) sudo $CTL suspend ;;
 	$RBT)   sudo $CTL reboot ;;
 	$PWRFF) sudo $CTL poweroff ;;
