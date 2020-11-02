@@ -7,33 +7,17 @@ export XDG_DATA_DIRS="$HOME/.local/share/applications:$XDG_DATA_DIRS"
 [ -f $HOME/.xprofile ] && . $HOME/.xprofile
 
 # GTK and QT theming
-export GTK2_RC_FILES=$HOME/.config/gtk-2.0/gtkrc-2.0
+export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export QT_QPA_PLATFORMTHEME=qt5ct
 xsettingsd &
-
-# Session bus
-export $(dbus-launch)
-
-# Swap caps lock and escape keys
-setxkbmap -option caps:swapescape
-
-# Set global mouse cursor theme
 xrdb << EOF
 Xcursor.theme: Adwaita
 Xcursor.size: 16
 EOF
 xsetroot -cursor_name left_ptr
 
-# Desktop background
-feh --no-fehbg --bg-fill $HOME/.config/background/normal.png
-
-# Notifications, compositing, statusline, hotkeys
-dunst & picom & polybar top & sxhkd &
-
-# Lock screen when inactive
-xset s 540s 60s
-(xss-lock --notifier 'notify-send "Session will autolock soon"' slock) &
-caffeine &
+# Session bus
+export $(dbus-launch)
 
 # Window manager
-exec bspwm
+exec i3
