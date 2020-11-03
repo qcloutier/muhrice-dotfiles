@@ -10,20 +10,20 @@ configuration {
 * {
 	background-color: #00000000;
 	padding:          2;
-	text-color:       #c5c8c6;
+	text-color:       #bfbfbf;
 }
 
 window { width: 240px; }
 
 mainbox {
-	background-color: #1d1f21;
+	background-color: #0d0d0dfb;
 	border:           1px;
-	border-color:     #666666;
+	border-color:     #333333;
 }
 
 element selected {
-	background-color: #666666;
-	text-color:       #eaeaea;
+	background-color: #333333fb;
+	text-color:       #f2f2f2;
 }
 
 
