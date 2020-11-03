@@ -28,6 +28,7 @@ set $mod Mod4
 
 # Do stuff with the mouse
 floating_modifier $mod
+bindsym --release button2 kill
 
 # Focus node
 bindsym $mod+h focus left
@@ -65,7 +66,7 @@ bindsym $mod+g focus mode_toggle
 
 # Toggle floating
 bindsym $mod+f floating enable
-bindsym $mod+t floating disable
+bindsym $mod+t floating disable, border pixel 1
 
 # Toggle sticky
 bindsym $mod+o sticky toggle
@@ -136,23 +137,15 @@ bindsym Caps_Lock exec --no-startup-id setxkbmap -option caps:swapescape
 
 # RULES
 
-# Floating windows with titlebars
-set $fn_cmd   floating enable, border normal 1
-set $fn_class "Arandr|qt5ct"
-set $fn_role  "About|bubble|Organizer|pop-up|Preferences|task_dialog"
-set $fn_type  "dialog|menu"
-for_window [class=$fn_class]      $fn_cmd
-for_window [window_role=$fn_role] $fn_cmd
-for_window [window_type=$fn_type] $fn_cmd
+# Float and decorate all windows by default
+for_window [class="[.]*"] floating enable, border normal 1
 
-# Floating windows without titlebars
-set $fp_cmd   floating enable, border pixel 1
-set $fp_class "Flatseal"
-set $fp_role  "null"
-set $fp_type  "null"
-for_window [class=$fp_class]      $fp_cmd
-for_window [window_role=$fp_role] $fp_cmd
-for_window [window_type=$fp_type] $fp_cmd
+# Undecorate certain applications
+for_window [class="Alacritty|Chromium|Firefox|Flatseal|Teams|Steam"] border pixel 1
+
+# Redecorate dialogs from the above
+for_window [window_role="About|Dialog|Organizer|Preferences"] border normal 1
+for_window [window_type="dialog|menu"]                        border normal 1
 
 
 # THEMING
