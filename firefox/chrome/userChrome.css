@@ -35,7 +35,7 @@
 #urlbar-container  { min-width: unset          !important; }
 
 /* Dark loading pages */
-browser { background-color: #0d0d0d !important; }
+browser { background-color: #2a2a2e !important; }
 
 /* Blend the url bar in better with the tab bar */
 #urlbar[breakout]  { top:       0.2em !important; }
