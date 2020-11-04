@@ -158,7 +158,7 @@ hide_edge_borders       both
 title_align             center
 
 # Colourscheme
-client.focused          #303030 #303030 #e8e8e7 #e8e8e7 #303030
-client.focused_inactive #343434 #343434 #8e8e8d #8e8e8d #343434
-client.unfocused        #343434 #343434 #8e8e8d #8e8e8d #343434
-client.urgent           #303030 #303030 #e8e8e7 #e8e8e7 #303030
+client.focused          #070707 #282828 #eeeeec #070707 #070707
+client.focused_inactive #202020 #353535 #919190 #202020 #202020
+client.unfocused        #202020 #353535 #919190 #202020 #202020
+client.urgent           #070707 #282828 #eeeeec #070707 #070707
