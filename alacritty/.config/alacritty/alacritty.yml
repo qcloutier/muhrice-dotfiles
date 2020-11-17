@@ -20,25 +20,25 @@ font:
 
 colors:
   primary:
-    background: '#1d1f21'
-    foreground: '#c5c8c6'
+    background: '#2d2d2d'
+    foreground: '#eeeeec'
   normal:
-    black:   '#1d1f21'
+    black:   '#2d2d2d'
     red:     '#d54e53'
     green:   '#b9ca4a'
     yellow:  '#e7c547'
     blue:    '#7aa6da'
     magenta: '#c397d8'
     cyan:    '#70c0b1'
-    white:   '#c5c8c6'
+    white:   '#eeeeec'
   bright:
-    black:   '#666666'
+    black:   '#919190'
     red:     '#d54e53'
     green:   '#b9ca4a'
     yellow:  '#e7c547'
     blue:    '#7aa6da'
     magenta: '#c397d8'
     cyan:    '#70c0b1'
-    white:   '#eaeaea'
+    white:   '#eeeeec'
 
 background_opacity: 0.98
