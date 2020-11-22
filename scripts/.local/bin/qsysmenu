@@ -1,0 +1,25 @@
+#!/bin/sh
+
+LCK="🔒 Lock screen"
+EXT="👋 Exit sway"
+UPDT="📦 Update"
+CLN="🛀 Clean"
+BCKP="🔙 Backup"
+SSPND="😴 Suspend"
+RBT="↪️ Reboot"
+PWRFF="⬇️ Power off"
+
+OPTS="$LCK\n$EXT\n$UPDT\n$CLN\n$BCKP\n$SSPND\n$RBT\n$PWRFF"
+
+SEL="$(printf "$OPTS" | wofi --dmenu -p "system" -m primary)"
+
+case $SEL in
+	$LCK)   swaylock ;;
+	$EXT)   swaymsg exit ;;
+	$UPDT)  $TERMINAL -e qupdate ;;
+	$CLN)   $TERMINAL -e sudo qclean ;;
+	$BCKP)  $TERMINAL -e sudo qbackup ;;
+	$SSPND) sudo systemctl suspend ;;
+	$RBT)   sudo systemctl reboot ;;
+	$PWRFF) sudo systemctl poweroff ;;
+esac
