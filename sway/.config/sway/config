@@ -1,0 +1,194 @@
+# AUTOSTART
+
+# Autotiling
+exec autotiling
+
+# Output manager
+exec_always pkill kanshi; exec kanshi
+
+# Status bar
+exec waybar
+
+# Notifications
+exec mako
+
+# Screen locker
+exec_always {
+	swayidle -w timeout 270  'notify-send "Session will autolock soon"'
+	swayidle -w timeout 300  'swaylock -f -c 000000'
+		resume 'swaymsg "output * dpms on"'
+	swayidle -w before-sleep 'swaylock -f -c 000000'
+}
+
+
+# INPUT
+
+# Keyboard
+input "type:keyboard" {
+	repeat_delay 300
+	repeat_rate  50
+	xkb_options  caps:swapescape
+}
+
+# Touchpad
+input "type:touchpad" {
+	natural_scroll disabled
+	pointer_accel  0.4
+	tap            enabled
+}
+
+
+# KEYBINDS
+
+# Super key as modifier
+set $mod Mod4
+
+# Do stuff with the mouse
+floating_modifier $mod
+bindsym --release button2 kill
+
+# Focus node
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Traverse the hierarchy
+bindsym $mod+u focus parent
+bindsym $mod+d focus child
+
+# Move node
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Resize node
+bindsym $mod+less    resize shrink width  10 px or 10 ppt
+bindsym $mod+greater resize grow   width  10 px or 10 ppt
+bindsym $mod+minus   resize shrink height 10 px or 10 ppt
+bindsym $mod+plus    resize grow   height 10 px or 10 ppt
+
+# Set split direction
+bindsym $mod+s split v
+bindsym $mod+v split h
+
+# Set layout
+bindsym $mod+e layout toggle split
+bindsym $mod+n layout stacking
+bindsym $mod+m layout tabbed
+
+# Switch layer focus
+bindsym $mod+g focus mode_toggle
+
+# Toggle borders
+bindsym $mod+b border toggle
+
+# Toggle floating
+bindsym $mod+f floating enable
+bindsym $mod+t floating disable
+
+# Toggle sticky
+bindsym $mod+o sticky toggle
+
+# Toggle fullscreen
+bindsym $mod+z fullscreen toggle
+
+# Close a window
+bindsym $mod+Shift+x kill
+
+# Scratchpad
+bindsym $mod+y move scratchpad
+bindsym $mod+p scratchpad show
+
+# Switch workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 0
+
+# Move container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 0
+
+# Adjust gaps
+bindsym $mod+bracketleft  gaps inner current plus  5
+bindsym $mod+bracketright gaps inner current minus 5
+
+# Reload and restart sway
+bindsym $mod+Control+r reload, restart
+
+# Start a terminal
+bindsym $mod+Return exec --no-startup-id alacritty
+
+# Menu openers
+bindsym $mod+space     exec --no-startup-id qsysmenu
+bindsym $mod+BackSpace exec --no-startup-id wofi --show drun
+
+# Take a screenshot
+bindsym $mod+Print exec --no-startup-id grimshot copy area
+
+# Volume control
+bindsym XF86AudioLowerVolume exec --no-startup-id pulsemixer --unmute --change-volume -5
+bindsym XF86AudioRaiseVolume exec --no-startup-id pulsemixer --unmute --change-volume +5
+
+# Brightness control
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 4%-
+bindsym XF86MonBrightnessUp   exec --no-startup-id brightnessctl set +4%
+
+
+# RULES
+
+# Titlebar and border tweaks
+for_window [app_id="[.]*"]                  border csd
+for_window [app_id="Flatseal|wdisplays"]    border none
+for_window [app_id="Alacritty|(?i)firefox"] border pixel 1
+for_window [class="Chromium|Teams|Steam"]   border pixel 1
+for_window [title="Save As"]                border none
+for_window [title="History|Library"]        border normal 1
+
+# Floating rules
+for_window [app_id="Flatseal|wdisplays"] floating enable
+for_window [title="Library"]             floating enable
+
+
+# THEMING
+
+# Colourscheme
+client.focused          #070707 #282828 #eeeeec #070707 #070707
+client.focused_inactive #202020 #353535 #919190 #202020 #202020
+client.unfocused        #202020 #353535 #919190 #202020 #202020
+client.urgent           #070707 #282828 #eeeeec #070707 #070707
+
+# Titlebar and border
+default_border          normal 1
+default_floating_border normal 1
+font                    pango:sans Bold 9
+hide_edge_borders       both
+title_align             center
+
+# Wallpaper
+output "*" background "$HOME/.config/background/normal.png" fill
+
+# GTK applications
+exec_always {
+	gsettings set org.gnome.desktop.interface cursor-size  16
+	gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
+	gsettings set org.gnome.desktop.interface font-name    'sans 10'
+	gsettings set org.gnome.desktop.interface gtk-theme    'Adwaita-dark'
+	gsettings set org.gnome.desktop.interface icon-theme   'Numix-Circle'
+}

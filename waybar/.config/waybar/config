@@ -1,0 +1,78 @@
+{
+    "layer": "bottom",
+    "height": 24,
+    "modules-left": ["custom/apps", "sway/workspaces"],
+    "modules-center": ["clock", "idle_inhibitor"],
+    "modules-right": ["tray", "battery", "backlight", "pulseaudio", "network", "custom/system"],
+
+    "custom/apps": {
+        "format": "",
+        "on-click": "wofi --show drun"
+    },
+
+    "sway/workspaces": {
+        "all-outputs": true
+    },
+
+    "clock": {
+        "format": "{:%a %d %b  %I:%M %p}",
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+        "on-click": "$TERMINAL -e calendar"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 0
+    },
+
+    "battery": {
+        "format": "{icon} {capacity}% ",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": [""],
+        "on-scroll-up": "brightnessctl set +4%",
+        "on-scroll-down": "brightnessctl set 4%-"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-icons": {
+            "default": ["", "", ""],
+            "headphone": ""
+        },
+        "format-muted": "",
+        "on-scroll-up": "pulsemixer --unmute --change-volume +2",
+        "on-scroll-down": "pulsemixer --unmute --change-volume -2",
+        "on-click-middle": "pulsemixer --toggle-mute",
+        "on-click": "$TERMINAL -e pulsemixer"
+    },
+
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": "",
+        "format-ethernet": "",
+        "format-disconnected": "",
+        "tooltip-format": "{ifname}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "Wired",
+        "tooltip-format-disconnected": "Disconnected"
+    },
+
+    "custom/system": {
+        "format": "",
+        "on-click": "qsysmenu"
+    }
+}
+
+// vim:ft=json

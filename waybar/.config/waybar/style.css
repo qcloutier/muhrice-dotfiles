@@ -1,0 +1,28 @@
+* {
+    font-family: "Noto Sans", "Noto Sans CJK JP", "Font Awesome 5 Free Soild";
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0 5px;
+}
+
+window#waybar {
+    background: rgba(13, 13, 13, 0.98);
+    border-bottom: 1px solid #333333;
+    color: #bfbfbf;
+}
+
+#workspace * {
+    padding: 0 2px;
+}
+
+#workspaces button.focused {
+    background: #333333;
+}
+
+#taskbar * {
+    padding: 0 2px;
+}
+
+#taskbar button.active {
+    background: #333333;
+}
