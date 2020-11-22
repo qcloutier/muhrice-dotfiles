@@ -6,9 +6,15 @@ export PATH="$HOME/.local/bin:$PATH"
 # Global Tex Live installation
 export PATH="$PATH:/usr/local/texlive/2020/bin/x86_64-linux/"
 
-# Dotfiles directories
+# XDG directories
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+
+# Dotfiles overrides
 export ADOTDIR="$HOME/.local/share/zsh"
 export ZDOTDIR="$HOME/.config/zsh"
+export LESSHISTFILE="-"
 
 # Default programs
 export EDITOR=nvim
