@@ -1,0 +1,8 @@
+profile {
+	output "BenQ Corporation BenQ GW2270 T7H01776SL0" enable mode 1920x1080@60Hz position 0,0      scale 1 transform 270
+	output "BenQ Corporation BenQ GL2460 G9F02194SL0" enable mode 1920x1080@60Hz position 1080,480 scale 1 transform normal
+}
+
+profile {
+	output "Unknown 0x324C 0x00000000" enable mode 1920x1080@60Hz position 0,0 scale 1 transform normal
+}
