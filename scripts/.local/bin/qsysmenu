@@ -11,7 +11,7 @@ PWRFF="⬇️ Power off"
 
 OPTS="$LCK\n$EXT\n$UPDT\n$CLN\n$BCKP\n$SSPND\n$RBT\n$PWRFF"
 
-SEL="$(printf "$OPTS" | wofi --dmenu -p "system" -m primary)"
+SEL="$(printf "$OPTS" | nwgdmenu)"
 
 case $SEL in
 	$LCK)   swaylock ;;
