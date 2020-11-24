@@ -2,6 +2,7 @@
 user_pref("browser.aboutConfig.showWarning", false);
 user_pref("browser.bookmarks.showMobileBookmarks", false);
 user_pref("browser.tabs.closeWindowWithLastTab", false);
+user_pref("extensions.pocket.enabled", false);
 user_pref("middlemouse.contentLoadURL", true);
 user_pref("extensions.webextensions.restrictedDomains", "");
 
