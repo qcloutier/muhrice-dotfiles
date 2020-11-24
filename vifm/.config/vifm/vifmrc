@@ -2,7 +2,6 @@
 
 " Basic settings
 only
-screen!
 set history=100
 set ignorecase
 set incsearch
