@@ -10,25 +10,22 @@ source $HOME/.zshenv
 (! pgrep -f ssh-agent && rm -f "$SSH_AUTH_SOCK" && eval $(ssh-agent -a "$SSH_AUTH_SOCK")) &> /dev/null
 
 # Present a session picker and power menu
-CTL="$(test -f /usr/bin/systemctl && echo systemctl || echo loginctl)"
 while true; do
 	print '\nChoose an option:\n\n' \
-		'1) Start i3\n' \
-		'2) Start sway\n' \
-		'3) Start tmux\n\n' \
-		'4) Logout\n' \
-		'5) Suspend\n' \
-		'6) Reboot\n' \
-		'7) Shutdown\n'
+		'1) Start sway\n' \
+		'2) Start tmux\n\n' \
+		'3) Logout\n' \
+		'4) Suspend\n' \
+		'5) Reboot\n' \
+		'6) Shutdown\n'
 
 	read NUM\?'(number) '
 	case $NUM in
-		1) startx &> /dev/null ;;
-		2) sway &> /dev/null ;;
-		3) tmux ;;
-		4) exit ;;
-		5) sudo $CTL suspend ;;
-		6) sudo $CTL reboot ;;
-		7) sudo $CTL poweroff ;;
+		1) sway &> /dev/null ;;
+		2) tmux ;;
+		3) exit ;;
+		4) sudo systemctl suspend ;;
+		5) sudo systemctl reboot ;;
+		6) sudo systemctl poweroff ;;
 	esac
 done
