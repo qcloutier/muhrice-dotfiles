@@ -4,20 +4,19 @@
 exec autotiling
 
 # Output manager
-exec_always pkill kanshi; exec kanshi
+exec_always sh -c 'pkill kanshi; kanshi'
 
 # Status bar
-exec waybar
+exec_always sh -c 'pkill waybar; waybar'
 
 # Notifications
 exec mako
 
 # Screen locker
-exec_always {
-	swayidle -w timeout 270  'notify-send "Session will autolock soon"'
-	swayidle -w timeout 300  'swaylock -f -c 000000'
-		resume 'swaymsg "output * dpms on"'
-	swayidle -w before-sleep 'swaylock -f -c 000000'
+exec {
+	swayidle -w timeout 300  'swaylock'
+	resume                   'swaymsg "output * dpms on"'
+	swayidle -w before-sleep 'swaylock'
 }
 
 
@@ -133,37 +132,38 @@ bindsym $mod+bracketright gaps inner current minus 5
 bindsym $mod+Control+r reload, restart
 
 # Start a terminal
-bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+Return exec alacritty
 
 # Menu openers
-bindsym $mod+space     exec --no-startup-id qsysmenu
-bindsym $mod+BackSpace exec --no-startup-id wofi --show drun
+bindsym $mod+space     exec nwggrid
+bindsym $mod+BackSpace exec qsysmenu
 
 # Take a screenshot
 bindsym $mod+Print exec --no-startup-id grimshot copy area
 
 # Volume control
-bindsym XF86AudioLowerVolume exec --no-startup-id pulsemixer --unmute --change-volume -5
-bindsym XF86AudioRaiseVolume exec --no-startup-id pulsemixer --unmute --change-volume +5
+bindsym XF86AudioLowerVolume exec pulsemixer --unmute --change-volume -5
+bindsym XF86AudioRaiseVolume exec pulsemixer --unmute --change-volume +5
 
 # Brightness control
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 4%-
-bindsym XF86MonBrightnessUp   exec --no-startup-id brightnessctl set +4%
+bindsym XF86MonBrightnessDown exec brightnessctl set 4%-
+bindsym XF86MonBrightnessUp   exec brightnessctl set +4%
 
 
 # RULES
 
-# Titlebar and border tweaks
-for_window [app_id="[.]*"]                  border csd
-for_window [app_id="Flatseal|wdisplays"]    border none
-for_window [app_id="Alacritty|(?i)firefox"] border pixel 1
-for_window [class="Chromium|Teams|Steam"]   border pixel 1
-for_window [title="Save As"]                border none
-for_window [title="History|Library"]        border normal 1
+# Client-side decorations
+for_window [app_id="Alacritty"]                                   border pixel 1
+for_window [app_id="Flatseal|wdisplays"]                          border none
+for_window [class="FreeTube|Google-chrome|Microsoft Teams|Steam"] border pixel 1
 
-# Floating rules
-for_window [app_id="Flatseal|wdisplays"] floating enable
-for_window [title="Library"]             floating enable
+# Float settings dialogs
+for_window [app_id="Flatseal|kdeconnect|wdisplays"] floating enable
+
+# Special rules for Firefox
+for_window [app_id="(?i)firefox"]                           border pixel 1
+for_window [title="^Clear All History$|^Library$|^Opening"] border normal 1; floating enable
+for_window [title="^File Upload$|^Save As$"]                border none
 
 
 # THEMING
@@ -178,17 +178,16 @@ client.urgent           #070707 #282828 #eeeeec #070707 #070707
 default_border          normal 1
 default_floating_border normal 1
 font                    pango:sans Bold 9
-hide_edge_borders       both
 title_align             center
 
 # Wallpaper
 output "*" background "$HOME/.config/background/normal.png" fill
 
 # GTK applications
-exec_always {
+exec {
 	gsettings set org.gnome.desktop.interface cursor-size  16
 	gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
 	gsettings set org.gnome.desktop.interface font-name    'sans 10'
 	gsettings set org.gnome.desktop.interface gtk-theme    'Adwaita-dark'
-	gsettings set org.gnome.desktop.interface icon-theme   'Numix-Circle'
+	gsettings set org.gnome.desktop.interface icon-theme   'breeze-dark'
 }

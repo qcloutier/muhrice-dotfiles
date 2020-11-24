@@ -1,6 +1,6 @@
 ignore-empty-password
 daemonize
-image=$HOME/.config/background/blur.png
+image=$HOME/.config/background/dim.png
 scaling=fill
 color=333333
 indicator-idle-visible

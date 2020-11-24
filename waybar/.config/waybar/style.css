@@ -7,7 +7,6 @@
 
 window#waybar {
     background: rgba(13, 13, 13, 0.98);
-    border-bottom: 1px solid #333333;
     color: #bfbfbf;
 }
 
@@ -16,13 +15,5 @@ window#waybar {
 }
 
 #workspaces button.focused {
-    background: #333333;
-}
-
-#taskbar * {
-    padding: 0 2px;
-}
-
-#taskbar button.active {
     background: #333333;
 }
