@@ -1,0 +1,9 @@
+button {
+    background: none;
+    border-style: none;
+    box-shadow: none
+}
+
+label {
+    padding-left: 5px
+}
