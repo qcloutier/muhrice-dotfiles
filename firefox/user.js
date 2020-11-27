@@ -7,11 +7,12 @@ user_pref("middlemouse.contentLoadURL", true);
 user_pref("extensions.webextensions.restrictedDomains", "");
 
 // Performance
-user_pref("gfx.webrender.all", false);
+user_pref("gfx.webrender.all", true);
 user_pref("layers.acceleration.force-enabled", true);
 
 // Theming
 user_pref("browser.uidensity", 1);
 user_pref("devtools.theme", "dark");
+user_pref("reader.color_scheme", "dark");
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("widget.content.allow-gtk-dark-theme", true);
