@@ -71,7 +71,7 @@
 
     "custom/system": {
         "format": "",
-        "on-click": "qsysmenu"
+        "on-click": "nwgbar"
     }
 }
 

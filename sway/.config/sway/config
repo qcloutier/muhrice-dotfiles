@@ -14,10 +14,19 @@ exec mako
 
 # Screen locker
 exec {
-	swayidle -w timeout 300  'swaylock'
-	resume                   'swaymsg "output * dpms on"'
-	swayidle -w before-sleep 'swaylock'
+	swayidle -w \
+		timeout 240  'notify-send "Autolocking in 1 minute..."' \
+		timeout 300  'swaylock' \
+		timeout 330  'swaymsg "output * dpms off"' \
+			resume   'swaymsg "output * dpms on"' \
+		timeout 360  'sudo systemctl suspend' \
+		before-sleep 'swaylock' \
+		lock         'swaylock'
 }
+
+# KDE connect
+exec /usr/lib/kdeconnectd
+exec kdeconnect-indicator
 
 
 # INPUT
@@ -136,10 +145,14 @@ bindsym $mod+Return exec alacritty
 
 # Menu openers
 bindsym $mod+space     exec nwggrid
-bindsym $mod+BackSpace exec qsysmenu
+bindsym $mod+BackSpace exec nwgbar
 
 # Take a screenshot
-bindsym $mod+Print exec --no-startup-id grimshot copy area
+bindsym $mod+Print exec grimshot copy area
+
+# Clear notifications
+bindsym $mod+grave       exec makoctl dismiss
+bindsym $mod+Shift+grave exec makoctl dismiss --all
 
 # Volume control
 bindsym XF86AudioLowerVolume exec pulsemixer --unmute --change-volume -5
@@ -149,21 +162,25 @@ bindsym XF86AudioRaiseVolume exec pulsemixer --unmute --change-volume +5
 bindsym XF86MonBrightnessDown exec brightnessctl set 4%-
 bindsym XF86MonBrightnessUp   exec brightnessctl set +4%
 
+# Media controls
+bindsym XF86AudioStop exec mpc stop
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioPrev exec mpc prev
+bindsym XF86AudioNext exec mpc next
+
 
 # RULES
 
 # Client-side decorations
 for_window [app_id="Alacritty"]                                   border pixel 1
-for_window [app_id="Flatseal|wdisplays"]                          border none
+for_window [app_id="(?i)firefox|Flatseal|wdisplays"]              border none
 for_window [class="FreeTube|Google-chrome|Microsoft Teams|Steam"] border pixel 1
 
-# Float settings dialogs
-for_window [app_id="Flatseal|kdeconnect|wdisplays"] floating enable
+# Float certain applications
+for_window [app_id="com.github.maoschanz.drawing|Flatseal|kdeconnect|qt5ct|wdisplays"] floating enable
 
 # Special rules for Firefox
-for_window [app_id="(?i)firefox"]                           border pixel 1
-for_window [title="^Clear All History$|^Library$|^Opening"] border normal 1; floating enable
-for_window [title="^File Upload$|^Save As$"]                border none
+for_window [app_id="(?i)firefox" title="^Clear All History$|^Library$|^Opening"] border normal 1; floating enable
 
 
 # THEMING
