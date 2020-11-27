@@ -1,0 +1,10 @@
+anchor=top-center
+background-color=#353535
+border-color=#070707
+border-radius=8
+font=sans 10
+icon-path=/usr/share/icons/breeze-dark
+layer=overlay
+max-visible=4
+padding=8
+text-color=#eeeeec
