@@ -15,14 +15,23 @@ exec mako
 # Screen locker
 exec {
 	swayidle -w \
-		timeout 240  'notify-send "Autolocking in 1 minute..."' \
-		timeout 300  'swaylock' \
+		timeout 240  'pgrep swaylock || notify-send "Autolocking in 1 minute..."' \
+		timeout 300  'pgrep swaylock || swaylock' \
+		\
+		timeout 30   'pgrep swaylock && swaymsg "output * dpms off"' \
+			resume   'pgrep swaylock && swaymsg "output * dpms on"' \
 		timeout 330  'swaymsg "output * dpms off"' \
 			resume   'swaymsg "output * dpms on"' \
-		timeout 360  'sudo systemctl suspend' \
+		\
+		timeout 60   'pgrep swaylock && systemctl suspend' \
+		timeout 360  'systemctl suspend' \
+		\
 		before-sleep 'swaylock' \
 		lock         'swaylock'
 }
+
+# Removeable media
+exec udiskie --appindicator
 
 # KDE connect
 exec /usr/lib/kdeconnectd
@@ -179,8 +188,9 @@ for_window [class="FreeTube|Google-chrome|Microsoft Teams|Steam"] border pixel 1
 # Float certain applications
 for_window [app_id="com.github.maoschanz.drawing|Flatseal|kdeconnect|qt5ct|wdisplays"] floating enable
 
-# Special rules for Firefox
-for_window [app_id="(?i)firefox" title="^Clear All History$|^Library$|^Opening"] border normal 1; floating enable
+# Special rules
+for_window [app_id="(?i)audacity" title="Select one or more files"]                             border none; floating enable
+for_window [app_id="(?i)firefox" title="^Clear All History$|^Library$|^New Bookmark$|^Opening"] border normal 1; floating enable
 
 
 # THEMING
