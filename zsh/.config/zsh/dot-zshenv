@@ -3,15 +3,18 @@
 # Local programs and scripts
 export PATH="$HOME/.local/bin:$PATH"
 
+# Wayland
+export MOZ_ENABLE_WAYLAND=1
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# Video acceleration
+export MOZ_WAYLAND_USE_VAAPI=1
+export VDPAU_DRIVER=radeonsi
+
 # GTK and QT theming
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export QT_QPA_PLATFORMTHEME=qt5ct
 export GTK_THEME=Adwaita-dark
-
-# Wayland
-export MOZ_ENABLE_WAYLAND=1
-export MOZ_WAYLAND_USE_VAAPI=1
-export _JAVA_AWT_WM_NONREPARENTING=1
 
 # XDG directories
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -42,5 +45,5 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;37m'
 
 # Various aliases
-[[ "$OSTYPE" == 'linux-gnu' ]] && alias ls='ls --color=auto' || alias ls='ls -G'
+alias ls='ls --color=auto'
 alias vim=nvim
