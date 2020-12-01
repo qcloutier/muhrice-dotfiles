@@ -24,8 +24,8 @@ while true; do
 		1) sway &> /dev/null ;;
 		2) tmux ;;
 		3) exit ;;
-		4) sudo systemctl suspend ;;
-		5) sudo systemctl reboot ;;
-		6) sudo systemctl poweroff ;;
+		4) systemctl suspend ;;
+		5) systemctl reboot ;;
+		6) systemctl poweroff ;;
 	esac
 done
