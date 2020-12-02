@@ -157,7 +157,7 @@ bindsym $mod+space     exec nwggrid
 bindsym $mod+BackSpace exec nwgbar
 
 # Take a screenshot
-bindsym $mod+Print exec grimshot copy area
+bindsym $mod+backslash exec grim -g "$(slurp)" - | swappy -f -
 
 # Clear notifications
 bindsym $mod+grave       exec makoctl dismiss
@@ -180,17 +180,21 @@ bindsym XF86AudioNext exec mpc next
 
 # RULES
 
-# Client-side decorations
-for_window [app_id="Alacritty"]                                   border pixel 1
-for_window [app_id="(?i)firefox|Flatseal|wdisplays"]              border none
+# Deal with client-side decorations
+for_window [app_id="Flatseal|wdisplays"]                          border none
 for_window [class="FreeTube|Google-chrome|Microsoft Teams|Steam"] border pixel 1
 
 # Float certain applications
-for_window [app_id="com.github.maoschanz.drawing|Flatseal|kdeconnect|qt5ct|wdisplays"] floating enable
+for_window [app_id="Flatseal|kdeconnect|qt5ct|wdisplays"] floating enable
 
-# Special rules
-for_window [app_id="(?i)audacity" title="Select one or more files"]                             border none; floating enable
+# Make Firefox behave sensibly
+for_window [app_id="(?i)firefox"]                                                               border pixel 1
 for_window [app_id="(?i)firefox" title="^Clear All History$|^Library$|^New Bookmark$|^Opening"] border normal 1; floating enable
+for_window [app_id="(?i)firefox" title="^Open File$|^Save As$"]                                 border none
+
+# Other workarounds
+for_window [app_id="Alacritty"]                                       border pixel 1
+for_window [app_id="(?i)audacity" title="^Select one or more files$"] border none; floating enable
 
 
 # THEMING
