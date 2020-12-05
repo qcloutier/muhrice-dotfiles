@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=wdisplays
+Comment=Wlroots display configuration
+Exec=wdisplays
+Icon=wdisplays
