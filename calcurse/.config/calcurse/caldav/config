@@ -1,0 +1,9 @@
+[General]
+Binary = calcurse
+Hostname = localhost:5232
+Path = /quinton/calendars-colID99610/
+InsecureSSL = Yes
+HTTPS = No
+SyncFilter = cal,todo
+DryRun = No
+Verbose = No

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Poke at Radicale so that it'll pull from DecSync
+resp="$(curl -sw "%{http_code}" "localhost:5232/quinton/calendars-colID99610/" -o /dev/null)"
+
+# Warn if synchronization is unsuccessful
+if [ "$resp" != "200" -o ! calcurse-caldav ]; then
+	notify-send -i "$ICON_DIR/apps/48/office-calendar.svg" "Calcurse" "Unable to synchronize, is Radicale running?"
+fi
