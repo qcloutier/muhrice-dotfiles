@@ -26,6 +26,7 @@ endif
 " Activate plugins
 call plug#begin(stdpath('data').'/plugged')
 
+" Standalone scripts
 Plug 'chrisbra/csv.vim'
 Plug 'cohama/lexima.vim'
 Plug 'dylanaraps/wal.vim'
@@ -35,6 +36,8 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 
+" External integrations
+Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
 Plug 'mattn/vim-lsp-settings'
 Plug 'mcchrish/nnn.vim'

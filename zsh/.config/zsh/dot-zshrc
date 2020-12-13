@@ -55,5 +55,9 @@ if [[ "$TERM" != 'linux' ]]; then
 	antigen apply
 fi
 
+# fzf integration
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
 # Start tmux
 [[ "$TERM" != 'linux' ]] && [[ -z "$TMUX" ]] && exec tmux

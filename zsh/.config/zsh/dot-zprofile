@@ -6,6 +6,7 @@ source $HOME/.zshenv
 # Silently start some programs in the background
 (! pgrep -f mpd && mpd) &> /dev/null
 (! pgrep -f syncthing && syncthing --no-browser &) &> /dev/null
+(! pgrep -f calcurse && calcurse --daemon &) &> /dev/null
 (! pgrep -f radicale && radicale &) &> /dev/null
 (! pgrep -f ssh-agent && rm -f "$SSH_AUTH_SOCK" && eval $(ssh-agent -a "$SSH_AUTH_SOCK")) &> /dev/null
 
