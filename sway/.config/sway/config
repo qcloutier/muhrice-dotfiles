@@ -31,7 +31,7 @@ exec {
 }
 
 # Removeable media
-exec udiskie --appindicator
+exec udiskie --appindicator --smart-tray --file-manager 'alacritty -e vifm'
 
 # KDE connect
 exec /usr/lib/kdeconnectd
@@ -149,19 +149,29 @@ bindsym $mod+bracketright gaps inner current minus 5
 # Reload and restart sway
 bindsym $mod+Control+r reload, restart
 
-# Start a terminal
-bindsym $mod+Return exec alacritty
+# Core applications
+bindsym $mod+Return       exec alacritty
+bindsym $mod+Shift+Return exec firefox
 
-# Menu openers
-bindsym $mod+space     exec nwggrid
-bindsym $mod+BackSpace exec nwgbar
+# Basic desktop controls
+bindsym $mod+space       exec nwggrid
+bindsym $mod+Shift+space exec notify-send "TODO - File opener"
+bindsym $mod+Tab         exec notify-send "TODO - Window list"
+bindsym $mod+BackSpace   exec nwgbar
 
-# Take a screenshot
-bindsym $mod+backslash exec grim -g "$(slurp)" - | swappy -f -
+# Access secrets
+bindsym $mod+backslash       exec notify-send "TODO - username/password selector"
+bindsym $mod+Shift+backslash exec notify-send "TODO - otp selector"
 
 # Clear notifications
 bindsym $mod+grave       exec makoctl dismiss
 bindsym $mod+Shift+grave exec makoctl dismiss --all
+
+# Unicode input
+bindsym $mod+Escape exec emojimenu
+
+# Screenshot and screencast
+bindsym Print exec screenmenu
 
 # Volume control
 bindsym XF86AudioLowerVolume exec pulsemixer --unmute --change-volume -5
@@ -187,15 +197,18 @@ for_window [class="FreeTube|Microsoft Teams|Steam"]       border pixel 1
 # Float certain applications
 for_window [app_id="Flatseal|kdeconnect|python|qt5ct|wdisplays"] floating enable
 
+# Terminal programs
+for_window [app_id="Alacritty"]                                           border pixel 1
+for_window [app_id="Alacritty" title="^Calcurse$|^Htop$|^Neovim$|^Vifm$"] border normal 1
+for_window [app_id="Alacritty" title="^nmtui$|^pulsemixer$"]              border normal 1; floating enable
+
 # Make Firefox behave sensibly
-for_window [app_id="(?i)firefox"]                                                               border pixel 1
-for_window [app_id="(?i)firefox" title="^Clear All History$|^Library$|^New Bookmark$|^Opening"] border normal 1; floating enable
-for_window [app_id="(?i)firefox" title="^File Upload$|^Open File$|^Save As$"]                   border none
+for_window [app_id="(?i)firefox"]                                                                 border pixel 1
+for_window [app_id="(?i)firefox" title="^Clear All History$|^Library$|^New Bookmark$|^Opening"]   border normal 1; floating enable
+for_window [app_id="(?i)firefox" title="^Enter name of file|^File Upload$|^Open File$|^Save As$"] border none
 
 # Other workarounds
-for_window [app_id="Alacritty"]                                       border pixel 1
 for_window [app_id="(?i)audacity" title="^Select one or more files$"] border none; floating enable
-for_window [class="jetbrains-idea-ce" title="win0"]                   border none; floating enable
 
 
 # THEMING

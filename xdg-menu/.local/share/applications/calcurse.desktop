@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Calcurse
+GenericName=Calendar
+Comment=Calendar and scheduling application
+Icon=office-calendar
+Exec=alacritty -t Calcurse -e calcurse
+Categories=Office;ConsoleOnly;
+Keywords=calendar;todo

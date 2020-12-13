@@ -17,7 +17,7 @@
     "clock": {
         "format": "{:%a %d %b  %I:%M %p}",
         "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
-        "on-click": "$TERMINAL -e calendar"
+        "on-click": "alacritty -t Calcurse -e calcurse"
     },
 
     "idle_inhibitor": {
@@ -55,7 +55,7 @@
         "on-scroll-up": "pulsemixer --unmute --change-volume +2",
         "on-scroll-down": "pulsemixer --unmute --change-volume -2",
         "on-click-middle": "pulsemixer --toggle-mute",
-        "on-click": "$TERMINAL -e pulsemixer"
+        "on-click": "alacritty -t pulsemixer -e pulsemixer"
     },
 
     "network": {
@@ -66,7 +66,8 @@
         "tooltip-format": "{ifname}",
         "tooltip-format-wifi": "{essid} ({signalStrength}%)",
         "tooltip-format-ethernet": "Wired",
-        "tooltip-format-disconnected": "Disconnected"
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "alacritty -t nmtui -e nmtui"
     },
 
     "custom/system": {

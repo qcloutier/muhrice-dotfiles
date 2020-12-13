@@ -1,0 +1,51 @@
+#!/bin/sh
+
+#
+# Presents a choice to take a screenshot or start a screencast,
+# and prompts for an area, window, or monitor to capture.
+#
+# Requires Font Awesome for the icons
+#
+
+for cmd in grim jq nwgdmenu slurp swappy swaymsg wf-recorder; do
+	if ! command -v $cmd > /dev/null; then
+		echo $cmd is not installed, exiting
+		exit 1
+	fi
+done
+
+if pgrep wf-recorder; then
+	pkill -SIGINT wf-recorder
+	exit
+fi
+
+output="$HOME/Desktop"
+timestamp="$(date "+%Y%m%d_%H%M%S")"
+
+modes="\tScreenshot\n\tScreencast\n\tCancel"
+regions="\tSelect area\n\tSelect window\n\tSelect monitor\n\tCancel"
+
+mode="$(printf "$modes" \
+	| nwgdmenu -n 2> /dev/null \
+	| sed '$!d; s/.//2g')"
+test "$mode" = "F" -o "$mode" = "" && exit
+
+region="$(printf "$regions" \
+	| nwgdmenu -n 2> /dev/null \
+	| sed '$!d; s/.//2g')"
+test "$region" = "F" -o "$region" = "" && exit
+
+case "$region" in
+	"") sel="$(slurp)" ;;
+	"") sel="$(swaymsg -t get_tree \
+			| jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' \
+			| slurp)" ;;
+	"") sel="$(slurp -o)" ;;
+esac
+
+case "$mode" in
+	"") grim -g "$sel" - | swappy -f - -o "$output/IMG_$timestamp.png" ;;
+	"") notify-send -t 5000 "Screencast" "Recording started"
+		wf-recorder -g "$sel" -a -f "$output/VID_$timestamp.mkv"
+		notify-send -t 5000 "Screencast" "Saved the screencast to the Desktop folder" ;;
+esac
