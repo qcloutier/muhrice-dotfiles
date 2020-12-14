@@ -12,7 +12,7 @@ set norunexec
 set scrolloff=4
 set smartcase
 set sortnumbers
-set statusline="  %A %10u:%-7g %15s %20d  "
+set statusline=" %A %10u:%-7g %10E %15d "
 set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
 set syscalls
 set timefmt=%m/%d\ %H:%M
@@ -26,12 +26,31 @@ set wildmenu
 set wildstyle=popup
 
 " File openers
-filetype *.aac,*.flac,*.m4a,*.mp3,*.ogg,*.opus,*.wav,*.wma        alacritty -e mpv %f 2>/dev/null &
-filetype *.avi,*.mp4,*.wmv,*.mkv,*.mpg,*.mpeg,*.mov,*.webm,*.m4v  mpv              %f 2>/dev/null &
-filetype *.bmp,*.gif,*.jpg,*.jpeg,*.png,*.svg                     pqiv             %f 2>/dev/null &
-filetype *.djvu,*.epub,*.pdf,*.ps,*.ps.gz                         zathura          %f 2>/dev/null &
-filetype *.doc,*.docx,*.odp,*.ods,*.odt,*.ppt,*.pptx,*.xls,*.xlsx libreoffice      %f 2>/dev/null &
-filetype *.html,*.htm                                             firefox          %f 2>/dev/null &
+filetype *.aac,*.flac,*.m4a,*.mp3,*.ogg,*.opus,*.wav,*.wma        xdg-open
+filetype *.avi,*.m4v,*.mkv,*.mov,*.mp4,*.mpg,*.mpeg,*.webm,*.wmv  xdg-open
+filetype *.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.svg               xdg-open
+filetype *.djvu,*.epub,*.pdf,*.ps                                 xdg-open
+filetype *.doc,*.docx,*.odp,*.ods,*.odt,*.ppt,*.pptx,*.xls,*.xlsx xdg-open
+
+" File icons
+set classify+='  :dir:/'
+set classify+='  ::..::'
+set classify+='  :exe:'
+set classify+='  :reg:'
+set classify+='  :link:'
+set classify+='  ::*.7z,,*.apk,,*.bz2,,*.deb,,*.gz,,*.jar,,*.rar,,*.rpm,,*.tar,,*.xz,,*.zip::'
+set classify+='  ::*.iso::'
+set classify+='  ::*.djvu,,*.epub::'
+set classify+='  ::*.pdf::'
+set classify+='  ::*.doc,,*.docx,,*.odt::'
+set classify+='  ::*.odp,,*.ppt,,*.pptx::'
+set classify+='  ::*.ods,,*.xls,,*.xlsx::'
+set classify+='  ::/^copying|license$/::'
+set classify+='  ::.git,,*.git::'
+set classify+='  ::*.md,,*.rmd::'
+set classify+='  ::*.bmp,,*.gif,,*.ico,,*.jpg,,*.jpeg,,*.png,,*.svg::'
+set classify+='  ::*.aac,,*.flac,,*.m4a,,*.mp3,,*.ogg,,*.opus,,*.wav,,*.wma::'
+set classify+='  ::*.avi,,*.m4v,,*.mkv,,*.mov,,*.mp4,,*.mpg,,*.mpeg,,*.webm,,*.wmv::'
 
 " Colourscheme tweaks
 highlight Border     cterm=none ctermfg=none  ctermbg=none
