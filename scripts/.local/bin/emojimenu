@@ -14,14 +14,15 @@ for cmd in nwgdmenu wl-copy; do
 	fi
 done
 
-sel="$(cat "$0" \
-	| sed '1,/^EMOJI$/d' \
-	| nwgdmenu 2> /dev/null \
-	| sed '$!d; s/.//2g')"
-test "$sel" = "F" && exit
+sel="$(sed '1,/^EMOJI$/d' "$0" \
+	| nwgdmenu | sed -e '3q;d' \
+	| sed -e 's/.//2g')"
+
+test -z "$sel" && exit
 
 printf "$sel" | wl-copy
-notify-send -t 5000 "Emoji Input" "Copied $sel to the clipboard"
+notify-send -t 5000 -i "$ICON_DIR/devices/64/input-keyboard.svg" \
+	"Emoji Input" "Copied $sel to the clipboard"
 
 exit
 

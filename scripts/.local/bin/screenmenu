@@ -26,14 +26,16 @@ modes="\tScreenshot\n\tScreencast\n\tCancel"
 regions="\tSelect area\n\tSelect window\n\tSelect monitor\n\tCancel"
 
 mode="$(printf "$modes" \
-	| nwgdmenu -n 2> /dev/null \
-	| sed '$!d; s/.//2g')"
-test "$mode" = "F" -o "$mode" = "" && exit
+	| nwgdmenu -n | sed -e '3q;d' \
+	| sed 's/.//2g')"
+
+test -z "$mode" -o "$mode" = "" && exit
 
 region="$(printf "$regions" \
-	| nwgdmenu -n 2> /dev/null \
-	| sed '$!d; s/.//2g')"
-test "$region" = "F" -o "$region" = "" && exit
+	| nwgdmenu -n | sed -e '3q;d' \
+	| sed 's/.//2g')"
+
+test -z "$region" -o "$region" = "" && exit
 
 case "$region" in
 	"") sel="$(slurp)" ;;
@@ -45,7 +47,9 @@ esac
 
 case "$mode" in
 	"") grim -g "$sel" - | swappy -f - -o "$output/IMG_$timestamp.png" ;;
-	"") notify-send -t 5000 "Screencast" "Recording started"
+	"") notify-send -t 5000 -i "$ICON_DIR/devices/64/monitor.svg" \
+			"Screencast" "Recording started"
 		wf-recorder -g "$sel" -a -f "$output/VID_$timestamp.mkv"
-		notify-send -t 5000 "Screencast" "Saved the screencast to the Desktop folder" ;;
+		notify-send -t 5000 -i "$ICON_DIR/devices/64/monitor.svg" \
+			"Screencast" "Saved the screencast to the Desktop folder" ;;
 esac

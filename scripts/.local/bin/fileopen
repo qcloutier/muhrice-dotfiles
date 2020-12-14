@@ -1,0 +1,16 @@
+#!/bin/sh
+
+#
+# Presents a fuzzy file selector, and opens the
+# files according to their mimetype.
+#
+
+for cmd in alacritty fzf xdg-open; do
+	if ! command -v $cmd > /dev/null; then
+		echo $cmd is not installed, exiting
+		exit 1
+	fi
+done
+
+alacritty -t fzf -d 100 10 -e \
+	sh -c 'eval nohup xdg-open \"$(fzf)\" > /dev/null'

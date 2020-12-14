@@ -1,0 +1,42 @@
+#!/bin/sh
+
+#
+# Presents a searchable list of credentials, and copies the username
+# and password for the selected one to the clipboard.
+#
+# Requires Font Awesome for the icons
+#
+
+for cmd in nwgdmenu pass wl-copy; do
+	if ! command -v $cmd > /dev/null; then
+		echo $cmd is not installed, exiting
+		exit 1
+	fi
+done
+
+entries="$(find $HOME/.password-store/ \
+	-iname "*.gpg" -printf '  %P\n')"
+
+sel="$(printf "$entries" | sed 's/.gpg$//' \
+	| nwgdmenu | sed '3q;d' \
+	| sed 's/^.\{3\}//')"
+
+test -z "$sel" && exit
+
+pass show "$sel" \
+	| sed -n '/login:/p' | sed 's/.*: //' \
+	| wl-copy
+
+notify-send -t 3000 -i "$ICON_DIR/places/48/folder-encrypted.svg" \
+	"Credentials" "Copied the username for $sel to the clipboard"
+sleep 3s
+
+pass show "$sel" \
+	| sed '1q' \
+	| wl-copy
+
+notify-send -t 3000 -i "$ICON_DIR/places/48/folder-encrypted.svg" \
+	"Credentials" "Copied the password for $sel to the clipboard"
+sleep 3s
+
+printf "" | wl-copy
