@@ -27,16 +27,16 @@ pass show "$sel" \
 	| sed -n '/login:/p' | sed 's/.*: //' \
 	| wl-copy
 
-notify-send -t 3000 -i "$ICON_DIR/places/48/folder-encrypted.svg" \
+notify-send -t 5000 -i "$ICON_DIR/places/48/folder-encrypted.svg" \
 	"Credentials" "Copied the username for $sel to the clipboard"
-sleep 3s
+sleep 5s
 
 pass show "$sel" \
 	| sed '1q' \
 	| wl-copy
 
-notify-send -t 3000 -i "$ICON_DIR/places/48/folder-encrypted.svg" \
+notify-send -t 5000 -i "$ICON_DIR/places/48/folder-encrypted.svg" \
 	"Credentials" "Copied the password for $sel to the clipboard"
-sleep 3s
+sleep 5s
 
 printf "" | wl-copy
