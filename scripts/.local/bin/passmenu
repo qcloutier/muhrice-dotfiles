@@ -14,8 +14,7 @@ for cmd in nwgdmenu pass wl-copy; do
 	fi
 done
 
-entries="$(find $HOME/.password-store/ \
-	-iname "*.gpg" -printf '  %P\n')"
+entries="$(find "$PASSWORD_STORE_DIR" -iname "*.gpg" -printf '  %P\n')"
 
 sel="$(printf "$entries" | sed 's/.gpg$//' \
 	| nwgdmenu | sed '3q;d' \
@@ -38,5 +37,13 @@ pass show "$sel" \
 notify-send -t 5000 -i "$ICON_DIR/places/48/folder-encrypted.svg" \
 	"Credentials" "Copied the password for $sel to the clipboard"
 sleep 5s
+
+if find "$OTP_STORE_DIR" -wholename "$OTP_STORE_DIR/$sel.gpg" | grep .; then
+	PASSWORD_STORE_DIR="$OTP_STORE_DIR" pass otp "$sel" | wl-copy
+
+	notify-send -t 5000 -i "$ICON_DIR/places/48/folder-encrypted.svg" \
+		"Credentials" "Copied an OTP code for $sel to the clipboard"
+	sleep 5s
+fi
 
 printf "" | wl-copy

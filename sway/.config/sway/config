@@ -159,16 +159,13 @@ bindsym $mod+Shift+space exec fileopen
 bindsym $mod+Tab         exec notify-send "TODO - Window list"
 bindsym $mod+BackSpace   exec nwgbar
 
-# Access secrets
-bindsym $mod+backslash       exec passmenu
-bindsym $mod+Shift+backslash exec notify-send "TODO - otp selector"
+# Input helpers
+bindsym $mod+backslash       exec emojimenu
+bindsym $mod+Shift+backslash exec passmenu
 
 # Clear notifications
 bindsym $mod+grave       exec makoctl dismiss
 bindsym $mod+Shift+grave exec makoctl dismiss --all
-
-# Unicode input
-bindsym $mod+Escape exec emojimenu
 
 # Screenshot and screencast
 bindsym Print exec screenmenu
@@ -195,7 +192,7 @@ for_window [app_id="Chromium-browser|Flatseal|wdisplays"] border none
 for_window [class="FreeTube|Microsoft Teams|Steam"]       border pixel 1
 
 # Float certain applications
-for_window [app_id="Flatseal|kdeconnect|python|qt5ct|wdisplays"] floating enable
+for_window [app_id="Flatseal|kdeconnect|qt5ct|wdisplays"] floating enable
 
 # Terminal programs
 for_window [app_id="Alacritty"]                                                     border pixel  1
@@ -208,7 +205,8 @@ for_window [app_id="(?i)firefox" title="^Clear All History$|^Library$|^New Bookm
 for_window [app_id="(?i)firefox" title="^Enter name of file|^File Upload$|^Open File$|^Save As$"] border none
 
 # Other workarounds
-for_window [app_id="(?i)audacity" title="^Select one or more files$"] border none; floating enable
+for_window [app_id="(?i)chrome" title="^Save File$"]                   border none; floating enable
+for_window [app_id="Shotcut" title="^Open File$|^Shotcut$|^Save XML$"] border none; floating enable
 
 
 # THEMING
