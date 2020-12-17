@@ -34,3 +34,5 @@ video/webm=mpv.desktop;
 video/x-matroska=mpv.desktop;
 video/x-ms-wmv=mpv.desktop;
 video/x-msvideo=mpv.desktop;
+x-scheme/http=org.mozilla.firefox.desktop;
+x-scheme/https=org.mozilla.firefox.desktop;

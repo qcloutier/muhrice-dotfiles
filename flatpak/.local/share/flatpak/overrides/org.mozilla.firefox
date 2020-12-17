@@ -1,0 +1,8 @@
+[Context]
+sockets=cups;wayland
+devices=dri
+filesystems=~/Configs/fontconfig;~/Configs/firefox
+
+[Environment]
+MOZ_ENABLE_WAYLAND=1
+MOZ_WAYLAND_USE_VAAPI=1
