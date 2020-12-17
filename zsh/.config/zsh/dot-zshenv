@@ -3,37 +3,37 @@
 # Local programs and scripts
 export PATH="$HOME/.local/bin:$PATH"
 
-# Wayland
-export MOZ_ENABLE_WAYLAND=1
-export _JAVA_AWT_WM_NONREPARENTING=1
+# Default programs
+export BROWSER=firefox
+export EDITOR=nvim
+export TERMINAL=alacritty
 
-# Video acceleration
-export MOZ_WAYLAND_USE_VAAPI=1
+# XDG directories
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+
+# Dotfiles overrides
+export CARGO_HOME="$HOME/.local/share/cargo"
+export GOPATH="$HOME/.local/share/go"
+export GNUPGHOME="$HOME/.local/share/gnupg"
+export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
+export LESSHISTFILE="-"
+export OTP_STORE_DIR="$HOME/.local/share/otp-store"
+export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
+export ZDOTDIR="$HOME/.config/zsh"
+
+# Graphical session
+export _JAVA_AWT_WM_NONREPARENTING=1
 export VDPAU_DRIVER=radeonsi
 
 # GTK and QT theming
-export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
-export QT_QPA_PLATFORMTHEME=qt5ct
 export GTK_THEME=Adwaita-dark
 export ICON_DIR=/usr/share/icons/breeze-dark
-
-# XDG directories
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CACHE_HOME="$HOME/.cache"
-
-# Dotfiles overrides
-export ADOTDIR="$HOME/.local/share/zsh"
-export ZDOTDIR="$HOME/.config/zsh"
-export LESSHISTFILE="-"
-
-# Default programs
-export EDITOR=nvim
-export TERMINAL=alacritty
-export BROWSER=firefox
+export QT_QPA_PLATFORMTHEME=qt5ct
 
 # SSH agent
-export SSH_AGENT_PID=$(pgrep -f ssh-agent)
+export SSH_AGENT_PID="$(pgrep -f ssh-agent)"
 export SSH_AUTH_SOCK="$HOME/.cache/ssh-agent.socket"
 
 # Coloured less output
@@ -45,6 +45,17 @@ export LESS_TERMCAP_so=$'\e[01;35m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;37m'
 
+# Fuzzy finder
+export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
+
 # Various aliases
 alias ls='ls --color=auto'
 alias vim=nvim
+
+# Wrapper for pass otp
+function otp() {
+	_opts=(code help insert append uri validate)
+	[[ ${_opts[(ie)$1]} -le ${#_opts} ]] \
+		&& PASSWORD_STORE_DIR="$OTP_STORE_DIR" pass otp $* \
+		|| PASSWORD_STORE_DIR="$OTP_STORE_DIR" pass $*
+}
