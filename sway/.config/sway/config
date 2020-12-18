@@ -189,15 +189,15 @@ bindsym XF86AudioNext exec mpc next
 
 # Deal with client-side decorations
 for_window [app_id="Chromium-browser|Flatseal|wdisplays"] border none
-for_window [class="FreeTube|LBRY|Microsoft Teams|Steam"]       border pixel 1
+for_window [class="FreeTube|LBRY|Microsoft Teams|Steam"]  border pixel 1
 
 # Float certain applications
 for_window [app_id="Flatseal|kdeconnect|qt5ct|wdisplays"] floating enable
 
 # Terminal programs
-for_window [app_id="Alacritty"]                                                     border pixel  1
-for_window [app_id="Alacritty" title="^Calcurse$|^Htop$|^Ncmpcpp$|^Neovim$|^Vifm$"] border normal 1
-for_window [app_id="Alacritty" title="^fzf$|^nmtui$|^pulsemixer$"]                  border normal 1; floating enable
+for_window [app_id="Alacritty"]                                                               border pixel  1
+for_window [app_id="Alacritty" title="^Calcurse$|^Htop$|^Ncmpcpp$|^Neomutt$|^Neovim$|^Vifm$"] border normal 1
+for_window [app_id="Alacritty" title="^fzf$|^nmtui$|^pulsemixer$"]                            border normal 1; floating enable
 
 # Make Firefox behave sensibly
 for_window [app_id="(?i)firefox"]                                                                 border pixel  1
@@ -207,7 +207,7 @@ for_window [app_id="(?i)firefox" title="^Enter name of file|^File Upload$|^Open 
 # Other workarounds
 for_window [app_id="(?i)chrome" title="^Save File$"]                       border none; floating enable
 for_window [app_id="(?i)shotcut" title="^Open File$|^Shotcut$|^Save XML$"] border none; floating enable
-for_window [class="Ardour" title="^Audio\/MIDI Setup$"]                    floating enable
+for_window [title="^$"]                                                    floating enable
 
 
 # THEMING

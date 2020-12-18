@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Neomutt
+GenericName=Mail
+Comment=Email client
+Icon=mail-client
+Exec=alacritty -t Neomutt -e neomutt
+Categories=Office;ConsoleOnly;
+Keywords=communication;mail;
