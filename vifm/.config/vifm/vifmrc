@@ -26,11 +26,11 @@ set wildmenu
 set wildstyle=popup
 
 " File openers
-filetype *.aac,*.flac,*.m4a,*.mp3,*.ogg,*.opus,*.wav,*.wma        nohup xdg-open %f > /dev/null
-filetype *.avi,*.m4v,*.mkv,*.mov,*.mp4,*.mpg,*.mpeg,*.webm,*.wmv  nohup xdg-open %f > /dev/null
-filetype *.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.svg               nohup xdg-open %f > /dev/null
-filetype *.djvu,*.epub,*.pdf,*.ps                                 nohup xdg-open %f > /dev/null
-filetype *.doc,*.docx,*.odp,*.ods,*.odt,*.ppt,*.pptx,*.xls,*.xlsx nohup xdg-open %f > /dev/null
+filetype *.aac,*.flac,*.m4a,*.mp3,*.ogg,*.opus,*.wav,*.wma        nohup xdg-open %f > /dev/null 2>&1
+filetype *.avi,*.m4v,*.mkv,*.mov,*.mp4,*.mpg,*.mpeg,*.webm,*.wmv  nohup xdg-open %f > /dev/null 2>&1
+filetype *.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.svg               nohup xdg-open %f > /dev/null 2>&1
+filetype *.djvu,*.epub,*.pdf,*.ps                                 nohup xdg-open %f > /dev/null 2>&1
+filetype *.doc,*.docx,*.odp,*.ods,*.odt,*.ppt,*.pptx,*.xls,*.xlsx nohup xdg-open %f > /dev/null 2>&1
 
 " File icons
 set classify+='  :dir:/'
