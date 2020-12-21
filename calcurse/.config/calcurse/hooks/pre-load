@@ -7,3 +7,6 @@ resp="$(curl -sw "%{http_code}" "localhost:5232/quinton/calendars-colID99610/" -
 if [ "$resp" != "200" -o ! calcurse-caldav ]; then
 	notify-send -i "$ICON_DIR/apps/48/office-calendar.svg" "Calcurse" "Unable to synchronize, is Radicale running?"
 fi
+
+# Prevent error entries from getting created
+exit 0
