@@ -147,7 +147,8 @@ bindsym $mod+bracketleft  gaps inner current plus  5
 bindsym $mod+bracketright gaps inner current minus 5
 
 # Reload and restart sway
-bindsym $mod+Control+r reload, restart
+bindsym $mod+Pause       reload, restart
+bindsym $mod+Shift+Pause exec swaymsg exit
 
 # Core applications
 bindsym $mod+Return       exec alacritty

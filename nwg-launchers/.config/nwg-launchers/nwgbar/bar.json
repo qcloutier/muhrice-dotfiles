@@ -5,19 +5,9 @@
     "icon": "system-lock-screen"
   },
   {
-    "name": "_Exit sway",
-    "exec": "swaymsg exit",
-    "icon": "system-log-out"
-  },
-  {
     "name": "_Suspend",
     "exec": "qsuspend",
     "icon": "system-suspend"
-  },
-  {
-    "name": "_Hibernate",
-    "exec": "systemctl hibernate",
-    "icon": "system-suspend-hibernate"
   },
   {
     "name": "_Reboot",

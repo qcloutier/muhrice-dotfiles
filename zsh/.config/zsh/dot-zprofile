@@ -10,23 +10,6 @@ source $HOME/.zshenv
 (! pgrep -f radicale && radicale &) &> /dev/null
 (! pgrep -f ssh-agent && rm -f "$SSH_AUTH_SOCK" && eval $(ssh-agent -a "$SSH_AUTH_SOCK")) &> /dev/null
 
-# Present a session picker and power menu
-while true; do
-	print '\nChoose an option:\n\n' \
-		'1) Start sway\n' \
-		'2) Start tmux\n\n' \
-		'3) Logout\n' \
-		'4) Suspend\n' \
-		'5) Reboot\n' \
-		'6) Shutdown\n'
-
-	read NUM\?'(number) '
-	case $NUM in
-		1) sway &> /dev/null ;;
-		2) tmux ;;
-		3) exit ;;
-		4) systemctl suspend ;;
-		5) systemctl reboot ;;
-		6) systemctl poweroff ;;
-	esac
-done
+# Start a sway or tmux session
+test "$(tty)" = "/dev/tty1" && sway &> "$HOME/.cache/sway.log" || tmux
+exit

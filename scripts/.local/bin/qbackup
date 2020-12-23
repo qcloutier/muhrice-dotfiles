@@ -1,14 +1,15 @@
 #!/bin/sh
 
-if test "$USER" = "root"; then
-	echo 'Must NOT run as root'
+if test "$USER" != "root"; then
+	echo 'Must run as root'
 	exit 1
 fi
 
 timestamp=$(date "+%Y%m%d%H%M%S")
+host=$(hostname)
 
-sudo tar -cvpzf $HOME/Backups/boot-$timestamp.tar.gz /boot
-sudo tar -cvpzf $HOME/Backups/root-$timestamp.tar.gz \
+tar -cvpzf "/media/Backups/${host}_boot_$timestamp.tar.gz" /boot
+tar -cvpzf "/media/Backups/${host}_root_$timestamp.tar.gz" \
 	--exclude /boot \
 	--exclude /home \
 	--exclude /lost+found \

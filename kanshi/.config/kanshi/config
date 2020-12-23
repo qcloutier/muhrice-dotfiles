@@ -6,3 +6,7 @@ profile {
 profile {
 	output "Unknown 0x324C 0x00000000" enable mode 1920x1080@60Hz position 0,0 scale 1 transform normal
 }
+
+profile {
+	output "ViewSonic Corporation VA2026w QQJ074701337" enable mode 1680x1050@60Hz position 0,0 scale 1 transform normal
+}
