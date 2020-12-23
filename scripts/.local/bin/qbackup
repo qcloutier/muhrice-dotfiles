@@ -11,6 +11,7 @@ host=$(hostname)
 tar -cvpzf "/media/Backups/${host}_boot_$timestamp.tar.gz" /boot
 tar -cvpzf "/media/Backups/${host}_root_$timestamp.tar.gz" \
 	--exclude /boot \
+	--exclude /dev \
 	--exclude /home \
 	--exclude /lost+found \
 	--exclude /media \
