@@ -11,7 +11,7 @@
   },
   {
     "name": "_Suspend",
-    "exec": "systemctl suspend",
+    "exec": "qsuspend",
     "icon": "system-suspend"
   },
   {

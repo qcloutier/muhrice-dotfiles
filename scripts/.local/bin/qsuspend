@@ -1,0 +1,10 @@
+#!/bin/sh
+
+#
+# Wrapper to prevent locking up the system when attempting to suspend
+# while amdgpu is being used with a Radeon HD 7950.
+#
+
+lspci -nnk | grep "Radeon HD 7950" > /dev/null && lspci -nnk | grep "Kernel driver in use: amdgpu" > /dev/null \
+	&& notify-send -i "$ICON_DIR/status/64/dialog-warning.svg" "Warning" "Suspend to RAM does not work when using amdgpu with a Radeon HD 7950" \
+	|| notify-send systemctl suspend
