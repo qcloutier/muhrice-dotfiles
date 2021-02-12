@@ -32,10 +32,10 @@ use_console_editor = yes
 mpd_crossfade_time = "2"
 
 # Visualizer
-visualizer_color         = blue, cyan, green, yellow, magenta, red
-visualizer_fifo_path     = "/tmp/mpd.fifo"
-visualizer_in_stereo     = "yes"
-visualizer_look          = "▬▮"
-visualizer_output_name   = "Visualizer"
-visualizer_sync_interval = "30"
-visualizer_type          = "spectrum"
+visualizer_color             = blue, cyan, green, yellow, magenta, red
+visualizer_data_source       = "/tmp/mpd.fifo"
+visualizer_in_stereo         = "yes"
+visualizer_look              = "▬▮"
+visualizer_output_name       = "Visualizer"
+visualizer_spectrum_dft_size = 1
+visualizer_type              = "spectrum"

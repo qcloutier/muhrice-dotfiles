@@ -1,17 +1,14 @@
 # vim:ft=dosini
 
 [general]
-bar_spacing = 1
+bar_spacing = 0
 bar_width   = 1
 
 [input]
 method = pulse
 
 [output]
-method = ncurses
+method = noncurses
 
 [color]
-gradient         = 1
-gradient_color_1 = '#70c0b1'
-gradient_color_2 = '#c397d8'
-gradient_count   = 2
+foreground = cyan
