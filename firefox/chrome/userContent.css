@@ -1,9 +1,0 @@
-/* Dark blank pages */
-@-moz-document url(about:blank), url-prefix(about:blank) {
-  html > body:empty { background-color: #353535 !important; }
-}
-
-/* Dark new tab pages */
-@-moz-document url(about:blank), url(about:home), url(about:newtab) {
-  .activity-stream { background-color: #353535 !important; }
-}
