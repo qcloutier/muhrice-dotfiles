@@ -1,31 +1,39 @@
 #!/usr/bin/env zsh
 
-# Local programs and scripts
-export PATH="$HOME/.local/bin:$PATH"
-
-# Default programs
-export BROWSER=firefox
-export EDITOR=nvim
-export TERMINAL=alacritty
-
 # XDG directories
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 
 # Dotfiles overrides
-export CARGO_HOME="$HOME/.local/share/cargo"
 export GOPATH="$HOME/.local/share/go"
 export GNUPGHOME="$HOME/.local/share/gnupg"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export LESSHISTFILE="-"
-export OTP_STORE_DIR="$HOME/.local/share/otp-store"
 export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
+export PYTHONUSERBASE="$HOME/.local/share/python"
 export ZDOTDIR="$HOME/.config/zsh"
+export npm_config_prefix="$HOME/.local/share/npm"
+
+# Local programs and scripts
+if ! printf "$PATH" | grep -q "$HOME/.local/bin"; then
+	PATH="$PATH:$GOPATH/bin"
+	PATH="$PATH:$PYTHONUSERBASE/bin"
+	PATH="$PATH:$npm_config_prefix/bin"
+	export PATH="$HOME/.local/bin:$PATH"
+fi
+
+# Default programs
+export BROWSER=brave
+export EDITOR=nvim
+export TERMINAL=kitty
 
 # Graphical session
 export _JAVA_AWT_WM_NONREPARENTING=1
+export CLIPBOARD=wl-copy
 export VDPAU_DRIVER=radeonsi
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_TYPE=wayland
 
 # GTK and QT theming
 export GTK_THEME=Adwaita-dark
@@ -36,26 +44,14 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export SSH_AGENT_PID="$(pgrep -f ssh-agent)"
 export SSH_AUTH_SOCK="$HOME/.cache/ssh-agent.socket"
 
-# Coloured less output
-export LESS_TERMCAP_mb=$'\e[1;36m'
-export LESS_TERMCAP_md=$'\e[1;36m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;35m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;37m'
-
-# Fuzzy finder
+# Misc settings
+export BAT_THEME="base16"
 export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Various aliases
+alias f=vifm
+alias e=nvim
 alias ls='ls --color=auto'
+alias q=exit
 alias vim=nvim
-
-# Wrapper for pass otp
-function otp() {
-	_opts=(code help insert append uri validate)
-	[[ ${_opts[(ie)$1]} -le ${#_opts} ]] \
-		&& PASSWORD_STORE_DIR="$OTP_STORE_DIR" pass otp $* \
-		|| PASSWORD_STORE_DIR="$OTP_STORE_DIR" pass $*
-}

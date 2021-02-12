@@ -11,5 +11,7 @@ source $HOME/.zshenv
 (! pgrep -f ssh-agent && rm -f "$SSH_AUTH_SOCK" && eval $(ssh-agent -a "$SSH_AUTH_SOCK")) &> /dev/null
 
 # Start a sway or tmux session
-test "$(tty)" = "/dev/tty1" && sway &> "$HOME/.cache/sway.log" || tmux
-exit
+case "$(tty)" in
+	/dev/tty1) sway &> "$HOME/.cache/sway.log" && exit ;;
+	*) tmux && exit ;;
+esac
