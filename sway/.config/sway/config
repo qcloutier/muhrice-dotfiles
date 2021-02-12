@@ -30,8 +30,12 @@ exec {
 		lock         'swaylock'
 }
 
+# Screen capture
+exec /usr/lib/xdg-desktop-portal -r
+exec /usr/lib/xdg-desktop-portal-wlr
+
 # Removeable media
-exec udiskie --appindicator --smart-tray --file-manager 'alacritty -e vifm'
+exec udiskie --appindicator --smart-tray --file-manager '$TERMINAL -e vifm'
 
 # KDE connect
 exec /usr/lib/kdeconnectd
@@ -151,8 +155,8 @@ bindsym $mod+Pause       reload, restart
 bindsym $mod+Shift+Pause exec swaymsg exit
 
 # Core applications
-bindsym $mod+Return       exec alacritty
-bindsym $mod+Shift+Return exec firefox
+bindsym $mod+Return       exec $TERMINAL --class tmux -e tmux
+bindsym $mod+Shift+Return exec brave
 
 # Basic desktop controls
 bindsym $mod+space       exec nwggrid
@@ -189,25 +193,19 @@ bindsym XF86AudioNext exec mpc next
 # RULES
 
 # Deal with client-side decorations
-for_window [app_id="Chromium-browser|Flatseal|wdisplays"] border none
-for_window [class="FreeTube|LBRY|Microsoft Teams|Steam"]  border pixel 1
+for_window [app_id="Brave-browser|Flatseal|wdisplays"] border none
+for_window [app_id="tmux"]                             border pixel 1
+for_window [class="FreeTube|LBRY|Steam|Tor Browser"]   border pixel 1
 
 # Float certain applications
 for_window [app_id="Flatseal|kdeconnect|qt5ct|wdisplays|zenity"] floating enable
+for_window [app_id="kitty" title="^fzf$|^nmtui$|^pulsemixer$"]   floating enable
 
-# Terminal programs
-for_window [app_id="Alacritty"]                                                               border pixel  1
-for_window [app_id="Alacritty" title="^Calcurse$|^Htop$|^Ncmpcpp$|^Neomutt$|^Neovim$|^Vifm$"] border normal 1
-for_window [app_id="Alacritty" title="^fzf$|^nmtui$|^pulsemixer$"]                            border normal 1; floating enable
-
-# Make Firefox behave sensibly
-for_window [app_id="(?i)firefox"]                                                                 border pixel  1
-for_window [app_id="(?i)firefox" title="^Clear All History$|^Library$|^New Bookmark$|^Opening"]   border normal 1; floating enable
-for_window [app_id="(?i)firefox" title="^Enter name of file|^File Upload$|^Open File$|^Save As$"] border none
-
-# Other workarounds
-for_window [app_id="(?i)chrome" title="^Save File$"]                       border none; floating enable
-for_window [app_id="(?i)shotcut" title="^Open File$|^Shotcut$|^Save XML$"] border none; floating enable
+# Float dialog boxes and similar
+for_window [app_id="^$" title="Brave$"]                                    floating enable; border none
+for_window [app_id="brave"]                                                floating enable; border none
+for_window [app_id="(?i)shotcut" title="^Open File$|^Shotcut$|^Save XML$"] floating enable; border none
+for_window [class="Tor Browser" title="^Save As$"]                         floating enable; border none
 for_window [title="^$"]                                                    floating enable
 
 
