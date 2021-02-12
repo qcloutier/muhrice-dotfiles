@@ -4,7 +4,7 @@
 # Presents a choice to take a screenshot or start a screencast,
 # and prompts for an area, window, or monitor to capture.
 #
-# Requires Font Awesome for the icons
+# Requires Nerd Fonts for the icons
 #
 
 for cmd in grim jq nwgdmenu slurp swappy swaymsg wf-recorder; do
