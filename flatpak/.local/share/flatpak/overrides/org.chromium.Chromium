@@ -1,4 +1,0 @@
-[Context]
-sockets=pcsc
-devices=dri
-filesystems=xdg-download;~/.local/share/applications;~/.local/share/icons;!home
