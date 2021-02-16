@@ -50,6 +50,7 @@ export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Various aliases
+alias bat='bat --plain'
 alias f=vifm
 alias e=nvim
 alias ls='ls --color=auto'
