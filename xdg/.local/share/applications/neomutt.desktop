@@ -5,6 +5,6 @@ Name=Neomutt
 GenericName=Mail
 Comment=Email client
 Icon=neomutt
-Exec=alacritty -t Neomutt -e neomutt
+Exec=$TERMINAL -e neomutt
 Categories=Office;ConsoleOnly;
 Keywords=communication;mail;

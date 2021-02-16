@@ -5,6 +5,6 @@ Name=Ncmpcpp
 GenericName=Music player
 Comment=Frontend to MPD
 Icon=elisa
-Exec=alacritty -t Ncmpcpp -e ncmpcpp
+Exec=$TERMINAL -e ncmpcpp
 Categories=Office;ConsoleOnly;
 Keywords=calendar;todo

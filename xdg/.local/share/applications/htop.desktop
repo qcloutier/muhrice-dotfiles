@@ -5,6 +5,6 @@ Name=Htop
 GenericName=Process Viewer
 Comment=Show System Processes
 Icon=htop
-Exec=alacritty -t Htop -e htop
+Exec=$TERMINAL -e htop
 Categories=System;Monitor;ConsoleOnly;
 Keywords=system;process;task
