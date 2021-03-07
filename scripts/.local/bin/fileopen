@@ -5,12 +5,5 @@
 # files according to their mimetype.
 #
 
-for cmd in "$TERMINAL" fzf xdg-open; do
-	if ! command -v $cmd > /dev/null; then
-		echo $cmd is not installed, exiting
-		exit 1
-	fi
-done
-
-"$TERMINAL" --title fzf -e \
+$TERMINAL --title fzf -e \
 	sh -c 'eval nohup xdg-open \"$(fzf)\" > /dev/null'

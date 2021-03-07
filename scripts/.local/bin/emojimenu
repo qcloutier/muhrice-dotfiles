@@ -7,20 +7,12 @@
 # Emoji version 13.1
 #
 
-for cmd in nwgdmenu wl-copy; do
-	if ! command -v $cmd > /dev/null; then
-		echo $cmd is not installed, exiting
-		exit 1
-	fi
-done
+MENUCMD="nwgdmenu | sed '3q;d'"
 
-sel="$(sed '1,/^EMOJI$/d' "$0" \
-	| nwgdmenu | sed -e '3q;d' \
-	| sed -e 's/.//2g')"
-
+sel="$(sed '1,/^EMOJI$/d' "$0" | eval "$MENUCMD" | sed -e 's/.//2g')"
 test -z "$sel" && exit
 
-printf "$sel" | wl-copy
+printf "$sel" | $CLIPBOARD
 notify-send -t 5000 -i "$ICON_DIR/devices/64/input-keyboard.svg" \
 	"Emoji Input" "Copied $sel to the clipboard"
 

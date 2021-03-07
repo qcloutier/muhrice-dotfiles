@@ -7,12 +7,7 @@
 # Requires Nerd Fonts for the icons
 #
 
-for cmd in grim jq nwgdmenu slurp swappy swaymsg wf-recorder; do
-	if ! command -v $cmd > /dev/null; then
-		echo $cmd is not installed, exiting
-		exit 1
-	fi
-done
+MENUCMD="nwgdmenu | sed '3q;d'"
 
 if pgrep wf-recorder; then
 	pkill -SIGINT wf-recorder
@@ -25,16 +20,10 @@ timestamp="$(date "+%Y%m%d_%H%M%S")"
 modes="\tScreenshot\n\tScreencast\n\tCancel"
 regions="\tSelect area\n\tSelect window\n\tSelect monitor\n\tCancel"
 
-mode="$(printf "$modes" \
-	| nwgdmenu -n | sed -e '3q;d' \
-	| sed 's/.//2g')"
-
+mode="$(printf "$modes" | eval "$MENUCMD" | sed 's/.//2g')"
 test -z "$mode" -o "$mode" = "" && exit
 
-region="$(printf "$regions" \
-	| nwgdmenu -n | sed -e '3q;d' \
-	| sed 's/.//2g')"
-
+region="$(printf "$regions" | eval "$MENUCMD" | sed 's/.//2g')"
 test -z "$region" -o "$region" = "" && exit
 
 case "$region" in

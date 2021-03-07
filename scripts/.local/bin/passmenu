@@ -7,43 +7,28 @@
 # Requires Nerd Fonts for the icons
 #
 
-for cmd in nwgdmenu pass wl-copy; do
-	if ! command -v $cmd > /dev/null; then
-		echo $cmd is not installed, exiting
-		exit 1
-	fi
-done
+MENUCMD="nwgdmenu | sed '3q;d'"
+PASSCMD=gopass
 
-entries="$(find "$PASSWORD_STORE_DIR" -iname "*.gpg" -printf '  %P\n')"
-
-sel="$(printf "$entries" | sed 's/.gpg$//' \
-	| nwgdmenu | sed '3q;d' \
-	| sed 's/^.\{3\}//')"
-
+entries="$(find "${PASSWORD_STORE_DIR:-$HOME/.password-store}" -iname "*.gpg" -printf '  %P\n')"
+sel="$(printf "$entries" | sed 's/.gpg$//' | eval "$MENUCMD" | sed 's/^.\{3\}//')"
 test -z "$sel" && exit
 
-pass show "$sel" \
-	| sed -n '/login:/p' | sed 's/.*: //' \
-	| wl-copy
-
+$PASSCMD show "$sel" | sed -n '/login:/p' | sed 's/.*: //' | $CLIPBOARD
 notify-send -t 5000 -i "$ICON_DIR/places/48/folder-encrypted.svg" \
 	"Credentials" "Copied the username for $sel to the clipboard"
 sleep 5s
 
-pass show "$sel" \
-	| sed '1q' \
-	| wl-copy
-
+$PASSCMD show "$sel" | sed '1q' | $CLIPBOARD
 notify-send -t 5000 -i "$ICON_DIR/places/48/folder-encrypted.svg" \
 	"Credentials" "Copied the password for $sel to the clipboard"
 sleep 5s
 
-if pass otp "$sel"; then
-	pass otp "$sel" | wl-copy
-
+if $PASSCMD otp "$sel"; then
+	$PASSCMD otp "$sel" | sed -n 's/\([0-9]*\).*/\1/p' | $CLIPBOARD
 	notify-send -t 5000 -i "$ICON_DIR/places/48/folder-encrypted.svg" \
 		"Credentials" "Copied an OTP code for $sel to the clipboard"
 	sleep 5s
 fi
 
-printf "" | wl-copy
+printf "" | $CLIPCMD
