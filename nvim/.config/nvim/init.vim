@@ -1,41 +1,30 @@
-" Some sensible defaults
+" General
 filetype indent plugin on
-syntax on
+set listchars=tab:▏\  list
 set mouse=a
 set number relativenumber
+set signcolumn=number
 set splitbelow splitright
-
-" Typical system clipboard keybinds
-map <C-c> "+y
-map <C-v> "+p
-
-" Use tabs at the margin by default
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-set listchars=tab:▏\  list
+syntax on
 
-" Delete trailing whitespace on save
-autocmd BufWritePre * %s/\s\+$//e
-
-" No line numbers in terminal
-autocmd TermOpen * setlocal nonumber norelativenumber
-
-" Install vim-plug if not present
-if empty(glob(system('printf $HOME').'/.local/share/nvim/site/autoload/plug.vim'))
-  silent !curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs
+" Plugins
+if empty(glob(stdpath('data').'/site/autoload/plug.vim'))
+  silent !curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-
 call plug#begin(stdpath('data').'/plugged')
-
-" Vimscript
 Plug 'chrisbra/csv.vim'
 Plug 'cohama/lexima.vim'
 Plug 'dylanaraps/wal.vim'
+Plug 'godlygeek/tabular'
+Plug 'hashivim/vim-terraform'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'lervag/vimtex'
 Plug 'moll/vim-bbye'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
@@ -45,74 +34,69 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-rmarkdown'
-
-" Lua
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-treesitter/completion-treesitter'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'steelsojka/completion-buffers'
-
 call plug#end()
 
-" Match the terminal colourscheme
-colorscheme wal
-highlight Comment gui=italic
+" Autocmds
+autocmd BufNewFile,BufFilePre,BufRead *.Rmd,*.rmd set filetype=rmarkdown
+autocmd BufWritePost *.Rmd,*.rmd :RMarkdown pdf
+autocmd BufWritePre * %s/\s\+$//e
+autocmd FileType yaml setl indentkeys-=<:>
+autocmd TermOpen * setlocal nonumber norelativenumber
 
-" Fancy tabline and statusline
-let g:airline#extensions#tabline#enabled=1
-let g:airline_powerline_fonts=1
-let g:airline_left_sep=""
-let g:airline_left_alt_sep=''
-let g:airline_right_sep=""
-let g:airline_right_alt_sep=''
-set hidden
+" Commands
+command! -nargs=0 Fmt :call CocAction('format')
+command! -nargs=0 Org :call CocAction('runCommand', 'editor.action.organizeImport')
 
-" Easily manage buffers
+" Keybinds
+map <c-c> "+y
+map <c-v> "+p
 map <silent><c-t>h :bprevious<cr>
 map <silent><c-t>l :bnext<cr>
 map <silent><c-t>x :Bdelete<cr>
-
-" File explorer
 map <silent><leader>f :Vifm<cr>
-
-" Fuzzy finder
-map <silent><leader>s :Files<cr>
 map <silent><leader>r :Rg<cr>
+map <silent><leader>s :Files<cr>
+map <silent>[g <Plug>(coc-diagnostic-prev)
+map <silent>]g <Plug>(coc-diagnostic-next)
+map <silent>gd <Plug>(coc-definition)
+map <silent>gi <Plug>(coc-implementation)
+map <silent>gr <Plug>(coc-references)
+map <silent>gy <Plug>(coc-type-definition)
 
-" Comfy LaTeX editing
+" Language servers
+let g:coc_global_extensions = [
+  \'coc-clangd',
+  \'coc-go',
+  \'coc-java',
+  \'coc-json',
+  \'coc-marketplace',
+  \'coc-pyls',
+  \'coc-sh',
+  \'coc-texlab',
+  \'coc-tsserver',
+  \'coc-yaml'
+\]
+
+" Tab completion
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1] =~# '\s'
+endfunction
+inoremap <silent><expr><tab>
+  \ pumvisible() ? "\<c-n>" :
+  \ <sid>check_back_space() ? "\<tab>" :
+  \ coc#refresh()
+inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<c-h>"
+
+" Miscellaneous
+colorscheme wal
+highlight Comment gui=italic
+let g:airline#extensions#tabline#enabled=1
+let g:airline_left_alt_sep=''
+let g:airline_left_sep=""
+let g:airline_powerline_fonts=1
+let g:airline_right_alt_sep=''
+let g:airline_right_sep=""
 let g:tex_flavor='latex'
 let g:vimtex_view_general_viewer='zathura'
-
-" Auto generate PDFs from R Markdown
-autocmd BufNewFile,BufFilePre,BufRead *.Rmd,*.rmd set filetype=rmarkdown
-autocmd BufWritePost *.Rmd,*.rmd :RMarkdown pdf
-
-" Auto completion for LSP and buffers
-autocmd BufEnter * lua require'completion'.on_attach()
-set completeopt=menuone,noinsert,noselect
-set shortmess+=c
-inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-lua <<EOF
-
--- Tree sitters, requires a C compiler
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = {
-    "bash", "c", "css", "go", "html", "java",
-    "javascript", "json", "lua", "python", "yaml",
-  },
-  highlight = { enable = true },
-  indent    = { enable = true },
-}
-
--- Language servers, must be manually installed
-require'lspconfig'.bashls.setup{}
-require'lspconfig'.clangd.setup{}
-require'lspconfig'.gopls.setup{}
-require'lspconfig'.pyls.setup{}
-require'lspconfig'.rome.setup{}
-require'lspconfig'.texlab.setup{}
-
-EOF
+set hidden
