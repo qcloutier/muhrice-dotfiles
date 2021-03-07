@@ -37,10 +37,6 @@ exec /usr/lib/xdg-desktop-portal-wlr
 # Removeable media
 exec udiskie --appindicator --smart-tray --file-manager '$TERMINAL -e vifm'
 
-# KDE connect
-exec /usr/lib/kdeconnectd
-exec kdeconnect-indicator
-
 
 # INPUT
 
