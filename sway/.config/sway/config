@@ -31,8 +31,8 @@ exec {
 }
 
 # Screen capture
-#exec /usr/lib/xdg-desktop-portal -r
-#exec /usr/lib/xdg-desktop-portal-wlr
+exec /usr/lib/xdg-desktop-portal -r
+exec /usr/lib/xdg-desktop-portal-wlr
 
 # Removeable media
 exec udiskie --appindicator --smart-tray --file-manager 'kitty -e vifm'
@@ -157,7 +157,6 @@ bindsym $mod+Shift+Return exec brave
 # Basic desktop controls
 bindsym $mod+space       exec nwggrid
 bindsym $mod+Shift+space exec fileopen
-bindsym $mod+Tab         exec notify-send "TODO - Window list"
 bindsym $mod+BackSpace   exec nwgbar
 
 # Input helpers
@@ -191,11 +190,11 @@ bindsym XF86AudioNext exec mpc next
 # Deal with client-side decorations
 for_window [app_id="Brave-browser|Flatseal|wdisplays"] border none
 for_window [app_id="tmux"]                             border pixel 1
-for_window [class="FreeTube|LBRY|Steam|Tor Browser"]   border pixel 1
+for_window [class="Steam|Tor Browser"]                 border pixel 1
 
 # Float certain applications
-for_window [app_id="Flatseal|kdeconnect|qt5ct|wdisplays|zenity"] floating enable
-for_window [app_id="kitty" title="^fzf$|^nmtui$|^pulsemixer$"]   floating enable
+for_window [app_id="Flatseal|qt5ct|wdisplays|zenity"]          floating enable
+for_window [app_id="kitty" title="^fzf$|^nmtui$|^pulsemixer$"] floating enable
 
 # Float dialog boxes and similar
 for_window [app_id="^$" title="Brave$"]                                    floating enable; border none
