@@ -13,5 +13,6 @@ source $HOME/.zshenv
 # Start a sway or tmux session
 case "$(tty)" in
 	/dev/tty1) sway &> "$HOME/.cache/sway.log" && exit ;;
+	/dev/tty6) ;;
 	*) tmux && exit ;;
 esac

@@ -31,11 +31,11 @@ exec {
 }
 
 # Screen capture
-exec /usr/lib/xdg-desktop-portal -r
-exec /usr/lib/xdg-desktop-portal-wlr
+#exec /usr/lib/xdg-desktop-portal -r
+#exec /usr/lib/xdg-desktop-portal-wlr
 
 # Removeable media
-exec udiskie --appindicator --smart-tray --file-manager '$TERMINAL -e vifm'
+exec udiskie --appindicator --smart-tray --file-manager 'kitty -e vifm'
 
 
 # INPUT
