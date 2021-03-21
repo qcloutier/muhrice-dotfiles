@@ -26,6 +26,7 @@ Plug 'lervag/vimtex'
 Plug 'moll/vim-bbye'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ryanoasis/vim-devicons'
+Plug 'towolf/vim-helm'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
@@ -34,6 +35,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-rmarkdown'
+Plug 'ziglang/zig.vim'
 call plug#end()
 
 " Autocmds
@@ -44,24 +46,26 @@ autocmd FileType yaml setl indentkeys-=<:>
 autocmd TermOpen * setlocal nonumber norelativenumber
 
 " Commands
-command! -nargs=0 Fmt :call CocAction('format')
-command! -nargs=0 Org :call CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 CocFormat :call CocAction('format')
+command! -nargs=0 CocOrganize :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " Keybinds
 map <c-c> "+y
 map <c-v> "+p
+map <leader>cr <Plug>(coc-rename)
 map <silent><c-t>h :bprevious<cr>
 map <silent><c-t>l :bnext<cr>
 map <silent><c-t>x :Bdelete<cr>
-map <silent><leader>f :Vifm<cr>
-map <silent><leader>r :Rg<cr>
-map <silent><leader>s :Files<cr>
-map <silent>[g <Plug>(coc-diagnostic-prev)
-map <silent>]g <Plug>(coc-diagnostic-next)
-map <silent>gd <Plug>(coc-definition)
-map <silent>gi <Plug>(coc-implementation)
-map <silent>gr <Plug>(coc-references)
-map <silent>gy <Plug>(coc-type-definition)
+map <silent><leader>fb :Buffers<cr>
+map <silent><leader>ff :Files<cr>
+map <silent><leader>fr :Rg<cr>
+map <silent><leader>v :Vifm<cr>
+map [g <Plug>(coc-diagnostic-prev)
+map ]g <Plug>(coc-diagnostic-next)
+map gd <Plug>(coc-definition)
+map gi <Plug>(coc-implementation)
+map gr <Plug>(coc-references)
+map gy <Plug>(coc-type-definition)
 
 " Language servers
 let g:coc_global_extensions = [
