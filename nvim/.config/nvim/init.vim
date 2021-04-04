@@ -22,6 +22,7 @@ Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'LnL7/vim-nix'
 Plug 'lervag/vimtex'
 Plug 'moll/vim-bbye'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -48,6 +49,7 @@ autocmd TermOpen * setlocal nonumber norelativenumber
 " Commands
 command! -nargs=0 CocFormat :call CocAction('format')
 command! -nargs=0 CocOrganize :call CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 SudoWrite execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " Keybinds
 map <c-c> "+y

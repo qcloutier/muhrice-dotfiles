@@ -1,18 +1,13 @@
 # AUTOSTART
 
-# Autotiling
-exec autotiling
-
-# Output manager
+# WM helpers
+exec_always sh -c 'pkill flashfocus; flashfocus'
 exec_always sh -c 'pkill kanshi; kanshi'
+exec autotiling
 
 # Status bar
 exec_always sh -c 'pkill waybar; waybar'
-
-# Notifications
 exec mako
-
-# Screen locker
 exec {
 	swayidle -w \
 		timeout 240  'pgrep swaylock || notify-send "Autolocking in 1 minute..."' \
@@ -34,8 +29,8 @@ exec {
 exec /usr/lib/xdg-desktop-portal -r
 exec /usr/lib/xdg-desktop-portal-wlr
 
-# Removeable media
-exec udiskie --appindicator --smart-tray --file-manager 'kitty -e vifm'
+# Tray items
+exec udiskie --appindicator --smart-tray
 
 
 # INPUT
@@ -152,7 +147,7 @@ bindsym $mod+Shift+Pause exec swaymsg exit
 
 # Core applications
 bindsym $mod+Return       exec $TERMINAL --class tmux -e tmux
-bindsym $mod+Shift+Return exec brave
+bindsym $mod+Shift+Return exec $BROWSER
 
 # Basic desktop controls
 bindsym $mod+space       exec nwggrid
@@ -190,7 +185,7 @@ bindsym XF86AudioNext exec mpc next
 # Deal with client-side decorations
 for_window [app_id="Brave-browser|Flatseal|wdisplays"] border none
 for_window [app_id="tmux"]                             border pixel 1
-for_window [class="Steam|Tor Browser"]                 border pixel 1
+for_window [class="Steam"]                             border pixel 1
 
 # Float certain applications
 for_window [app_id="Flatseal|qt5ct|wdisplays|zenity"]          floating enable
@@ -200,7 +195,6 @@ for_window [app_id="kitty" title="^fzf$|^nmtui$|^pulsemixer$"] floating enable
 for_window [app_id="^$" title="Brave$"]                                    floating enable; border none
 for_window [app_id="brave"]                                                floating enable; border none
 for_window [app_id="(?i)shotcut" title="^Open File$|^Shotcut$|^Save XML$"] floating enable; border none
-for_window [class="Tor Browser" title="^Save As$"]                         floating enable; border none
 for_window [title="^$"]                                                    floating enable
 
 
@@ -219,7 +213,7 @@ font                    pango:sans Bold 9
 title_align             center
 
 # Wallpaper
-output "*" background "$HOME/.config/background/normal.png" fill
+output "*" background "$XDG_CONFIG_HOME/background/normal.png" fill
 
 # GTK applications
 exec {

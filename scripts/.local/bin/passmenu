@@ -14,6 +14,8 @@ entries="$(find "${PASSWORD_STORE_DIR:-$HOME/.password-store}" -iname "*.gpg" -p
 sel="$(printf "$entries" | sed 's/.gpg$//' | eval "$MENUCMD" | sed 's/^.\{3\}//')"
 test -z "$sel" && exit
 
+$PASSCMD show "$sel" 2>&1 | grep 'exit status 2' && exit
+
 $PASSCMD show "$sel" | sed -n '/login:/p' | sed 's/.*: //' | $CLIPBOARD
 notify-send -t 5000 -i "$ICON_DIR/places/48/folder-encrypted.svg" \
 	"Credentials" "Copied the username for $sel to the clipboard"
