@@ -32,6 +32,9 @@ exec /usr/lib/xdg-desktop-portal-wlr
 # Tray items
 exec udiskie --appindicator --smart-tray
 
+# Fix slow start for gtk/gnome programs
+exec dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+
 
 # INPUT
 
