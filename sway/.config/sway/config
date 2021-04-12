@@ -187,6 +187,7 @@ bindsym XF86AudioNext exec mpc next
 
 # Deal with client-side decorations
 for_window [app_id="Brave-browser|Flatseal|wdisplays"] border none
+for_window [app_id="imv"]                              border normal 1
 for_window [app_id="tmux"]                             border pixel 1
 for_window [class="Steam"]                             border pixel 1
 
