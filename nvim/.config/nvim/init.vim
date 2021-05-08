@@ -98,10 +98,10 @@ inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<c-h>"
 colorscheme wal
 highlight Comment gui=italic
 let g:airline#extensions#tabline#enabled=1
-let g:airline_left_alt_sep=''
+let g:airline_left_alt_sep=')'
 let g:airline_left_sep=""
 let g:airline_powerline_fonts=1
-let g:airline_right_alt_sep=''
+let g:airline_right_alt_sep='('
 let g:airline_right_sep=""
 let g:tex_flavor='latex'
 let g:vimtex_view_general_viewer='zathura'
