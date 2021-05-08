@@ -186,20 +186,22 @@ bindsym XF86AudioNext exec mpc next
 # RULES
 
 # Deal with client-side decorations
-for_window [app_id="Brave-browser|Flatseal|wdisplays"] border none
-for_window [app_id="imv"]                              border normal 1
-for_window [app_id="tmux"]                             border pixel 1
-for_window [class="Steam"]                             border pixel 1
+for_window [app_id="Chromium|(?i)firefox|Flatseal|wdisplays"] border none
+for_window [app_id="imv"]                                     border normal 1
+for_window [app_id="tmux"]                                    border pixel 1
+for_window [class="Steam"]                                    border pixel 1
 
 # Float certain applications
 for_window [app_id="Flatseal|qt5ct|wdisplays|zenity"]          floating enable
 for_window [app_id="kitty" title="^fzf$|^nmtui$|^pulsemixer$"] floating enable
 
 # Float dialog boxes and similar
-for_window [app_id="^$" title="Brave$"]                                    floating enable; border none
-for_window [app_id="brave"]                                                floating enable; border none
-for_window [app_id="(?i)shotcut" title="^Open File$|^Shotcut$|^Save XML$"] floating enable; border none
-for_window [title="^$"]                                                    floating enable
+for_window [app_id="^$" title="Chromium$"]                                                        floating enable
+for_window [app_id="chromium"]                                                                    floating enable
+for_window [app_id="(?i)firefox" title="^Clear All History$|^Library$|^New Bookmark$|^Opening"]   border normal 1; floating enable
+for_window [app_id="(?i)firefox" title="^Enter name of file|^File Upload$|^Open File$|^Save As$"] border none
+for_window [app_id="(?i)shotcut" title="^Open File$|^Shotcut$|^Save XML$"]                        floating enable; border none
+for_window [title="^$"]                                                                           floating enable
 
 
 # THEMING
