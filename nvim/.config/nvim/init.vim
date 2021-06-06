@@ -36,7 +36,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-rmarkdown'
-Plug 'ziglang/zig.vim'
 call plug#end()
 
 " Autocmds
