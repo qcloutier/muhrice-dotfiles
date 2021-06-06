@@ -1,2 +1,5 @@
 /* Dark loading pages */
 browser { background-color: #2d2d2d !important; }
+
+/* Container tab fixes */
+.tab-context-line, .urlbar-addon-page-action { display: none !important; }
