@@ -2,14 +2,14 @@
 before-sleep 'swaylock'
 lock 'swaylock'
 
-# Notify then lock screen 240 300
-timeout 5 'pgrep swaylock || notify-send "Autolocking in 1 minute..."'
-timeout 10 'pgrep swaylock || swaylock'
+# Notify then lock screen
+timeout 240 'pgrep swaylock || notify-send "Autolocking in 1 minute..."'
+timeout 300 'pgrep swaylock || swaylock'
 
-# Turn screen off then suspend 330 360
-timeout 15 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
-timeout 20 'qsuspend'
+# Turn screen off then suspend
+timeout 330 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+timeout 360 'qsuspend'
 
-# Sleep sooner when locked 30 60
-timeout 5 'pgrep swaylock && swaymsg "output * dpms off"' resume 'pgrep swaylock && swaymsg "output * dpms on"'
-timeout 10 'pgrep swaylock && qsuspend'
+# Sleep sooner when locked
+timeout 30 'pgrep swaylock && swaymsg "output * dpms off"' resume 'pgrep swaylock && swaymsg "output * dpms on"'
+timeout 60 'pgrep swaylock && qsuspend'
