@@ -11,6 +11,8 @@ export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export LESSHISTFILE="-"
 export MBSYNCRC="$XDG_CONFIG_HOME/mbsync/mbsyncrc"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export NUGET_PACKAGES="$XDG_DATA_HOME/NuGet/packages"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export PYTHONUSERBASE="$XDG_DATA_HOME/python"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
@@ -44,7 +46,7 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 
 # SSH agent
 export SSH_AGENT_PID="$(pgrep -f ssh-agent)"
-export SSH_AUTH_SOCK="$XDG_CACHE_HOME/ssh-agent.socket"
+export SSH_AUTH_SOCK="$HOME/.ssh/S.ssh-agent"
 
 # Misc settings
 export BAT_THEME="base16"

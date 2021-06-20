@@ -8,7 +8,7 @@
 #
 
 MENUCMD="nwgdmenu | sed '3q;d'"
-PASSCMD=gopass
+PASSCMD=pass
 
 entries="$(find "${PASSWORD_STORE_DIR:-$HOME/.password-store}" -iname "*.gpg" -printf '  %P\n')"
 sel="$(printf "$entries" | sed 's/.gpg$//' | eval "$MENUCMD" | sed 's/^.\{3\}//')"
@@ -33,4 +33,4 @@ if $PASSCMD otp "$sel"; then
 	sleep 5s
 fi
 
-printf "" | $CLIPCMD
+printf "" | $CLIPBOARD

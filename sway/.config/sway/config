@@ -198,19 +198,27 @@ for_window {
 	[app_id="(?i)firefox" title="^Clear All History$|^Clear Recent History$|^Incoming Connection$|^Library$|^New Bookmark$|^Opening"] border normal 1; floating enable
 }
 
+# Godot
+for_window {
+	[class="Godot" instance="Godot_Engine|Godot_ProjectList"] floating enable
+	[class="Godot" instance="Godot_Editor"] floating disable
+}
+
 # Miscellaneous
 for_window {
-	[app_id="Flatseal|wdisplays"] border none
 	[app_id="Flatseal|qt5ct|wdisplays"] floating enable
+	[app_id="Flatseal|wdisplays"] border none
 	[app_id="imv"] border normal 1
 	[app_id="(?i)shotcut" title="^Open File$|^Shotcut$|^Save XML$"] border none; floating enable
-	[title="^$|zenity"] floating enable
 }
 
 # Steam
 for_window {
-	[class="Steam"] floating enable
-	[class="Steam" title="Steam"] border pixel 1
+	[class="Steam"] border pixel 1; floating enable
+	[class="Steam" title="^Steam$"] floating enable
+	[class="^steam_app.*$"] border none; floating enable
+	[app_id="zenity"] floating enable
+	[title="^$|^zenity$"] floating enable
 }
 
 # Terminal

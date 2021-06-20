@@ -15,21 +15,17 @@ if empty(glob(stdpath('data').'/site/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin(stdpath('data').'/plugged')
-Plug 'chrisbra/csv.vim'
 Plug 'cohama/lexima.vim'
 Plug 'dylanaraps/wal.vim'
 Plug 'godlygeek/tabular'
-Plug 'hashivim/vim-terraform'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'LnL7/vim-nix'
 Plug 'lervag/vimtex'
 Plug 'moll/vim-bbye'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ryanoasis/vim-devicons'
-Plug 'towolf/vim-helm'
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'vifm/vifm.vim'
 Plug 'vim-airline/vim-airline'
@@ -75,8 +71,10 @@ let g:coc_global_extensions = [
   \'coc-java',
   \'coc-json',
   \'coc-marketplace',
+  \'coc-omnisharp',
   \'coc-pyls',
   \'coc-sh',
+  \'coc-sql',
   \'coc-texlab',
   \'coc-tsserver',
   \'coc-yaml'
