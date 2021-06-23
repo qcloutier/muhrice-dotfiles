@@ -5,7 +5,6 @@ set mouse=a
 set number relativenumber
 set signcolumn=number
 set splitbelow splitright
-set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 syntax on
 
 " Plugins
