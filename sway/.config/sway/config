@@ -210,13 +210,14 @@ for_window {
 	[app_id="Flatseal|wdisplays"] border none
 	[app_id="imv"] border normal 1
 	[app_id="(?i)shotcut" title="^Open File$|^Shotcut$|^Save XML$"] border none; floating enable
+	[class="Bottles"] floating enable
 }
 
 # Steam
 for_window {
 	[class="Steam"] border pixel 1; floating enable
 	[class="Steam" title="^Steam$"] floating enable
-	[class="^steam_app.*$"] border none; floating enable
+	[class="^steam_app.*$|^steam_proton$"] floating enable
 	[app_id="zenity"] floating enable
 	[title="^$|^zenity$"] floating enable
 }

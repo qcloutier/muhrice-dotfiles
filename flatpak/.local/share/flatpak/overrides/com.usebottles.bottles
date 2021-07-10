@@ -1,0 +1,10 @@
+[Context]
+filesystems=!xdg-run/gvfsd;!/run/media;!xdg-desktop;!~/Games:ro;!xdg-documents;!/media;!xdg-download;!~/.local/share/bottles:create;!xdg-pictures;!~/.Bottles:ro;!~/wineprefixes:ro;!xdg-videos;!xdg-music
+persistent=.local/share/bottles
+
+[System Bus Policy]
+org.freedesktop.UDisks2=none
+
+[Session Bus Policy]
+org.gtk.vfs.*=none
+org.gtk.vfs=none
